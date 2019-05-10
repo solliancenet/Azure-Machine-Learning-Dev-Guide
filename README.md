@@ -10,6 +10,5 @@ Description...
 4. [Modeling](./modeling/README.md)
 5. [Model deployment](./model-deployment/README.md)
 6. [Creating machine learning pipelines](./creating-machine-learning-pipelines/README.md)
-7. [Monitoring and managing deployed models](./monitoring-managing-deployed-models/README.md)
-8. [DevOps for AI](./devops-for-ai/README.md)
-9. [Conclusion](./conclusion/README.md)
+7. [MLOps - DevOps for AI](./devops-for-ai/README.md)
+8. [Conclusion](./conclusion/README.md)

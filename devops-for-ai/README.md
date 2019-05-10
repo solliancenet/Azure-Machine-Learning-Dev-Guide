@@ -1,1 +1,1 @@
-# DevOps for AI
+# MLOps - DevOps for AI
