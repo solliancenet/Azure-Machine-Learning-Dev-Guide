@@ -175,7 +175,15 @@ This code returns a link you can use to view the logged values in the Azure port
 
 ## Visual Studio Code with the AML extension
 
-Text
+[Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview) is a lightweight but powerful source code editor which runs on your desktop and is available for Windows, macOS and Linux. It comes with built-in support for JavaScript, TypeScript and Node.js and has a rich ecosystem of extensions for other languages (such as C++, C#, Java, Python, PHP, Go) and runtimes (such as .NET and Unity).
+
+Visual Studio Code has rapidly become one of the most popular free cross-platform integrated development environments (IDE) in use today. The primary reasons for this are its very lightweight size which allows it to quickly run on almost any desktop hardware, and its large extension marketplace that helps developers add capabilities for a wide range of development tasks.
+
+The [Azure Machine Learning extension](https://aka.ms/vscodetoolsforai) for Visual Studio Code adds features to Visual Studio code that help you manage your Machine Learning service workspace, and train and deploy machine learning and deep learning models. When you install this extension, the [Azure Account extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) and the [Microsoft Python extension ](https://marketplace.visualstudio.com/items?itemName=ms-python.python)are also installed. These extensions allow you to connect to your Azure subscription and configure the Machine Learning service workspace, and turns Visual Studio Code into a Python IDE. The Microsoft Python extension uses all of the power of Visual Studio Code to provide autocomplete, IntelliSense, linting, debugging, and unit testing. The extension also allows you to easily switch between Python environments, including virtual and conda environments. For more information about editing, running, and debugging Python code, see the [Python hello-world tutorial](https://code.visualstudio.com/docs/python/python-tutorial).
+
+Before you can begin using the new Python capabilities in VS Code, you must select your Python interpreter. You do this by opening the **Command Palette** in VS Code (`Ctrl+Shift+P`), typing **Python: Select Interpreter** and selecting that command. If you see an error stating that `python.pythonPath` cannot be set or does not exist, you may not have installed an interpreter, such as [Anaconda](https://www.anaconda.com/download/). Install Anaconda and restart Visual Studio Code before attempting to select the interpreter.
+
+Follow the instructions [here](https://code.visualstudio.com/docs/python/python-tutorial) for configuring VS Code for Python development.
 
 ## Azure Machine Learning Studio
 
