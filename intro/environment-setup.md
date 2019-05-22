@@ -2,7 +2,7 @@
 
 Whether you are using the Azure Machine Learning service SDK on your local machine or a remote virtual machine, there are some configuration steps you must complete to start using your workspace. This article guides you through how to create your Azure Machine Learning service workspace, using a variety of options, and how to set up your development environment so you can start using the [available tools](./tools.md) to build, train, and deploy your models.
 
-## Azure Machine Learning service workspace
+## Create your Azure Machine Learning service workspace
 
 To use Azure Machine Learning service, you need an [Azure Machine Learning service workspace](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-workspace). This workspace is the top-level resource for the service and provides you with a centralized place to work with all the artifacts you create.
 

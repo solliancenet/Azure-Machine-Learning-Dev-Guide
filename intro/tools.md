@@ -56,7 +56,7 @@ If you choose to run Jupyter notebooks on your own notebook server, you can get 
 
 With this option, you can quickly get started with Azure Machine Learning service by configuring a managed Jupyter notebook server in the cloud. The environment is provided by a [notebook VM](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-configure-environment#notebookvm), which is a secure, cloud-based Azure workstation that comes configured with a Jupyter notebook server (JupyterLab) and a fully prepared ML environment. You do not need to install any additional software or libraries to begin running notebooks and logging experiments in your ML workspace. To get started, perform the following steps:
 
-1. Sign in to the [Azure portal](https://portal.azure.com/) and open your Azure Machine Learning service workspace. [Create your workspace](./environment-setup.md#Azure-Machine-Learning-service-workspace) if you have not already done so.
+1. Sign in to the [Azure portal](https://portal.azure.com/) and open your Azure Machine Learning service workspace. [Create your workspace](./environment-setup.md#create-your-azure-machine-learning-service-workspace) if you have not already done so.
 2. On your workspace page, select **Notebook VMs** on the left-hand menu.
 3. Select **+ New** to create a notebook VM.
 
@@ -91,7 +91,7 @@ With this option, you can quickly get started with Azure Machine Learning servic
 
 If you do not want to set up a Notebook VM and wish to run Jupyter notebooks on your own notebook server hosted on your local machine or any VM of your choosing, then you must perform the following steps:
 
-1. Sign in to the [Azure portal](https://portal.azure.com/) and open your Azure Machine Learning service workspace. [Create your workspace](./environment-setup.md#Azure-Machine-Learning-service-workspace) if you have not already done so.
+1. Sign in to the [Azure portal](https://portal.azure.com/) and open your Azure Machine Learning service workspace. [Create your workspace](./environment-setup.md#create-your-azure-machine-learning-service-workspace) if you have not already done so.
 2. Create an isolated Python environment using [Miniconda](https://docs.conda.io/en/latest/miniconda.html), [Anaconda](https://www.anaconda.com/), or [Python virtualenv](https://virtualenv.pypa.io/en/stable/). Be sure to select Python version 3.7 or greater.
 3. Install the core components of the Machine Learning SDK with Jupyter notebook capabilities:
 
