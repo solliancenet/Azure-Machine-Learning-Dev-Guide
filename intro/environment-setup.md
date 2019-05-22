@@ -152,7 +152,14 @@ With your Python environment set up and the Python SDK installed, follow these s
 Save the details of your workspace in a configuration file to the current directory. This file is called _.azureml/config.json_.  
 This workspace configuration file makes it easy to load the same workspace later. You can load it with other notebooks and scripts in the same directory or a subdirectory using the code `ws=Workspace.from_config()`.
 
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=writeConfig)]
+```python
+# Create the configuration file.
+ws.write_config()
+
+# Use this code to load the workspace from
+# other scripts and notebooks in this directory.
+# ws = Workspace.from_config()
+```
 
 This `write_config()` API call creates the configuration file in the current directory. The _config.json_ file contains the following:
 
