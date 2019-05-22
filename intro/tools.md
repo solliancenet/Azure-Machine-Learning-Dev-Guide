@@ -181,9 +181,27 @@ Visual Studio Code has rapidly become one of the most popular free cross-platfor
 
 The [Azure Machine Learning extension](https://aka.ms/vscodetoolsforai) for Visual Studio Code adds features to Visual Studio code that help you manage your Machine Learning service workspace, and train and deploy machine learning and deep learning models. When you install this extension, the [Azure Account extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) and the [Microsoft Python extension ](https://marketplace.visualstudio.com/items?itemName=ms-python.python)are also installed. These extensions allow you to connect to your Azure subscription and configure the Machine Learning service workspace, and turns Visual Studio Code into a Python IDE. The Microsoft Python extension uses all of the power of Visual Studio Code to provide autocomplete, IntelliSense, linting, debugging, and unit testing. The extension also allows you to easily switch between Python environments, including virtual and conda environments. For more information about editing, running, and debugging Python code, see the [Python hello-world tutorial](https://code.visualstudio.com/docs/python/python-tutorial).
 
+You will need to [install Python version **3.7.3** or higher](https://www.python.org/downloads/) before you begin. If Visual Studio Code is open during the install, you will need to restart it after installing Python.
+
 Before you can begin using the new Python capabilities in VS Code, you must select your Python interpreter. You do this by opening the **Command Palette** in VS Code (`Ctrl+Shift+P`), typing **Python: Select Interpreter** and selecting that command. If you see an error stating that `python.pythonPath` cannot be set or does not exist, you may not have installed an interpreter, such as [Anaconda](https://www.anaconda.com/download/). Install Anaconda and restart Visual Studio Code before attempting to select the interpreter.
 
+In the lower-right corner of the window, a notification will appear indicating that the Azure Machine Learning SDK is being automatically installed. The newly created Python environment is local and private, and it has the Visual Studio Code prerequisites for working with the Azure Machine Learning service.
+
+![A dialog appears stating that the Azure ML extension starting runtime dependencies...](media/vscode-azure-ml-extension-installing.png 'VS Code notification')
+
 Follow the instructions [here](https://code.visualstudio.com/docs/python/python-tutorial) for configuring VS Code for Python development.
+
+The AML extension adds a section to the Azure menu item on VS Code's left-hand menu (the Azure menu item is added by the extension if it does not already exist) named "MACHINE LEARNING". Within this section is a list of each of your Azure subscriptions. You can right-click on a subscription and add a new Azure Machine Learning service workspace through prompts in VS Code's command palette. When you expand an existing workspace, you can view experiments, pipelines, compute targets, models (each are versioned), deployed model images, and deployments.
+
+The screenshot below shows these features for an AML workspace that has been expanded underneath a subscription in this new section. In this screenshot, a context menu is displayed after right-clicking on one of the models. You can see the following actions you can take on a model:
+
+- Download Model file
+- Remove Model
+- View Model Properties
+- Create Image From Model
+- Deploy Service From Registered Model
+
+![The screenshot displays an Azure Machine Learning service workspace that has been expanded within the new Machine Learning section. A context menu is shown by right-clicking on a model.](media/vs-code-aml-extension-workspace.png 'AML Extension workspace view')
 
 ## Azure Machine Learning Studio
 
