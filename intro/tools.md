@@ -132,7 +132,7 @@ If you do not want to set up a Notebook VM and wish to run Jupyter notebooks on 
 
 5. Download or create a configuration file (config.json) that will be used by your notebooks to interact with your Machine Learning service workspace. The file should be saved to the top-level parent folder that contains your Jupyter notebooks. To download a generated configuration file, go to the Overview blade of your Azure Machine Learning service workspace in the Azure portal and select the **Download config.json** file. Alternately, you can [create your own configuration file](https://docs.microsoft.com/en-us/azure/machine-learning/service/setup-create-workspace#write-a-configuration-file) manually.
 
-> If you are using a Data Science Virtual Machine (DSVM), you do not need to install the Machine Learning SDK. You can create an [Ubuntu DSVM](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro) or a [Windows DSVM](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/provision-vm).
+> If you are using a Data Science Virtual Machine (DSVM), you do not need to install the Machine Learning SDK. Create an [Ubuntu DSVM](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro).
 
 > If you are using Azure Databricks, [follow these instructions](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-configure-environment#azure-databricks) to install the SDK and configure your cluster.
 
@@ -203,13 +203,59 @@ The screenshot below shows these features for an AML workspace that has been exp
 
 ![The screenshot displays an Azure Machine Learning service workspace that has been expanded within the new Machine Learning section. A context menu is shown by right-clicking on a model.](media/vs-code-aml-extension-workspace.png 'AML Extension workspace view')
 
-## Azure Machine Learning Studio
+## Visual interface
 
-Text
+The Azure Machine Learning service visual interface can be used to prepare and visualize your data, run experiments, and quickly build, test, and deploy models through its easy-to-use visual drag-and-drop interface. If you are familiar with Azure Machine Learning Studio, you will see many similarities with Azure ML visual interface. Both services provide the same features using a nearly identical interface with low or node code, and Azure Machine Learning service visual interface is considered the successor to Azure Machine Learning Studio. However, there are some differences between both offerings. The two main advantages that visual interface provides are that you can scale your compute, and you can deploy your models to targets outside of Azure web services, such as Azure Kubernetes Service (AKS).
+
+Here is a quick comparison of both options:
+
+|                                                    | Machine Learning Studio                          | Azure Machine Learning service:<br/>Visual interface                                                                                    |
+| -------------------------------------------------- | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Modules for interface                              | Many                                             | Initial set of popular modules                                                                                                          |
+| Training compute targets                           | Proprietary compute target, CPU support only     | Supports Azure Machine Learning compute, GPU or CPU.<br/>(Other computes supported in SDK)                                              |
+| Deployment compute targets                         | Proprietary web service format, not customizable | Enterprise security options & Azure Kubernetes Service. <br/>([Other computes](../service/how-to-deploy-and-where.md) supported in SDK) |
+| Automated model training and hyperparameter tuning | No                                               | Not yet in visual interface. <br/> (Supported in the SDK and Azure portal.)                                                             |
+
+It is important to note that any models created and deployed using visual interface can be managed through the Azure Machine Learning service workspace. This is another big advantage over Machine Learning Studio, where there are no options to export and use the models elsewhere.
+
+To use Azure Machine Learning service visual interface, open your workspace in the Azure portal, then select the **Visual interface** link on the left-hand menu. This opens a blade that gives you the option to launch visual interface in a new browser window, or read the documentation.
+
+![Visual interface is launched by using the left-hand menu in your AML workspace.](media/visual-interface-link.png 'Visual interface')
+
+The screenshot below shows an experiment in visual interface that contains steps to load and transform data, split the data for model training and evaluation, and scoring using the linear regression algorithm.
+
+![This screenshot shows the UI for a visual interface experiment.](media/visual-interface-experiment.png 'Visual interface experiment')
+
+When you are ready to run the experiment, you have the choice to select an existing compute target, or create a new one. If you need more options for configuring the compute target, such as VM size and type (CPU or GPU) or number of nodes, you can create your custom compute targets within your workspace in the Azure portal. Compute target options include Machine Learning Compute, Kubernetes Service, Virtual Machine (running Ubuntu), Azure Databricks, Data Lake Analytics, and HDInsight.
+
+When using a Machine Learning Compute target, there is a warmup time of approximately 5 minutes if you re-run your experiment after a long period of time. That is because the compute resource will autoscale to 0 nodes when it is idle to save cost.
+
+![The Setup Compute Target to Run Experiment dialog is displayed with Create new selected.](media/visual-interface-compute-target.png 'Setup compute target to run experiment')
+
+After running the training experiment, you have an option to create a predictive experiment. When you create the predictive experiment, a new copy of your experiment is created that contains inputs and outputs so you can deploy your scoring model to a web service. A predictive experiment contains new options for defining inputs and outputs, and for deploying as a web service, as highlighted in the screenshot below. You can go back to the training experiment, make changes, and update the predictive experiment automatically with the click of a button.
+
+![The predictive experiment is shown in a new tab and contains options for defining web service inputs and outputs.](media/visual-interface-predictive-experiment.png 'Predictive experiment')
+
+After running the predictive experiment, you have the option to deploy a web service.
+
+![The toolbar on the bottom of the page provides an option to deploy a web service.](media/visual-interface-deploy-web-service.png 'Deploy Web Service')
+
+If you wish to deploy to a secure web service, we recommend that you add a Kubernetes Service compute target to your workspace and [follow the instructions](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-secure-web-service) to use SSL to secure the web service. You can either select an existing Kubernetes Service or create a new one.
+
+![The Compute menu item is selected in the AML workspace, and Kubernetes Service is selected as the compute type.](media/visual-interface-create-kubernetes-compute-target.png 'Add Compute')
+
+After creating the compute target, you can select it from the list of existing targets.
+
+![The newly created Kubernetes Service compute target is selected.](media/visual-interface-web-service-compute-target.png 'Setup Compute Target to Deploy Web Service')
+
+After your web service is deployed, you can view its details under Web Services on the visual interface site. The information provided includes the compute target and deployment state, and there are tabs that allow you to test your deployed model, sample code for consuming the web service, and an API Doc created from the generated Swagger file.
+
+![The web service details includes sample code for consuming the service.](media/visual-interface-web-service.png 'Deployed web service')
+
+Finally, you can go to your Azure Machine Learning service workspace and view the generated models, images, and deployments that were created by your visual interface experiment.
 
 ## Next steps
 
-- [Reference link]()
-- [Reference link]()
+- [Configure your development environment](./environment-setup.md)
 
-Read next: [Related article]()
+Read next: [What is Azure Machine Learning?](./what-is-azure-machine-learning.md)
