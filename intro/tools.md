@@ -209,12 +209,12 @@ The Azure Machine Learning service visual interface can be used to prepare and v
 
 Here is a quick comparison of both options:
 
-|                                                    | Machine Learning Studio                          | Azure Machine Learning service:<br/>Visual interface                                                                                    |
-| -------------------------------------------------- | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
-| Modules for interface                              | Many                                             | Initial set of popular modules                                                                                                          |
-| Training compute targets                           | Proprietary compute target, CPU support only     | Supports Azure Machine Learning compute, GPU or CPU.<br/>(Other computes supported in SDK)                                              |
-| Deployment compute targets                         | Proprietary web service format, not customizable | Enterprise security options & Azure Kubernetes Service. <br/>([Other computes](../service/how-to-deploy-and-where.md) supported in SDK) |
-| Automated model training and hyperparameter tuning | No                                               | Not yet in visual interface. <br/> (Supported in the SDK and Azure portal.)                                                             |
+|                                                    | Machine Learning Studio                          | Azure Machine Learning service:<br/>Visual interface                                                                                                                                      |
+| -------------------------------------------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Modules for interface                              | Many                                             | Initial set of popular modules                                                                                                                                                            |
+| Training compute targets                           | Proprietary compute target, CPU support only     | Supports Azure Machine Learning compute, GPU or CPU.<br/>(Other computes supported in SDK)                                                                                                |
+| Deployment compute targets                         | Proprietary web service format, not customizable | Enterprise security options & Azure Kubernetes Service. <br/>([Other computes](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-deploy-and-where) supported in SDK) |
+| Automated model training and hyperparameter tuning | No                                               | Not yet in visual interface. <br/> (Supported in the SDK and Azure portal.)                                                                                                               |
 
 It is important to note that any models created and deployed using visual interface can be managed through the Azure Machine Learning service workspace. This is another big advantage over Machine Learning Studio, where there are no options to export and use the models elsewhere.
 
