@@ -56,55 +56,30 @@ If you choose to run Jupyter notebooks on your own notebook server, you can get 
 
 With this option, you can quickly get started with Azure Machine Learning service by configuring a managed Jupyter notebook server in the cloud. The environment is provided by a [notebook VM](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-configure-environment#notebookvm), which is a secure, cloud-based Azure workstation that comes configured with a Jupyter notebook server (JupyterLab) and a fully prepared ML environment. You do not need to install any additional software or libraries to begin running notebooks and logging experiments in your ML workspace. To get started, perform the following steps:
 
-1. Sign in to the [Azure portal](https://portal.azure.com/). If you do not have an Azure subscription, you can get started with a [free account](https://aka.ms/AMLFree) today.
-2. In the upper-left corner of the portal, select **+ Create a resource**.
-
-   ![The Create a resource menu option is highlighted in the Azure portal.](media/azure-create-resource.png 'Create a resource')
-
-3. In the search bar, enter `machine learning service workspace`. Select the **Machine Learning service workspace** search result.
-
-   ![The term 'machine learning service workspace' contains search results. The Machine Learning service workspace result is highlighted.](media/azure-mlservice-workspace-search.png 'Machine learning service workspace search results')
-
-4. In the **Machine Learning service workspace** pane, scroll to the bottom and select **Create** to begin.
-5. In the **ML service workspace** pane, configure your workspace.
-
-   | Field          | Description                                                                                                                                                                                                                                |
-   | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | Workspace name | Enter a unique name that identifies your workspace. In this example, we use **aml-guide-workspace**. Names must be unique across the resource group. Use a name that's easy to recall and differentiate from workspaces created by others. |
-   | Subscription   | Select the Azure subscription that you want to use.                                                                                                                                                                                        |
-   | Resource group | Use an existing resource group in your subscription, or enter a name to create a new resource group. A resource group is a container that holds related resources for an Azure solution. In this example, we use **aml-guide**.            |
-   | Location       | Select the location closest to your users and the data resources. This location is where the workspace is created.                                                                                                                         |
-
-   ![The Machine Learning Service Workspace creation dialog is displayed with the previously described fields.](media/azure-ml-service-workspace-create-dialog.png 'Create Machine Learning Service Workspace dialog')
-
-6. Select **Review + Create**. Verify everything looks correct, then select **Create** to begin the creation process. It can take a few moments to create the workspace.
-7. You will be redirected to the Overview pane, which shows the deployment status. When your deployment is complete, select **Go to resource**.
-
-   ![The Azure Machine Learning Service Workspace deployment status page is displayed, and the Go to resource button is highlighted.](media/azure-ml-service-workspace-deployment.png 'Machine Learning Service Workspace deployment status')
-
-8. On your workspace page, select **Notebook VMs** on the left-hand menu.
-9. Select **+ New** to create a notebook VM.
+1. Sign in to the [Azure portal](https://portal.azure.com/) and open your Azure Machine Learning service workspace. [Create your workspace](./environment-setup.md#Azure-Machine-Learning-service-workspace) if you have not already done so.
+2. On your workspace page, select **Notebook VMs** on the left-hand menu.
+3. Select **+ New** to create a notebook VM.
 
    ![The Notebook VMs link is highlighted on the left-hand menu of the Azure ML Service Workspace, and the New button is highlighted within the Notebook VMs blade.](media/new-notebook-vm-link.png 'New Notebook VM')
 
-10. Provide a name for your VM, select a VM size, then select **Create**.
+4. Provide a name for your VM, select a VM size, then select **Create**.
 
-    ![The New Notebook VM form is displayed with the previously described fields.](media/new-notebook-vm.png 'New Notebook VM')
+   ![The New Notebook VM form is displayed with the previously described fields.](media/new-notebook-vm.png 'New Notebook VM')
 
-11. Wait approximately 4-5 minutes, until the status changes to **Running**.
-12. After the VM is created, you will see it in the list of Notebook VMs. Select the **Jupyter** link in the **URI** column for your new VM.
+5. Wait approximately 4-5 minutes, until the status changes to **Running**.
+6. After the VM is created, you will see it in the list of Notebook VMs. Select the **Jupyter** link in the **URI** column for your new VM.
 
-    ![The Jupyter link for the new Notebook VM is highlighted.](media/notebook-vm-jupyter-link.png 'Notebook VMs')
+   ![The Jupyter link for the new Notebook VM is highlighted.](media/notebook-vm-jupyter-link.png 'Notebook VMs')
 
-    The link starts your notebook server and opens the Jupyter notebook webpage in a new browser tab. This link will only work for the person who creates the VM.
+   The link starts your notebook server and opens the Jupyter notebook webpage in a new browser tab. This link will only work for the person who creates the VM.
 
-13. On the Jupyter notebook webpage, the top folder name is your username. Select this folder.
-14. The samples folder name includes a version number, for example **samples-1.0.33.1**. Select the samples folder.
-15. Select the quickstart folder, then open the **01.run-experiment.ipynb** file.
+7. On the Jupyter notebook webpage, the top folder name is your username. Select this folder.
+8. The samples folder name includes a version number, for example **samples-1.0.33.1**. Select the samples folder.
+9. Select the quickstart folder, then open the **01.run-experiment.ipynb** file.
 
-    > The config.json file that is located in the top-level parent folder was created for you with details of your Azure Machine Learning service workspace. All notebooks in the samples folder use this file to connect to your workspace. If you want to download the file to use in other environments, you can go to the Overview blade of your Azure Machine Learning service workspace and select the **Download config.json** file. This config file is what the following command in the notebooks use to load your workspace configuration: `Workspace.from_config()`.
+   > The config.json file that is located in the top-level parent folder was created for you with details of your Azure Machine Learning service workspace. All notebooks in the samples folder use this file to connect to your workspace. If you want to download the file to use in other environments, you can go to the Overview blade of your Azure Machine Learning service workspace and select the **Download config.json** file. This config file is what the following command in the notebooks use to load your workspace configuration: `Workspace.from_config()`.
 
-16. After running all the cells in the notebook, the final cell will provide a link to view your experiment you just ran, within your AML workspace. From here you can go to your experiment and view this and all other runs.
+10. After running all the cells in the notebook, the final cell will provide a link to view your experiment you just ran, within your AML workspace. From here you can go to your experiment and view this and all other runs.
 
     ![The last cell contains a link to the Azure Portal.](media/aml-experiment-link.png 'Link on last cell')
 
@@ -116,7 +91,7 @@ With this option, you can quickly get started with Azure Machine Learning servic
 
 If you do not want to set up a Notebook VM and wish to run Jupyter notebooks on your own notebook server hosted on your local machine or any VM of your choosing, then you must perform the following steps:
 
-1. Create a Machine Learning service workspace (steps 1 - 6 above).
+1. Sign in to the [Azure portal](https://portal.azure.com/) and open your Azure Machine Learning service workspace. [Create your workspace](./environment-setup.md#Azure-Machine-Learning-service-workspace) if you have not already done so.
 2. Create an isolated Python environment using [Miniconda](https://docs.conda.io/en/latest/miniconda.html), [Anaconda](https://www.anaconda.com/), or [Python virtualenv](https://virtualenv.pypa.io/en/stable/). Be sure to select Python version 3.7 or greater.
 3. Install the core components of the Machine Learning SDK with Jupyter notebook capabilities:
 
