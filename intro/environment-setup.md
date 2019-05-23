@@ -311,9 +311,137 @@ Follow the instructions [here](https://code.visualstudio.com/docs/python/python-
 
 For more information about editing, running, and debugging Python code, see the [Python hello-world tutorial](https://code.visualstudio.com/docs/python/python-tutorial).
 
+### Visual interface
+
+Because Azure Machine Learning services visual interface is a fully managed, cloud-hosted environment, there are not a lot of options for configuring the environment. However, you can define the compute targets for running your experiments as well as for deploying your trained models into web services.
+
+Azure Machine Learning Compute is a managed-compute infrastructure that allows the user to easily create a single or multi-node compute. The compute is created within your workspace region as a resource that can be shared with other users in your workspace. The compute scales up automatically when a job is submitted, and can be put in an Azure Virtual Network. The compute executes in a containerized environment and packages your model dependencies in a [Docker container](https://www.docker.com/why-docker).
+
+You can use Azure Machine Learning Compute to distribute the training process across a cluster of CPU or GPU compute nodes in the cloud. For more information on the VM sizes that include GPUs, see [GPU-optimized virtual machine sizes](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu).
+
+Azure Machine Learning Compute has default limits, such as the number of cores that can be allocated. For more information, see [Manage and request quotas for Azure resources](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas).
+
+#### Create a new compute target for experiments
+
+There are four ways you can create new compute targets for experiments: within visual interface, in the Azure portal, with the CLI, and using the Azure Machine Learning SDK.
+
+##### Option 1: Visual interface
+
+When you are ready to run an experiment in within the visual interface, you have the choice to select an existing compute target, or create a new one.
+
+1. Select **Run** at the bottom of the experiment canvas.
+
+   ![The Run button is highlighted on the bottom of the experiment canvas.](media/visual-interface-run.png 'Run')
+
+2. When the **Setup Compute Targets** dialog appears, select **Create new**. This will give you the option of selecting the pre-defined compute configuration and entering a **New Compute Name**.
+
+   ![The Setup Compute Target to Run Experiment dialog is displayed with Create new selected.](media/visual-interface-compute-target.png 'Setup compute target to run experiment')
+
+3. Select **Run**. This will create the compute target and run your experiment.
+
+##### Option 2: Azure portal
+
+1. Sign in to the [Azure portal](https://portal.azure.com).
+2. Open your Machine Learning service workspace, then select **Compute** on the left-hand menu.
+3. Select **+ Add Compute**.
+
+   ![The Compute left-hand menu item and Add Compute button are both highlighted.](media/aml-workspace-add-compute.png 'Compute')
+
+4. Select **Machine Learning Compute** as the **Compute type**. Provide values for the required properties, especially **VM Family**, and the **maximum nodes** to use to spin up the compute.
+
+   ![The Add Compute form is displayed with the previously described fields completed.](media/aml-workspace-add-compute-form.png 'Add Compute')
+
+   > The visual interface can only run experiments on Machine Learning Compute targets. Other compute targets will not be shown. If you want to use other compute targets, you must use the SDK.
+
+5. Select **Create**.
+
+##### Option 3: CLI
+
+You can use the Machine Learning CLI to create a persistent compute target for running visual interface experiments. The [instructions for using the CLI](#option-2-machine-learning-cli) is at the top of this page under the section for creating your AML workspace.
+
+When you use the Machine Learning CLI, specify the **AMLcompute** target.
+
+```bash
+az ml computetarget create amlcompute -n cpu --min-nodes 1 --max-nodes 1 -s STANDARD_D3_V2
+```
+
+For more information, see [az ml computetarget create amlcompute](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute).
+
+##### Option 4: Python SDK
+
+When you create a compute target using the Python SDK, you can create an Azure Machine Learning compute environment on demand when you schedule a run, or as a persistent resource. When you are creating a compute environment for visual interface, you will need to create a persistent resource.
+
+1. **Create and attach**: To create a persistent Azure Machine Learning Compute resource in Python, specify the **vm_size** and **max_nodes** properties. Azure Machine Learning then uses smart defaults for the other properties. The compute autoscales down to zero nodes when it isn't used. Dedicated VMs are created to run your jobs as needed.
+
+   - **vm_size**: The VM family of the nodes created by Azure Machine Learning Compute.
+   - **max_nodes**: The max number of nodes to autoscale up to when you run a job on Azure Machine Learning Compute.
+
+   ```python
+   from azureml.core.compute import ComputeTarget, AmlCompute
+   from azureml.core.compute_target import ComputeTargetException
+
+   # Choose a name for your CPU cluster
+   cpu_cluster_name = "cpucluster"
+
+   # Verify that cluster does not exist already
+   try:
+       cpu_cluster = ComputeTarget(workspace=ws, name=cpu_cluster_name)
+       print('Found existing cluster, use it.')
+   except ComputeTargetException:
+       compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
+                                                             max_nodes=4)
+       cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
+
+   cpu_cluster.wait_for_completion(show_output=True)
+   ```
+
+   You can also configure several advanced properties when you create Azure Machine Learning Compute. The properties allow you to create a persistent cluster of fixed size, or within an existing Azure Virtual Network in your subscription. See the [AmlCompute class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) for details.
+
+   Or you can create and attach a persistent Azure Machine Learning Compute resource [in the Azure portal](#portal-create).
+
+2. **Configure**: Create a run configuration for the persistent compute target.
+
+   ```python
+   from azureml.core.runconfig import RunConfiguration
+   from azureml.core.conda_dependencies import CondaDependencies
+   from azureml.core.runconfig import DEFAULT_CPU_IMAGE
+
+   # Create a new runconfig object
+   run_amlcompute = RunConfiguration()
+
+   # Use the cpu_cluster you created above.
+   run_amlcompute.target = cpu_cluster
+
+   # Enable Docker
+   run_amlcompute.environment.docker.enabled = True
+
+   # Set Docker base image to the default CPU-based image
+   run_amlcompute.environment.docker.base_image = DEFAULT_CPU_IMAGE
+
+   # Use conda_dependencies.yml to create a conda environment in the Docker image for execution
+   run_amlcompute.environment.python.user_managed_dependencies = False
+
+   # Auto-prepare the Docker image when used for execution (if it is not already prepared)
+   run_amlcompute.auto_prepare_environment = True
+
+   # Specify CondaDependencies obj, add necessary packages
+   run_amlcompute.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'])
+   ```
+
+#### Create a new compute target for web services
+
+When you deploy a web service in visual interface, you must select a compute target that will host the web service. We recommend that you add a Kubernetes Service compute target to your workspace and [follow the instructions](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-secure-web-service) to use SSL to secure the web service.
+
+You may use the methods above to create a new Kubernetes Service compute target by specifying the compute type. Below is a screenshot of the Add Compute form for a Kubernetes Service compute target in the Azure portal:
+
+![The Compute menu item is selected in the AML workspace, and Kubernetes Service is selected as the compute type.](media/visual-interface-create-kubernetes-compute-target.png 'Add Compute')
+
 ## Next steps
 
-- [Reference link]()
-- [Reference link]()
+Please see the following additional references for configuring your development environment:
 
-Read next: [Related article]()
+- [Use the CLI extension for Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/reference-azure-machine-learning-cli#resource-management)
+- [What is the Azure Machine Learning SDK for Python?](https://docs.microsoft.com/en-us/python/api/overview/azure/ml/intro?view=azure-ml-py)
+- [Configure dev environments](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-configure-environment)
+
+Read next: [What is Azure Machine Learning?](./what-is-azure-machine-learning.md)
