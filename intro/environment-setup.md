@@ -178,7 +178,94 @@ Alternatively, you may download the configuration file (config.json) that will b
 
 ### Azure Notebooks
 
-Text
+Azure Notebooks gives you a fully managed environment in which you can develop and run Jupyter notebooks and easily share your projects with others. You do not need to sign in to start using Azure Notebooks, but any changes you make to notebooks or data files will not persist. This works well for scenarios where someone just needs to run a notebook, like as part of a tutorial or demonstration, without needing to sign in. However, if you want to Azure Notebooks to retain your projects across sessions, you must sign in with either a Microsoft account or a "Work or School" account. When the account used for Azure Notebooks is also associated with an Azure Subscription, you gain additional benefits such as running notebooks on more powerful servers, creating private notebooks, and granting permissions to notebooks to individual users.
+
+[Learn more about signing in to Azure Notebooks](https://docs.microsoft.com/en-us/azure/notebooks/azure-notebooks-user-account) and which accounts you can use.
+
+After signing into Azure Notebooks with your account for the first time, your account is automatically assigned a temporary user ID that begins with "anon-". As long as you have a user ID that begins with "anon-", Azure Notebooks prompts you to change it whenever you sign in. Setting your user ID is an important step because it is used as part of the URLs you use for others to view your profile and to share projects and notebooks. Here are the URL patterns. Notice how your user ID is used in the base path of each:
+
+- `https://notebooks.azure.com/<user_id>`: Your profile page.
+- `https://notebooks.azure.com/<user_id>/projects`: Your projects. You see all projects; other users see only your public projects.
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>`: Project files.
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`: Clones of a specific projects.
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`: The HTML preview of a specific notebook or file.
+
+#### Profile and settings
+
+In Azure Notebooks, your profile is how others can view public information about you, such as your display name, user ID, public email account, and any social profiles you wish to share. It also lists your recently used projects and any starred projects. Your profile is accessible by visiting `https://notebooks.azure.com/<user_id>`. You can also get to your profile page by selecting your user ID at the top-right corner of the Azure Notebooks site, then selecting **My Account**.
+
+![The Azure Notebooks profile link located in the upper-right corner of the page is highlighted, as is the My Account link in the context menu underneath.](media/azure-notebooks-profile-link.png 'Azure Notebooks profile link')
+
+Your profile page is publicly viewable and you can edit your profile to update what others see. You can also adjust Azure Notebooks site settings when you edit your profile. Just select the **Edit Profile Information** button on the top of your profile page.
+
+![The Edit Profile Information button is highlighted on the profile page.](media/azure-notebooks-profile.png 'Azure Notebooks profile')
+
+| Section              | Contents                                                                                                                                                                                                                                                                                                                                                                                                 |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Profile photo        | An image that's shown on your profile page.                                                                                                                                                                                                                                                                                                                                                              |
+| Account Information  | Your display name, user ID, and public email account. The email account here provides other users a mean to contact you and can be different from the [account](azure-notebooks-user-account.md) you use to sign into Azure Notebooks itself.                                                                                                                                                            |
+| Profile Information  | Your location, company, job title, web site, and a short description of yourself.                                                                                                                                                                                                                                                                                                                        |
+| Social Profiles      | Your GItHub, Twitter, and Facebook IDs, if you wish to share them.                                                                                                                                                                                                                                                                                                                                       |
+| Privacy Settings     | Provides two commands:<ul><li>**Export My Profile**: creates and downloads a _.zip_ file containing all the information that Azure Notebooks saves in your profile, including your photograph, profile information, and security logs.</li><li>**Delete My Account**: Permanently deletes all your personal information stored in Azure Notebooks.</li></ul>                                             |
+| Enable Site Features | Allows you to control aspects of the behavior of Azure Notebooks:<ul><li>**Unified Frontend for Notebooks**: enables faster notebook startup and better persistence.</li><li>**Run in JupyterLab by default**: By default, Azure Notebooks provides a simple user interface that's suitable for most users. JupyterLab provides a richer but more complicated interface for experienced users.</li></ul> |
+
+#### Project configuration
+
+A project in Azure Notebooks is a collection of files, such as notebooks, data files, documentation, images, and other descriptive metadata. The project also defines the configuration of the underlying Linux virtual machine on which Jupyter notebooks run. The environment can be configured with specific setup commands. By defining the environment with the project, anyone who clones the project into their own Azure Notebooks account has all the information they need to recreate the necessary environment.
+
+There are three ways to configure the environment of the underlying virtual machine in which your notebooks run:
+
+- Include a one-time initialization script
+- Use the project's environment settings to specify setup steps
+- Access the virtual machine through a terminal.
+
+All forms of project configuration are applied whenever the virtual machine is started, and thus affects all notebooks within the project.
+
+1. To start, select **Project Settings** at the top of the project page.
+
+   ![The Project Settings button is highlighted.](media/azure-notebooks-project-settings-button.png 'Project Settings')
+
+2. In the **Project Settings** dialog that appears, select the **Environment** tab, then under **Environment Setup Steps**, select **+ Add**.
+3. The **+ Add** command creates a step that's defined by an operation, a target file you select in your project, and sometimes an additional option, like Python version, depending on which step you select.
+
+   ![The Environment tab is selected, and the operation dropdown is highlighted and displayed.](media/azure-notebooks-add-environment-setup-step.png 'Add Environment Setup Step')
+
+   | Operation        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+   | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | Requirements.txt | Python projects define their dependencies in a requirements.txt file. With this option, select the appropriate file from the project's file list, and also select the Python version in the additional drop-down that appears. If necessary, select **Cancel** to return to the project, upload or create the file, then return to the **Project Settings** > **Environment** tab and create a new step. With this step in place, running a notebook in the project automatically runs `pip install -r <file>` |
+   | Shell script     | Use to indicate a bash shell script (typically a file with the _.sh_ extension) that contains any commands you wish to run to initialize the environment.                                                                                                                                                                                                                                                                                                                                                      |
+   | Environment.yml  | A Python project that uses conda for managing an environment uses an _environments.yml_ file to describe dependencies. With this option, select the appropriate file from the project's file list.                                                                                                                                                                                                                                                                                                             |
+
+4. When you are done adding steps, select **Save**.
+
+You can also upload a one-time initialization script. The first time Azure Notebooks creates a server for the project, it looks for a file in the project called `aznbsetup.sh`. If this file is present, Azure Notebooks runs it. The output of the script is stored in your project folder as _.aznbsetup.log_.
+
+#### Project terminal
+
+When you are viewing a project, select **Terminal** to open a Linux terminal that gives you direct access to the server. You can run almost any terminal command you normally would if you SSH into a VM, such as inspecting processes, downloading data, managing files, and editing files using tools like vi and nano.
+
+When you run `ls` in the home folder, you can see which environments exist on the virtual machine, such as _anaconda2_501_, _anaconda3_420_, _anaconda3_501_, _IfSharp_, and _R_. You can modify a specific environment by changing to its environment folder before running commands.
+
+> Changes made to the server apply **only** to the **current session**, except for files and folders you create in the project folder itself. For example, editing a file in the project folder is persisted between sessions, but packages with `pip install` are not. To persist environment settings, follow the instructions in the previous section to **add an Environment Setup Step**.
+
+If you do make environment changes through the terminal, you would likely do so to experiment with settings and package installs on the VM that you will add as one of your project's Environment setup steps (requirements.txt, shell script, or environment.yml file), as detailed in the previous section.
+
+If you use `python` or `python3`, you invoke the system-installed versions of Python, which are not used for notebooks. You don't have permissions for operations like `pip install` either, so be sure to use the version-specific aliases, as highlighted in the screenshot below.
+
+![The Terminal window is displayed with a built-in alias used for a pip install.](media/azure-notebooks-terminal.png 'Terminal')
+
+These are the built-in aliases for the environments:
+
+```bash
+# Anaconda 2 5.3.0/Python 2.7: python27
+python27 -m pip install <package>
+
+# Anaconda 3 4.2.0/Python 3.5: python35
+python35 -m pip install <package>
+
+# Anaconda 3 5.3.0/Python 3.6: python36
+python36 -m pip install <package>
+```
 
 ### Visual Studio Code
 
