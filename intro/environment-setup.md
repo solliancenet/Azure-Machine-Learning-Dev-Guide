@@ -269,7 +269,47 @@ python36 -m pip install <package>
 
 ### Visual Studio Code
 
-Text
+Visual Studio Code is an excellent choice when you want to use a lightweight integrated development environment (IDE) for Python development. The available extensions you can install adds additional capabilities, like code completion (IntelliSense), code snippets, spell checking, linting, and many more.
+
+#### Install the Azure Machine Learning extension
+
+The [Azure Machine Learning extension](https://aka.ms/vscodetoolsforai) for Visual Studio Code adds features that help you manage your Machine Learning service workspace, and train and deploy machine learning and deep learning models.
+
+To install the extension, perform the following steps within Visual Studio Code:
+
+1. In Visual Studio Code, select the **Extensions** menu item in the left-hand menu.
+2. Type "azure machine learning" in the search box, then select **Azure Machine Learning** from the search results.
+
+   ![The Extensions menu item is highlighted, and the search box contains azure machine learning.](media/vs-code-aml-extension.png 'Visual Studio Code extension search')
+
+3. Click the **Install** button on either the search result or the extension information page.
+
+When you install this extension, the [Azure Account extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) and the [Microsoft Python extension ](https://marketplace.visualstudio.com/items?itemName=ms-python.python) are also installed.
+
+#### Set up your Python environment
+
+You will need to [install Python version **3.7.3** or higher](https://www.python.org/downloads/) before you begin. If Visual Studio Code is open during the install, you will need to restart it after installing Python.
+
+Before you can begin using the new Python capabilities in VS Code, you must select your Python interpreter:
+
+1. Open the **Command Palette** in VS Code (`Ctrl+Shift+P`).
+2. Start typing **Python: Select Interpreter** and select that command.
+
+   ![The VS Code Command Palette is displayed with the Python Select Interpreter command selected in the search results.](media/vs-code-python-select-interpreter.png 'Python: Select Interpreter')
+
+   > If you see an error stating that `python.pythonPath` cannot be set or does not exist, you may not have installed an interpreter, such as [Anaconda](https://www.anaconda.com/download/). Install Anaconda and restart Visual Studio Code before attempting to select the interpreter.
+
+3. Select the interpreter you wish to use. If you installed Python 3.7.3 or higher, be sure to select that newer version. In this case, we selected the `Python 3.7.3 32-bit` interpreter.
+
+   ![Select your desired Python interpreter from the list.](media/vs-code-python-interpreter-selected.png 'Python interpreters')
+
+4. Start a new Extension search by typing "intellicode". Select the **Visual Studio IntelliCode** extension and install it. This will provide you with AI-assisted capabilities for IntelliSense in Python.
+
+   ![The Visual Studio IntelliCode extension is selected.](media/vs-code-intellicode-extension.png 'Visual Studio IntelliCode extension')
+
+Follow the instructions [here](https://code.visualstudio.com/docs/python/python-tutorial) for configuring VS Code for Python development.
+
+For more information about editing, running, and debugging Python code, see the [Python hello-world tutorial](https://code.visualstudio.com/docs/python/python-tutorial).
 
 ## Next steps
 
