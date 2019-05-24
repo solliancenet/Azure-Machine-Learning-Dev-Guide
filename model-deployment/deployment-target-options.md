@@ -91,7 +91,7 @@ service.update([different_model], inference_config, deployment_config)
 
 For large-scale production workloads, it is best to deploy your model to AKS.
 
-Azure Kubernetes Service (AKS) makes it simple to deploy a managed Kubernetes cluster in Azure. AKS reduces the complexity and operational overhead of managing Kubernetes by offloading much of that responsibility to Azure. As a hosted Kubernetes service, Azure handles critical tasks like health monitoring and maintenance for you. The Kubernetes masters are managed by Azure. You only manage and maintain the agent nodes. As a managed Kubernetes service, AKS is free - you only pay for the agent nodes within your clusters, not for the masters.
+[Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/) makes it simple to deploy a managed Kubernetes cluster in Azure. AKS reduces the complexity and operational overhead of managing Kubernetes by offloading much of that responsibility to Azure. As a hosted Kubernetes service, Azure handles critical tasks like health monitoring and maintenance for you. The Kubernetes masters are managed by Azure. You only manage and maintain the agent nodes. As a managed Kubernetes service, AKS is free - you only pay for the agent nodes within your clusters, not for the masters.
 
 When you deploy your model to AKS as a target, all you are required to do is provision the AKS service in Azure. Once created, Azure Machine Learning service manages the AKS cluster for you, meaning, you do not need to manage and maintain the agent nodes.
 
@@ -140,7 +140,7 @@ Finally, you can use the [Visual Studio Code extension to deploy to AKS](https:/
 
 For low-scale, CPU-based workloads or testing, deploy to ACI.
 
-Azure Container Instances offers the fastest and simplest way to run a container in Azure, without having to manage any virtual machines and without having to adopt a higher-level service. As opposed to AKS, you use ACI to run isolated containers. ACI is good for smaller or short-term workloads, since you only pay for the time they are up and running. They are also very fast to start, usually within seconds, and delete when you no longer needed. As a point of comparison, AKS clusters are meant to host long-running web services that can scale out to meet heavy workload requirements, and scale back in during lighter workloads.
+[Azure Container Instances](https://docs.microsoft.com/en-us/azure/container-instances/) offers the fastest and simplest way to run a container in Azure, without having to manage any virtual machines and without having to adopt a higher-level service. As opposed to AKS, you use ACI to run isolated containers. ACI is good for smaller or short-term workloads, since you only pay for the time they are up and running. They are also very fast to start, usually within seconds, and delete when you no longer needed. As a point of comparison, AKS clusters are meant to host long-running web services that can scale out to meet heavy workload requirements, and scale back in during lighter workloads.
 
 Use Azure Container Instances for deploying your models as a web service if one or more of the following conditions is true:
 
