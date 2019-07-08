@@ -10,7 +10,7 @@ Using [Azure Machine Learning SDK for Python](https://docs.microsoft.com/en-us/p
 
 The following diagram shows an example pipeline:
 
-![azure machine learning piplines](../media/pipelines.png)
+![azure machine learning piplines](./media/pipelines.png)
 
 ## Creating a pipeline for repeatable data prep and model training using Azure Notebooks
 
