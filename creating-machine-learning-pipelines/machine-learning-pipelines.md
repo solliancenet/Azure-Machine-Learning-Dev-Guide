@@ -3,10 +3,9 @@
 ## What are machine learning pipelines?
 
 Using [Azure Machine Learning SDK for Python](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-core/?view=azure-ml-py), data scientists, data engineers, and IT professionals can collaborate on the steps involved in:
-* Data preparation, such as normalization and transformations
+* Data preparation, such as feature engineering, normalization and transformations
 * Model training
-* Model evaluation
-* Deployment
+* Model deployment, batch scoring
 
 The following diagram shows an example pipeline:
 
