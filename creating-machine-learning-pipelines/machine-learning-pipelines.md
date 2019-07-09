@@ -20,7 +20,7 @@ One of the ways to use the Azure Machine Learning SDK for Python is with Azure n
 
 In Azure notebooks, when you select Run to start your project, it opens Jupyter Notebooks interface. From within the Jupyter Notebooks interface, create a new notebook with Python 3.6 kernel as shown.
 
-  ![ create a new notebook](./media/ new_notebook.png)
+![create a new notebook](./media/new_notebook.png)
 
 Now you are ready to write your code in the notebook.
 
