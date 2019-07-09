@@ -24,5 +24,6 @@ In Azure notebooks, when you select Run to start your project, it opens Jupyter 
 
 Now you are ready to write your code in the notebook.
 
+![data prep pipeline step](./media/data_prep.png)
 
 ## Creating a pipeline for repeatable data prep and batch scoring using Azure Notebooks
