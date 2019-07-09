@@ -24,6 +24,12 @@ In Azure notebooks, when you select Run to start your project, it opens Jupyter 
 
 Now you are ready to write your code in the notebook.
 
+### Create Data Preparation Pipeline Step
+
+In the data preparation pipeline step, we take the raw input data, process the input data, and output the processed data that will be used in the model training step.
+
 ![data prep pipeline step](./media/data_prep.png)
+
+#### Get the reference to raw input data
 
 ## Creating a pipeline for repeatable data prep and batch scoring using Azure Notebooks
