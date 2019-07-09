@@ -57,12 +57,33 @@ The intermediate data (or output of a Step) is represented by PipelineData objec
 ```python
 from azureml.pipeline.core import PipelineData
 
-# Create your workspace instance from config.
+# Create the PipelineData object to host the processed data.
 processed_data = PipelineData('processed_data', datastore=def_blob_store)
 
 ```
 
+#### Create the Data Prep Pipeline Step Object
 
+In this example, we will create a PythonScriptStep object that will run the code in the specified python script file as part of the Data Prep Pipeline Step execution. 
+
+```python
+from azureml.pipeline.steps import PythonScriptStep
+
+# Create the Data Prep Pipeline Step Object.
+dataPrepStep = PythonScriptStep(
+    name="process_data_step",
+    script_name="process.py", 
+    arguments=["--process_mode", 'train',
+               "--input", raw_data,
+               "--output", processed_data],
+    inputs=[raw_data],
+    outputs=[processed_data],
+    compute_target=aml_compute,
+    runconfig=run_amlcompute,
+    source_directory="..."
+)
+
+```
 
 
 ## Creating a pipeline for repeatable data prep and batch scoring using Azure Notebooks
