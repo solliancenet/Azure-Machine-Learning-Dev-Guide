@@ -32,4 +32,14 @@ In the data preparation pipeline step, we take the raw input data, process the i
 
 #### Get the reference to raw input data
 
+```python
+from azureml.core import Workspace
+
+# Create your workspace instance from config.
+ws = Workspace.from_config()
+
+# Get reference to the default data store in your workspace.
+def_blob_store = ws.get_default_datastore()
+```
+
 ## Creating a pipeline for repeatable data prep and batch scoring using Azure Notebooks
