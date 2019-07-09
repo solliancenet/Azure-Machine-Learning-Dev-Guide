@@ -10,6 +10,8 @@ The following diagram shows an example pipeline:
 
 The [Azure Machine Learning SDK for Python](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-core/?view=azure-ml-py) allows you to create ML pipelines, and also submit and track individual pipeline runs. You can build reusable pipelines that optimize your specific workflows and allows you to focus on your expertise, for example machine learning, instead of the infrastructure to build and manage the pipelines.
 
+The purpose of this article to show how to build an example machine learning pipeline work flow, that includes repeatable data preparation, model training and batch predictions using the Azure Machine Learning SDK for Python within Azure notebooks.
+
 ## Creating a pipeline for repeatable data prep and model training using Azure Notebooks
 
 ## Creating a pipeline for repeatable data prep and batch scoring using Azure Notebooks
