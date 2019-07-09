@@ -30,16 +30,39 @@ In the data preparation pipeline step, we take the raw input data, process the i
 
 ![data prep pipeline step](./media/data_prep.png)
 
-#### Get the reference to raw input data
+#### Create a DataReference for the raw input data
+
+Assuming that you have uploaded the raw input data file('s) to the default datastore in your workspace. You can first get the default datastore associated with workspace, and then create a DataReference for the raw input data by specifying the path of the raw input data file('s) in the datastore. You will pass this DataReference as input to your Data Prep Pipeline step.
 
 ```python
 from azureml.core import Workspace
+from azureml.data.data_reference import DataReference
 
 # Create your workspace instance from config.
 ws = Workspace.from_config()
 
 # Get reference to the default data store in your workspace.
 def_blob_store = ws.get_default_datastore()
+
+# Create a DataReference to the raw data input file
+raw_data = DataReference(datastore=def_blob_store, 
+                                      data_reference_name="raw_data", 
+                                      path_on_datastore=".../...")
 ```
+
+#### Create a PipelineData Object
+
+The intermediate data (or output of a Step) is represented by PipelineData object. PipelineData can be produced by one step and consumed in another step by providing the PipelineData object as an output of one step and the input of one or more steps. Thus, to save the processed data / output from the Data Prep Pipeline step, you need to create a PipelineData object. We will use the default datastore to save the processed data.
+
+```python
+from azureml.pipeline.core import PipelineData
+
+# Create your workspace instance from config.
+processed_data = PipelineData('processed_data', datastore=def_blob_store)
+
+```
+
+
+
 
 ## Creating a pipeline for repeatable data prep and batch scoring using Azure Notebooks
