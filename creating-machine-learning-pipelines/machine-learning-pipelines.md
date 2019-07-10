@@ -24,7 +24,7 @@ Now you are ready to write your code in the notebook.
 
 ## Create AML Compute Cluster
 
-Azure Machine Learning Compute is a service for provisioning and managing clusters of Azure virtual machines for running machine learning workloads. In the introduction we saw how to create Azure Machine Learning workspace in your subscription. The following steps create a new Aml Compute in the current workspace (ws), if it doesn't already exist. This compute target will be used to run all the pipelines.
+Azure Machine Learning Compute is a service for provisioning and managing clusters of Azure virtual machines for running machine learning workloads. In the introduction we saw how to create Azure Machine Learning workspace in your subscription. The following steps create a new Aml Compute in the workspace, if it doesn't already exist. This compute target will be used to run all the pipelines.
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -34,7 +34,7 @@ from azureml.core.compute_target import ComputeTargetException
 aml_compute_target = "aml-compute"
 
 try:
-    # Look to see if the compute target already available in the workspace
+    # Look to see if the compute target already available in the workspace (ws)
     aml_compute = AmlCompute(ws, aml_compute_target)
     print("found existing compute target.")
 except ComputeTargetException:
@@ -48,7 +48,7 @@ except ComputeTargetException:
 
 ## Create the Run Configuration
 
-Run configuration defines enviroment needed to run the piplines on the above created compute target. In this example, we will be using the numpy, pandas and the scikit-learn libraries for data preparation, modeling training, and batch predictions tasks. These libraries are included in the environment as application dependencies.
+Run configuration defines enviroment needed to run the piplines on the above created compute target. In this example, we will be using the numpy, pandas and the scikit-learn libraries for data preparation, modeling training, and batch predictions tasks. These required libraries are included in the environment as application dependencies.
 
 ```python
 from azureml.core.runconfig import RunConfiguration
@@ -84,7 +84,7 @@ run_amlcompute.environment.python.conda_dependencies = CondaDependencies.create(
 
 ## Creating a Pipeline for Repeatable Data Prep and Model Training
 
-In the introduction we saw how to create Azure Machine Learning workspace in your subscription. In this section we will describe how to use the Azure notebooks to build repeatable data preparation and model training pipeline with explicit dependency between the two pipeline steps.
+In this section we will describe how to use the Azure notebooks to build repeatable data preparation and model training pipeline with explicit dependency between the two pipeline steps.
 
 ### Create Data Preparation Pipeline Step
 
@@ -117,7 +117,6 @@ from azureml.pipeline.core import PipelineData
 
 # Create the PipelineData object to host the processed data
 processed_data = PipelineData('processed_data', datastore=def_blob_store)
-
 ```
 
 #### Create the Data Prep Pipeline Step Object
