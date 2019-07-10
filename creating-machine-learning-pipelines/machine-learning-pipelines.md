@@ -121,11 +121,11 @@ processed_data = PipelineData('processed_data', datastore=def_blob_store)
 
 #### Create the Data Prep Pipeline Step object
 
-In this example, we will create a PythonScriptStep object that will run the code in the specified python script file as part of the Data Prep Pipeline Step execution. Your script, *process.py*, can define custom input parameters, such as *process_mode* that is unique to your needs. In this example, since the Data Prep pipeline step will be used to process input data at both training and inference time, the script file expects a custom input parameter named *process_mode* to distinguish the context in which it is called. We will look at the code to create the pipeline step, followed by an example python script file that will be used in the step.
+In this example, we will create a PythonScriptStep object that will run the code in the specified python script file as part of the Data Prep Pipeline Step execution. Your script, `process.py`, can define custom input parameters, such as `process_mode` that is unique to your needs. In this example, since the Data Prep pipeline step will be used to process input data at both training and inference time, the script file expects a custom input parameter named `process_mode` to distinguish the context in which it is called. We will look at the code to create the pipeline step, followed by an example python script file that will be used in the step.
 
 Here are some key parameters used to create the pipeline step:
 
-- The *source_directory* is the path to the python file *process.py*
+- The `source_directory` is the path to the python file `process.py`
 - The script takes three arguments as inputs: process_mode: 'train' or 'inference', input location, and output location
 - This step is created to be used in the **Data Prep - Model Train** pipeline, thus process_mode is set to 'train'
 - inputs specify the DataReference object where the raw input file(s) are available
