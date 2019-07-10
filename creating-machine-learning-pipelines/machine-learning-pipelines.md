@@ -12,11 +12,9 @@ The [Azure Machine Learning SDK for Python](https://docs.microsoft.com/en-us/pyt
 
 The purpose of this article to show how to build an example machine learning pipeline work flow, that includes repeatable data preparation, model training and batch predictions using the Azure Machine Learning SDK for Python within Azure notebooks.
 
-## Creating a pipeline for repeatable data prep and model training using Azure Notebooks
+## Create a New Notebook in Azure Notebooks
 
-One of the ways to use the Azure Machine Learning SDK for Python is with Azure notebooks. In the introduction we saw how to get started with Azure notebooks, and how to create Azure Machine Learning workspace in your subscription. In this section we will describe how to use the Azure notebooks to build repeatable data preparation and model training pipeline with explicit dependency between the two pipeline steps.
-
-### Create a new notebook
+One of the ways to use the Azure Machine Learning SDK for Python is with Azure notebooks. In the introduction we saw how to get started with Azure notebooks. Here we will show how to create a new notebook to get started.
 
 In Azure notebooks, when you select Run to start your project, it opens Jupyter Notebooks interface. From within the Jupyter Notebooks interface, create a new notebook with Python 3.6 kernel as shown.
 
@@ -24,9 +22,9 @@ In Azure notebooks, when you select Run to start your project, it opens Jupyter 
 
 Now you are ready to write your code in the notebook.
 
-### Create AML Compute Cluster
+## Create AML Compute Cluster
 
-Azure Machine Learning Compute is a service for provisioning and managing clusters of Azure virtual machines for running machine learning workloads. The following steps create a new Aml Compute in the current workspace (ws), if it doesn't already exist. This compute target will be used to run all the pipelines.
+Azure Machine Learning Compute is a service for provisioning and managing clusters of Azure virtual machines for running machine learning workloads. In the introduction we saw how to create Azure Machine Learning workspace in your subscription. The following steps create a new Aml Compute in the current workspace (ws), if it doesn't already exist. This compute target will be used to run all the pipelines.
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -48,9 +46,9 @@ except ComputeTargetException:
     aml_compute.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
-### Create the Run Configuration
+## Create the Run Configuration
 
-Run configuration defines enviroment needed to run the piplines on the above created compute target.
+Run configuration defines enviroment needed to run the piplines on the above created compute target. In this example, we will be using the numpy, pandas and the scikit-learn libraries for data preparation, modeling training, and batch predictions tasks. These libraries are included in the environment as application dependencies.
 
 ```python
 from azureml.core.runconfig import RunConfiguration
@@ -83,6 +81,10 @@ run_amlcompute.environment.python.conda_dependencies = CondaDependencies.create(
     'sklearn_pandas'
 ])
 ```
+
+## Creating a Pipeline for Repeatable Data Prep and Model Training
+
+In the introduction we saw how to create Azure Machine Learning workspace in your subscription. In this section we will describe how to use the Azure notebooks to build repeatable data preparation and model training pipeline with explicit dependency between the two pipeline steps.
 
 ### Create Data Preparation Pipeline Step
 
