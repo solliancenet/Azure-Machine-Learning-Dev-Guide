@@ -108,7 +108,7 @@ raw_data = DataReference(datastore=def_blob_store,
                                       path_on_datastore=".../...")
 ```
 
-#### Create a PipelineData Object
+#### Create a PipelineData object for the processed data
 
 The intermediate data (or output of a Step) is represented by PipelineData object. PipelineData can be produced by one step and consumed in another step by providing the PipelineData object as an output of one step and the input of one or more steps. Thus, to save the processed data / output from the Data Prep Pipeline step, you need to create a PipelineData object. We will use the default datastore to save the processed data.
 
@@ -119,9 +119,18 @@ from azureml.pipeline.core import PipelineData
 processed_data = PipelineData('processed_data', datastore=def_blob_store)
 ```
 
-#### Create the Data Prep Pipeline Step Object
+#### Create the Data Prep Pipeline Step object
 
-In this example, we will create a PythonScriptStep object that will run the code in the specified python script file as part of the Data Prep Pipeline Step execution. 
+In this example, we will create a PythonScriptStep object that will run the code in the specified python script file as part of the Data Prep Pipeline Step execution. Your script, `process.py`, can define custom input parameters, such as `process_mode` that is unique to your needs. In this example, since the Data Prep pipeline step will be used to process input data at both training and inference time, the script file expects a custom input parameter named `process_mode` to distinguish the context in which it is called. We will look at the code to create the pipeline step, followed by an example python script file that will be used in the step.
+
+Here are some key parameters used to create the pipeline step:
+
+- The `source_directory` is the path to the python file `process.py`
+- The script takes three arguments as inputs: process_mode: 'train' or 'inference', input location, and output location
+- This step is created to be used in the Data Prep - Model Train pipeline, thus process_mode is set to 'train'
+- inputs specify the DataReference object where the raw input file(s) are available
+- ouputs takes the PipelineData object to save the intermediate processed data generated as part of this step
+- Specify the compute target and run configuration
 
 ```python
 from azureml.pipeline.steps import PythonScriptStep
@@ -129,6 +138,7 @@ from azureml.pipeline.steps import PythonScriptStep
 # Create the Data Prep Pipeline Step Object
 dataPrepStep = PythonScriptStep(
     name="process_data_step",
+    source_directory="...",
     script_name="process.py", 
     arguments=["--process_mode", 'train',
                "--input", raw_data,
@@ -136,11 +146,12 @@ dataPrepStep = PythonScriptStep(
     inputs=[raw_data],
     outputs=[processed_data],
     compute_target=aml_compute,
-    runconfig=run_amlcompute,
-    source_directory="..."
+    runconfig=run_amlcompute
 )
 
 ```
+
+
 
 
 ## Creating a pipeline for repeatable data prep and batch scoring using Azure Notebooks
