@@ -254,3 +254,19 @@ Thus the `Inference` step has implicit data dependencies on the output from the 
 In this example, raw input data is periodically uploaded in bulk to the Azure blob storage, and after each upload, we want to invoke the `Batch Scoring` pipeline to make predictions. This workflow, would require us to use a schedule to monitor changes to the blob storage, and repeatably use the `Batch Scoring` pipeline. There are four basic steps in this workflow: (1) new input dataset is uploaded to blob storage, (2) the schedule triggers the `Batch Scoring` pipeline, (3) The `Batch Scoring` pipeline runs the `Data Prep` step, and (4) The `Batch Scoring` pipeline runs the `Inference` step. The following diagram illustrates this workflow.
 
 ![batch scoring pipeline](./media/batch_score.png)
+
+## Create the Data Prep Pipeline Step object
+
+The new `Data Prep` pipeline step to process the input dataset requires the following:
+
+- Create a new `DataReference` object for the location of the batch input data
+
+- Create a new `PipelineData` object to output the processed data
+
+- Create a new `PythonScriptStep` using the same `process.py` script file
+
+There are two key differences in this `Data Prep` step compared to the `Data Prep` step used in the `Data Prep – Model Training` pipeline. First, the `process_mode` is set to `inference`, and second, the `allow_reuse` property is set to `False`. The `allow_reuse` controls if the step can reuse previous results when re-run with the same settings. However, we want to repeatably call the pipeline step as new data is uploaded to storage, and thus we set `allow_reuse = False`.
+
+```python
+
+```
