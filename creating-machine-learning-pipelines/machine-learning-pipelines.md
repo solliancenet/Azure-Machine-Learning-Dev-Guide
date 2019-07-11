@@ -279,7 +279,7 @@ batch_scoring_processed_data = PipelineData('batch_scoring_processed_data', data
 # Create the new Data Prep Pipeline Step Object for batch scoring data
 batchDataPrepStep = PythonScriptStep(
     name="process_batch_scoring_data",
-    source_directory=...,
+    source_directory="...",
     script_name="process.py", 
     arguments=["--process_mode", 'inference',
                "--input", raw_batch_scoring_data,
@@ -287,6 +287,28 @@ batchDataPrepStep = PythonScriptStep(
     inputs=[raw_batch_scoring_data],
     outputs=[batch_scoring_processed_data],
     allow_reuse = False,
+    compute_target=aml_compute,
+    runconfig=run_amlcompute
+)
+```
+### Create the Inference Pipeline Step object
+
+Next, we are going to create the `Inference` pipeline step to make predictions on the `batch_scoring_processed_data`.
+
+This step, takes two PipelineData objects as inputs: (1) `batch_scoring_processed_data` and (2) `trained_model`. Note that the `trained_model` is the output from the `Model Training` pipeline step. The batch scoring results are saved in a new PipelineData obect named `batch_scoring_results`. The code in the python script file `inference.py` has four steps (not shown): (1) load the trained model from `trained_model`, (2) load the data from `batch_scoring_processed_data`, (3) make predictions on the data using the model, and (4) save the predictions in `batch_scoring_results`.
+
+```python
+batch_scoring_results = PipelineData('batch_scoring_results', datastore=def_blob_store)
+
+inferenceStep = PythonScriptStep(
+    name="inference",
+    source_directory="...",
+    script_name="inference.py", 
+    arguments=["--input", batch_scoring_processed_data,
+               "--model", trained_model,
+               "--output", batch_scoring_results],
+    inputs=[batch_scoring_processed_data, trained_model],
+    outputs=[batch_scoring_results],
     compute_target=aml_compute,
     runconfig=run_amlcompute
 )
