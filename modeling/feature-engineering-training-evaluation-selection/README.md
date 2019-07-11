@@ -4,10 +4,15 @@ Training, evaluating, and selecting the right Machine Learning models is at the 
 
 - Thorough understanding of the data - typically gained via a mix of business process knowledge and exploration.
 - High quality of data - resulting from a combination of processes like cleaning, missing values handling, outlier detection, and transformation.
-- Enrichment at feature level - a process which results in new features being derived from the original features available in the data set(s).
+- Enrichment at feature level - a process which results in new features being derived from the original features available in the data set(s). In most cases, enrichment is followed by a feature selection process aimed towards reducing the dimensionality of the training problem. Complementary to feature selection, dimensionality reduction algorithms can also to achieve this goal.
+
+The training of a Machine Learning model is the process through which a mathematical model is built from data that contains both inputs and expected outcomes. There are several classes of algorithms available to build the model, like classification, regression, clustering, feature learning, and others.
+
+The resulting trained model must always be validated to ensure the chosen algorithm has performed in a proper way on the data made available to it. One of the most widely used accuracy estimation techniques in the holdout method with splits data in a training part and a test part. The test part (which already has the correct “answers”) is used to calculate the value of the accuracy measure. Other widely used accuracy estimation techniques are K-fold-cross-validation and bootstrap. The process of calculating the accuracy of a model is commonly referred as Model Evaluation.
+
+In most cases, there is no single obvious choice of an algorithm or even of a specific parameterization of an algorithm. The typical data science process will imply the training and the evaluation of several models and, within the context of each model’s algorithm, the use of multiple combinations of parameter values (commonly referred as hyperparameters). This will result in multiple trained models, each with its own evaluation results. The process of selecting the best model(s) is commonly referred as Model Selection.
 
 In the [Data acquisition & understanding](../../data-acquisition-understanding/README.md) section we have already discussed topics like [wrangling, exploring, and cleaning data](../../data-acquisition-understanding/data-wrangling.md). In this section we will focus on the following:
-
 
 - [Feature Engineering introduced](./feature-engineering-introduced.md)
 - [Model Training introduced](./model-training/README.md)
@@ -19,7 +24,8 @@ The main reason to further discuss Feature Engineering separately from the other
 
 You can learn more about feature engineering, model traning, and model evaluation by reviewing these links to additional resources:
 
-- [Eplore and prepare data with the Dataset class](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-explore-prepare-data)
+- [Feature engineering in data science](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/create-features)
+- [Explore and prepare data with the Dataset class](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-explore-prepare-data)
 - [Transform data with the Azure Machine Learning Data Prep SDK](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-transform-data)
 - [Train and register Scikit-learn models at scale with Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-train-scikit-learn)
 - [Train and register Tensorflow models at scale with Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-train-tensorflow)
