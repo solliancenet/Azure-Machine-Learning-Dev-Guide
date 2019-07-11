@@ -209,6 +209,8 @@ The training script file `train.py` includes the code to take the processed data
 
 ### Create and Run the Data Prep - Model Training Pipeline
 
+In the preceding sections, we created two pipeline step objects - `Data Prep` and `Model Training`. Next, we will look at how to create a pipeline, create an experiment, submit the pipeline run, and monitor the pipeline run. Note that there is implicit data dependency between the Data Prep and Model Training pipeline steps. The Model Training depends on the output from the Data Prep step. Thus, when we create the pipeline object, we only use the Model Training pipeline step. When you submit the pipeline run, it will resolve the dependency by first running the Data Prep step followed by Model Training step.
+
 ```python
 from azureml.pipeline.core import Pipeline
 from azureml.core import Experiment
