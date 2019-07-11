@@ -8,4 +8,4 @@
 - [Introducing the AML Model Registry](./aml-model-registry.md)
 
 
-Read next: [Model Evaluation introduced](../model-evaluation/README.md)
+Read next: [Introducing the AML Experiment and Runs](./aml-experiment-runs.md)
