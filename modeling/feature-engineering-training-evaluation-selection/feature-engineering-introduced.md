@@ -2,4 +2,4 @@
 
 ...content in development...
 
-Read next: [Model Evaluation introduced](./model-evaluation/README.md)
+Read next: [Model Training introduced](./model-training/README.md)
