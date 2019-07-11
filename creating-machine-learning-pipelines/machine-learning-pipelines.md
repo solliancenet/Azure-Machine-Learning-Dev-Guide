@@ -148,7 +148,6 @@ dataPrepStep = PythonScriptStep(
     compute_target=aml_compute,
     runconfig=run_amlcompute
 )
-
 ```
 Next, we will look at an example for the Data Prep python script file `process.py`
 
@@ -186,9 +185,49 @@ else:
 os.makedirs(args.output, exist_ok=True)
 data.to_csv(os.path.join(args.output, "processed-data.csv"), header=True, index=False)
 print('Processed data file saved!')
-
 ```
 
+### Create Model Training Pipeline Step
 
+In the model training pipeline step, we take the `processed_data` PipelineData as input, and save the trained model in another PipelineData object named `trained_model`:
+
+```python
+trained_model = PipelineData('trained_model', datastore=def_blob_store)
+
+trainStep = PythonScriptStep(
+    name="train",
+    source_directory="...",
+    script_name="train.py", 
+    arguments=["--input", processed_data, "--output", trained_model],
+    inputs=[processed_train_data],
+    outputs=[trained_model],
+    compute_target=aml_compute,
+    runconfig=run_amlcompute
+)
+```
+The training script file `train.py` includes the code to take the processed data from the Data Prep pipeline step, train the model, and save the trained model in the datastore.
+
+### Create and Run the Data Prep - Model Training Pipeline
+
+```python
+from azureml.pipeline.core import Pipeline
+from azureml.core import Experiment
+
+# Create the pipeline object
+pipeline = Pipeline(workspace=ws, steps=[trainStep])
+print ("Pipeline is built")
+
+# Validate the pipeline
+pipeline.validate()
+print("Simple validation complete")
+
+# Create an experiment and submit the pipeline run
+experiment_name = 'Sample-ML-Pipeline'
+pipeline_run = Experiment(ws, experiment_name).submit(pipeline)
+print("Pipeline is submitted for execution")
+
+# Monitor the pipeline run
+RunDetails(pipeline_run).show()
+```
 
 ## Creating a pipeline for repeatable data prep and batch scoring using Azure Notebooks
