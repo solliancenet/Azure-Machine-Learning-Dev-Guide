@@ -177,6 +177,7 @@ data = pd.read_csv(args.input)
 if(args.process_mode == 'train'):
     ...
 elif(args.process_mode == 'inference'):
+    # raw data at inference time will not include labels / target values
     ...
 else:
     print('Invalid process_mode!')
@@ -235,5 +236,21 @@ RunDetails(pipeline_run).show()
 The RunDetails show the different steps of the pipelines, their execution status, and it also shows a visual of the implicit order and dependencies between different steps in the pipeline.
 
    ![run details](./media/pipeline_details.png)
+   
+Note that as new training data is available, you can reuse the pipeline steps to train a new model with the new data to improve model performance.
 
 ## Creating a pipeline for repeatable data prep and batch scoring using Azure Notebooks
+
+In this section, we are going to learn how to setup a `Batch Scoring` pipeline that leverages the data processing logic encapsulated in `process.py`, and uses the trained model form the `Data Prep – Model Training` pipeline to generate batch predictions on new input data.
+
+The **Batch Scoring** pipeline comprises of two steps:
+
+- **Data Prep Pipeline Step**: process the new batch input data
+
+- **Inference Pipeline Step**: make inferences on the new processed data using the trained model from the `Data Prep – Model Training` pipeline
+
+Thus the `Inference` step has implicit data dependencies on the output from the new instance of the `Data Prep` step and the output from the previous instance of the `Model Training` step.
+
+In this example, raw input data is periodically uploaded in bulk to the Azure blob storage, and after each upload, we want to invoke the Batch Scoring pipeline to make predictions. This workflow, would require us to use a schedule to monitor changes to the blob storage, and repeatably use the Batch Scoring pipeline. There are four basic steps in this workflow: (1) new input dataset is uploaded to blob storage, (2) the schedule triggers the `Batch Scoring` pipeline, (3) The `Batch Scoring` pipeline runs the `Data Prep` step, and (4) The `Batch Scoring` pipeline runs the `Inference` step. The following diagram illustrates this workflow.
+
+![batch scoring pipeline](./media/batch_score.png)
