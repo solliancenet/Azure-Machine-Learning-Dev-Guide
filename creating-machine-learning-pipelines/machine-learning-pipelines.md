@@ -137,7 +137,7 @@ from azureml.pipeline.steps import PythonScriptStep
 
 # Create the Data Prep Pipeline Step Object
 dataPrepStep = PythonScriptStep(
-    name="process_data_step",
+    name="process_data",
     source_directory="...",
     script_name="process.py", 
     arguments=["--process_mode", 'train',
@@ -148,10 +148,92 @@ dataPrepStep = PythonScriptStep(
     compute_target=aml_compute,
     runconfig=run_amlcompute
 )
+```
+Next, we will look at an example for the Data Prep python script file `process.py`
 
+```python
+import argparse
+import os
+import pandas as pd
+import numpy as np
+
+print("In process.py")
+
+parser = argparse.ArgumentParser("process")
+parser.add_argument("--process_mode", type=str, help="process mode: train or inference")
+parser.add_argument("--input", type=str, help="input raw data")
+parser.add_argument("--output", type=str, help="output directory for processed data")
+
+args = parser.parse_args()
+
+print("Argument 1: %s" % args.process_mode)
+print("Argument 2: %s" % args.input)
+print("Argument 3: %s" % args.output)
+
+# Load the raw input data csv file in a pandas data frame
+data = pd.read_csv(args.input)
+
+# Process the raw input data based on the process_mode parameter
+if(args.process_mode == 'train'):
+    ...
+elif(args.process_mode == 'inference'):
+    ...
+else:
+    print('Invalid process_mode!')
+    
+# Save the processed data in the output folder
+os.makedirs(args.output, exist_ok=True)
+data.to_csv(os.path.join(args.output, "processed-data.csv"), header=True, index=False)
+print('Processed data file saved!')
 ```
 
+### Create Model Training Pipeline Step
 
+In the model training pipeline step, we take the `processed_data` PipelineData as input, and save the trained model in another PipelineData object named `trained_model`:
 
+```python
+trained_model = PipelineData('trained_model', datastore=def_blob_store)
+
+trainStep = PythonScriptStep(
+    name="train",
+    source_directory="...",
+    script_name="train.py", 
+    arguments=["--input", processed_data, "--output", trained_model],
+    inputs=[processed_train_data],
+    outputs=[trained_model],
+    compute_target=aml_compute,
+    runconfig=run_amlcompute
+)
+```
+The training script file `train.py` includes the code to take the processed data from the Data Prep pipeline step, train the model, and save the trained model in the datastore.
+
+### Create and Run the Data Prep - Model Training Pipeline
+
+In the preceding sections, we created two pipeline step objects - `Data Prep` and `Model Training`. Next, we will look at how to create a pipeline, create an experiment, submit the pipeline run, and monitor the pipeline run. Note that there is implicit data dependency between the Data Prep and Model Training pipeline steps. The Model Training depends on the output from the Data Prep step. Thus, when we create the pipeline object, we only use the Model Training pipeline step. When you submit the pipeline run, it will resolve the dependency by first running the Data Prep step followed by Model Training step.
+
+```python
+from azureml.pipeline.core import Pipeline
+from azureml.core import Experiment
+
+# Create the pipeline object
+pipeline = Pipeline(workspace=ws, steps=[trainStep])
+print ("Pipeline is built")
+
+# Validate the pipeline
+pipeline.validate()
+print("Simple validation complete")
+
+# Create an experiment and submit the pipeline run
+experiment_name = 'Sample-ML-Pipeline'
+pipeline_run = Experiment(ws, experiment_name).submit(pipeline)
+print("Pipeline is submitted for execution")
+
+# Monitor the pipeline run
+RunDetails(pipeline_run).show()
+```
+
+The RunDetails show the different steps of the pipelines, their execution status, and it also shows a visual of the implicit order and dependencies between different steps in the pipeline.
+
+   ![run details](./media/pipeline_details.png)
 
 ## Creating a pipeline for repeatable data prep and batch scoring using Azure Notebooks

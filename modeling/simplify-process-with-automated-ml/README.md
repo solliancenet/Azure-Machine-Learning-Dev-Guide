@@ -1,0 +1,1 @@
+# Simplify the process with Automated Machine Learning, a component of Azure Machine Learning service
