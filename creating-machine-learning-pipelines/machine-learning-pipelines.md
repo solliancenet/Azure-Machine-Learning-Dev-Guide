@@ -137,7 +137,7 @@ from azureml.pipeline.steps import PythonScriptStep
 
 # Create the Data Prep Pipeline Step Object
 dataPrepStep = PythonScriptStep(
-    name="process_data_step",
+    name="process_data",
     source_directory="...",
     script_name="process.py", 
     arguments=["--process_mode", 'train',
