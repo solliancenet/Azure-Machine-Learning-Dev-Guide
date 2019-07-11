@@ -150,7 +150,44 @@ dataPrepStep = PythonScriptStep(
 )
 
 ```
+Next, we will look at an example for the Data Prep python script file `process.py`
 
+```python
+import argparse
+import os
+import pandas as pd
+import numpy as np
+
+print("In process.py")
+
+parser = argparse.ArgumentParser("process")
+parser.add_argument("--process_mode", type=str, help="process mode: train or inference")
+parser.add_argument("--input", type=str, help="input raw data")
+parser.add_argument("--output", type=str, help="output directory for processed data")
+
+args = parser.parse_args()
+
+print("Argument 1: %s" % args.process_mode)
+print("Argument 2: %s" % args.input)
+print("Argument 3: %s" % args.output)
+
+# Load the raw input data csv file in a pandas data frame
+data = pd.read_csv(args.input)
+
+# Process the raw input data based on the process_mode parameter
+if(args.process_mode == 'train'):
+    ...
+elif(args.process_mode == 'inference'):
+    ...
+else:
+    print('Invalid process_mode!')
+    
+# Save the processed data in the output folder
+os.makedirs(args.output, exist_ok=True)
+data.to_csv(os.path.join(args.output, "processed-data.csv"), header=True, index=False)
+print('Processed data file saved!')
+
+```
 
 
 
