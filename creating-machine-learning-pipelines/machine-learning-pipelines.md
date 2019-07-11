@@ -232,4 +232,8 @@ print("Pipeline is submitted for execution")
 RunDetails(pipeline_run).show()
 ```
 
+The RunDetails show the different steps of the pipelines, their execution status, and it also shows a visual of the implicit order and dependencies between different steps in the pipeline.
+
+   ![run details](./media/pipeline_details.png)
+
 ## Creating a pipeline for repeatable data prep and batch scoring using Azure Notebooks
