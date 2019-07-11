@@ -255,7 +255,7 @@ In this example, raw input data is periodically uploaded in bulk to the Azure bl
 
 ![batch scoring pipeline](./media/batch_score.png)
 
-## Create the Data Prep Pipeline Step object
+### Create the Data Prep Pipeline Step object
 
 The new `Data Prep` pipeline step to process the input dataset requires the following:
 
@@ -313,3 +313,20 @@ inferenceStep = PythonScriptStep(
     runconfig=run_amlcompute
 )
 ```
+### Create and Publish Batch Scoring Pipeline
+
+As described above, the Batch Scoring pipeline is made up of two steps: (1) Data Prep for Batch Input, and (2) Inference. The Inference pipeline step has implicit data dependencies on the outputs from the `Data Prep for Batch Input` and the `Trained Model` steps. Thus, we can define the Batch Scoring pipeline with just the Inference pipeline step. 
+
+Since we want to repeatably use the Batch Scoring pipeline as new input data is available, we will **publish** the pipeline so that it is available to run as needed. Later we will define a schedule to monitor the datastore and trigger the published pipeline when new data is available.
+
+```python
+batch_scoring_pipeline = Pipeline(workspace=ws, steps=[inferenceStep])
+print ("Batch Scoring Pipeline is built")
+
+batch_scoring_pipeline.validate()
+print("Simple validation complete")
+
+pipeline_name = 'Batch Scoring Pipeline'
+published_pipeline = batch_scoring_pipeline.publish(name = pipeline_name)
+```
+
