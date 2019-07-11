@@ -8,4 +8,4 @@
 
 
 
-Read next: [Training and Evaluating a simple model using Azure Machine Learning Studio (Code Sample)](../../training-evaluating-model-with-aml-studio/README.md)
+Read next: [Measuring performance of regression, classification models](./measure-performance-regression-classification.md)
