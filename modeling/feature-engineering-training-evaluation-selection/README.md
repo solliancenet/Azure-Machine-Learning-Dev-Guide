@@ -4,7 +4,7 @@ Training, evaluating, and selecting the right Machine Learning models is at the 
 
 - Thorough understanding of the data - typically gained via a mix of business process knowledge and exploration.
 - High quality of data - resulting from a combination of processes like cleaning, missing values handling, outlier detection, and transformation.
-- Enrichment at feature level - a process which results in new features being derived from the original features available in the data set(s). In most cases, enrichment is followed by a feature selection process aimed towards reducing the dimensionality of the training problem. Complementary to feature selection, dimensionality reduction algorithms can also to achieve this goal.
+- Enrichment at feature level - a process which results in new features being derived from the original features available in the data set(s). In most cases, enrichment is followed by a feature selection process aimed towards reducing the dimensionality of the training problem. Complementary to feature selection, dimensionality reduction algorithms can also be used to achieve this goal.
 
 The training of a Machine Learning model is the process through which a mathematical model is built from data that contains both inputs and expected outcomes. There are several classes of algorithms available to build the model, like classification, regression, clustering, feature learning, and others.
 
