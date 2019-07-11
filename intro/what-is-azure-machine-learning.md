@@ -1,6 +1,6 @@
 # What is Azure Machine Learning?
 
-Before we delve into the components of Azure Machine Learning service and its tools, let us first describe the landscape of artificial intelligence, what it means to you as a developer, data scientist, or data engineer, and then how Azure ML fits into the landscape and addresses your needs.
+Before we delve into the components of Azure Machine Learning service and its tools, let us first describe the landscape of artificial intelligence, what it means to you as a data scientist, data engineer, or developer, and then how Azure ML fits into the landscape and addresses your needs.
 
 ## What Artificial Intelligence/Machine Learning/Deep Learning mean to the data scientist, data engineer, and developer
 
@@ -10,7 +10,7 @@ In this article, we will focus on one of AI's most important disciplines: **mach
 
 ### Machine learning
 
-Machine learning is a data science technique used to extract predictions from statistical models by allowing computers to use existing data to forecast future outcomes, behaviors, and trends. This method of learning is accomplished without explicitly programming routines for computers to follow. There are too many variables to reliably account for every potential data point, logic flow, and decision to effectively program an application that is flexible enough to work with any given problem set and knowledge domain. Machine learning overcomes the terse and rigid constraints of explicitly programmed instructions by using special algorithms to find patterns and insights in a wide range of data. Machine learning systems harness this flexibility to use data from sources such as apps, sensors, historical data, networks, and devices to build its own logic to solve a problem or extract insight.
+Machine learning is a data science technique used to extract predictions and/or patterns from statistical models by allowing computers to use existing data to forecast future outcomes, behaviors, and trends. This method of learning is accomplished without explicitly programming routines for computers to follow. There are too many variables to reliably account for every potential data point, logic flow, and decision to effectively program an application that is flexible enough to work with any given problem set and knowledge domain. Machine learning overcomes the terse and rigid constraints of explicitly programmed instructions by using special algorithms to find patterns and insights in a wide range of data. Machine learning systems harness this flexibility to use data from sources such as apps, sensors, historical data, networks, and devices to build its own logic to solve a problem or extract insight.
 
 There are several approaches of machine learning that focus on different sets of problems. Some of the most widely used approaches are:
 
