@@ -268,5 +268,26 @@ The new `Data Prep` pipeline step to process the input dataset requires the foll
 There are two key differences in this `Data Prep` step compared to the `Data Prep` step used in the `Data Prep – Model Training` pipeline. First, the `process_mode` is set to `inference`, and second, the `allow_reuse` property is set to `False`. The `allow_reuse` controls if the step can reuse previous results when re-run with the same settings. However, we want to repeatably call the pipeline step as new data is uploaded to storage, and thus we set `allow_reuse = False`.
 
 ```python
+# Create a DataReference to the raw data input file for batch scoring
+raw_batch_scoring_data = DataReference(datastore=def_blob_store, 
+                                        data_reference_name="raw_batch_scoring_data", 
+                                        path_on_datastore=".../...")
+                                  
+# Create a PipelineData to ouput the processed data
+batch_scoring_processed_data = PipelineData('batch_scoring_processed_data', datastore=def_blob_store)
 
+# Create the new Data Prep Pipeline Step Object for batch scoring data
+batchDataPrepStep = PythonScriptStep(
+    name="process_batch_scoring_data",
+    source_directory=...,
+    script_name="process.py", 
+    arguments=["--process_mode", 'inference',
+               "--input", raw_batch_scoring_data,
+               "--output", batch_scoring_processed_data],
+    inputs=[raw_batch_scoring_data],
+    outputs=[batch_scoring_processed_data],
+    allow_reuse = False,
+    compute_target=aml_compute,
+    runconfig=run_amlcompute
+)
 ```
