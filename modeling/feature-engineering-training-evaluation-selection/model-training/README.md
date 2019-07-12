@@ -12,7 +12,7 @@ Name | Description
 --- | ---
 Experiment | A generic context for handling runs. Think about it a logical entity you can use to organize your Model Training processes.
 Run | A Model Training run used to build a trained model. Contains all artifacts associated with a training process, like output files, metrics, logs, and a snapshot of the directory that contains your scripts.
-Estimator | An Estimator is an alternative higher-level abstraction used to construct run configurations.
+Estimator | An Estimator is an alternative higher-level abstraction used to construct run configurations when training deep learning models.
 Compute target | Defines a compute resource used to either run a Model Training script or host a service deployment (associated with a trained Machine Learning model).
 Model registry | Keeps track of all models in an Azure Machine Learning workspace. Models are either produced by a Run or originating from outside Azure Machine Learning (and made available via model registration).
 

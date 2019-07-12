@@ -174,6 +174,7 @@ pipeline_run = Experiment(ws, experiment_name).submit(pipeline)
 # Wait for pipeline to finish
 pipeline_run.wait_for_completion(show_output=True)
 ```
+For a more detailed discussion about pipelines see the [Overview of machine learning pipelines using the Azure Machine Learning SDK](../../../creating-machine-learning-pipelines/machine-learning-pipelines.md) section of this guide.
 
 ## Models
 
