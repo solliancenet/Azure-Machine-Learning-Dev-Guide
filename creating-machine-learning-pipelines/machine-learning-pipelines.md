@@ -384,4 +384,4 @@ Please see the following additional references for deploying to different comput
 - [Configure your development environment](./environment-setup.md)
 - [Tools for data engineering, data science, and AI](./tools.md)
 
-Read next: [MLOps - DevOps for AI](./devops-for-ai/README.md)
+Read next: [MLOps - DevOps for AI](../devops-for-ai/README.md)
