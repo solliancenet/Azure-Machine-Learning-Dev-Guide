@@ -330,3 +330,36 @@ pipeline_name = 'Batch Scoring Pipeline'
 published_pipeline = batch_scoring_pipeline.publish(name = pipeline_name)
 ```
 
+### Create a Pipeline Schedule
+
+Once a Pipeline is published, a Schedule can be used to submit the Pipeline at a specified interval or when changes to a Blob storage location are detected. In this case, want to run the 'Batch Scoring Pipeline' when a new input data is uploaded to the `def_blob_store`. Next, we will create a Schedule to monitor the datastore for changes, and run the 'Batch Scoring Pipeline' when it detects a new input data is uploaded to the datastore at a specified location.
+
+```python
+from azureml.pipeline.core.schedule import Schedule
+
+schedule = Schedule.create(workspace=ws, name=pipeline_name + "_sch",
+                           pipeline_id=published_pipeline.id, 
+                           experiment_name=experiment_name,
+                           datastore=def_blob_store,
+                           wait_for_provisioning=True,
+                           description="Datastore scheduler for Pipeline: " + pipeline_name,
+                           path_on_datastore="...", # this points to the folder where the new input data is uploaded
+                           polling_interval=1 # in minutes
+                           )
+
+print("Created schedule with id: {}".format(schedule.id))
+```
+### Review Batch Scoring Pipeline Run
+
+In this section we will look the details of a Batch Scoring Pipeline Run that was triggered by the `schedule`. Note that you will have to upload input data to the datastore for the `schedule` to trigger a pipeline run. As before, the run details will show all the invloved steps in completing the Batch Scoring Pipeline, and you will also observe the implicit order and dependencies between different steps in the pipeline. 
+
+```python
+# Get the latest run from the schedule
+batch_scoring_pipeline_run = schedule.get_last_pipeline_run()
+
+# Monitor the pipeline run
+RunDetails(batch_scoring_pipeline_run).show()
+```
+
+   ![batch scoring pipeline run details](./media/batch_scoring_pipeline_details.png)
+
