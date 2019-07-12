@@ -29,7 +29,7 @@ The following diagram identifies the positions of these elements in the high lev
 
 ## Next steps
 
-You can learn more about model training by reviewing these links to additional resources:
+You can learn more about Model Training by reviewing these links to additional resources:
 
 - [How to choose algorithms for Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/studio/algorithm-choice)
 - [How Azure Machine Learning service works: Architecture and concepts](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture)
