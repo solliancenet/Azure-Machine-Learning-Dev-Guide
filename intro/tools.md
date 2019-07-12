@@ -233,4 +233,4 @@ Finally, you can go to your Azure Machine Learning service workspace and view th
 
 - [Configure your development environment](./environment-setup.md)
 
-Read next: [What is Azure Machine Learning?](./what-is-azure-machine-learning.md)
+Read next: [Overview of Azure Machine Learning service architecture and concepts](./architecture-overview.md)
