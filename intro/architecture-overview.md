@@ -1,6 +1,6 @@
 # Overview of Azure Machine Learning service architecture and concepts
 
-Intro...
+Azure Machine Learning service provides a comprehensive environment you can use with a suite of [powerful tools](./tools.md) to perform data science and engineering processes. The components of this environment gives you a centralized place to work with all the artifacts involved in the process.
 
 ## High-level workflow
 
