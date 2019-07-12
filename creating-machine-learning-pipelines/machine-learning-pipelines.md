@@ -377,3 +377,9 @@ data = batch_scoring_pipeline_run.find_step_run('inference')[0].get_output_data(
 data.download('.', show_progress=True)
 ```
 
+## Next steps
+
+- [Configure your development environment](./environment-setup.md)
+- [Tools for data engineering, data science, and AI](./tools.md)
+
+Read next: [Overview of Azure Machine Learning service architecture and concepts](./architecture-overview.md)
