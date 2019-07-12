@@ -67,10 +67,10 @@ The output of `ws.datastores` is a dictionary of datastores. The dictionary cont
  'workspacefilestore': <azureml.data.azure_storage_datastore.AzureFileDatastore at 0x7f9620f14a20>}
 ```
 
-Let's use the `ws.datastores` property to capture the datastores dictionary in a variable, which we will use to access datastores by name and type in the examples below.
+Let's use the `ws.datastores` property to capture the datastores dictionary in a variable. You can use this to access datastores by name and type in the examples below.
 
 ```python
-#list all datastores registered in current workspace
+#list all datastores registered in the current workspace
 datastores = ws.datastores
 
 # Example of printing each datastore name and type
@@ -80,9 +80,9 @@ for name, ds in datastores.items():
 
 ### Getting datastores
 
-To get a datastore, use the `get(workspace, name)` method of the `Datastore` class. The `get` method allows you to retrieve a datastore by name, and returns the corresponding datastore. The return type is dependent upon the type of the requested datastore, and the properties and methods available will vary based on the datastore type. The `get` method takes two parameters, a `Workspace` object and a string containing the name of the datastore to retrieve.
+To get a datastore, use the `get(workspace, name)` method of the `Datastore` class. The `get` method allows you to retrieve a datastore by name and returns the corresponding datastore. The return type is dependent upon the type of the requested datastore. As such, the properties and methods available vary based on the datastore type. The `get` method takes two parameters, a `Workspace` object and a string containing the name of the datastore to retrieve.
 
-The following example retrieves the datastore by the name of `workspaceblobstore` from the workspace, and then outputs the type of the datastore.
+The following example retrieves the datastore by the name of `workspaceblobstore` from the workspace and then outputs the type of the datastore.
 
 ```python
 # Get the datastore named 'workspaceblobstore' from the 'ws' workspace.
@@ -92,25 +92,25 @@ ds = Datastore.get(ws, 'workspaceblobstore')
 ds.datastore_type
 ```
 
-Alternatively, the `datastores` variable created in the previous section could be used to retrieve a specific datastore by its type. Recall that you populated that variable with a dictionary of all the datastores registered within your workspace, and that that dictionary contains the name of each datastore, along with the datastore object itself. In the example below, the blob datastore is selected, and then the associated blob container name specified as the output:
+Another option is to use the `datastores` variable created in the previous section to retrieve a specific datastore by its type. The `datastores` variable contains the name of each datastore and the datastore object itself. In the example below, the blob datastore is selected, and then the associated blob container name specified as the output:
 
 ```python
-# Select the datastore object from the 'datastores' dictionary which has a type of 'AzureBlob'
+# Select the datastore object with a type of 'AzureBlob' from the 'datastores' dictionary.
 ds = next(ds for name, ds in datastores.items() if ds.datastore_type == 'AzureBlob')
 
 # Output the name of the underlying blob container
 ds.container_name
 ```
 
-> **Note**: The `container_name` property is specific to datastores referencing an underlying Azure Blob storage service. This property will not be available on other datastores, such as one pointing to an Azure SQL Database. To view the properties and methods of a particular datastore module, you can use `dir(ds)`.
+> **Note**: The `container_name` property is specific to datastores referencing an underlying Azure Blob storage service. This property is note available on other datastores, such as one pointing to an Azure SQL Database. To view the properties and methods of a particular datastore module, you can use `dir(ds)`.
 
 ### The default datastore
 
-Every AML workspace is configured with a default datastore, and special methods have been added to both the `Datastore` and `Workspace` classes to retrieve it. The Azure blob container and blob datastore deployed when you create an AML workspace is automatically configured as the default datastore for the workspace and assigned a name of `workspaceblobstore`.
+Every AML workspace comes configured with a default datastore, and special methods have been added to both the `Datastore` and `Workspace` classes to retrieve it. The Azure blob container and blob datastore deployed when you create an AML workspace is automatically configured as the default datastore for the workspace and assigned a name of `workspaceblobstore`.
 
 #### Getting the default datastore
 
-To retrieve the default datastore, there are two methods you can choose from. The `Workspace` class defines a `get_default_datastore()` method and the `Datastore` class provides a `get_default(workspace)` method.
+There are two methods you can choose from to retrieve the default datastore. The `Workspace` class defines a `get_default_datastore()` method and the `Datastore` class provides a `get_default(workspace)` method.
 
 To get the default datastore with the `Workspace.get_default_datastore()` method, use the following example:
 
@@ -122,7 +122,7 @@ ds = ws.get_default_datastore()
 ds.name
 ```
 
-The next example shows how to retrieve the default datastore using `Datastore.get_default(workspace)`. For this method, you must provide a `Workspace` object as a parameter.
+The next example demonstrates how to use `Datastore.get_default(workspace)` to retrieve the default datastore. For this method, you must provide a `Workspace` object as a parameter.
 
 ```python
 # Retrieve the default datastore from the 'ws' workspace
@@ -163,20 +163,20 @@ ws.set_default_datastore('workspacefilestore')
 
 ### Registering a new datastore
 
-Using methods provided on the `Datastore` class in the SDK, you can register additional datastores in your workspace, as needed. On the `Datastore` class, there is an individual register method defined for each of the supported Azure storage services, each of which has the form `register_azure_*`. The specific details and required parameters for each register method are well documented on the [Datastore class page](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) of Azure Machine Learning SDK for Python, so we will not cover those here. We will, however, provide a few examples to show how the register methods are used.
+Using methods provided on the `Datastore` class in the SDK, you can register additional datastores in your workspace, as needed. On the `Datastore` class, there is an individual register method defined for each of the supported Azure storage services, each of which has the form `register_azure_*`. The specific details and required parameters for each register method are well documented on the [Datastore class page](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) of Azure Machine Learning SDK for Python, so we do not cover those here. We do, however, provide a few examples to show how to use the register methods.
 
-The introduction of this article mentioned that datastores abstract away the need to remember connection information and secrets used to connect to data sources. This abstraction is made possible by that information being provided at the time of datastore registration. AML then securely stores the connection details for each datastore so you don't have to enter it again each time you access a datastore. In the examples below, we provide details about the connection and secret information required to register new datastores for both Azure Data Lake Storage (ADLS) Gen2 and Azure SQL Database.
+The introduction of this article mentioned that datastores abstract away the need to remember connection information and secrets used to connect to data sources. This abstraction is made possible by providing that information at the time of datastore registration. AML then securely stores the connection details for each datastore, so you don't have to enter it again each time you access a datastore. In the examples below, we provide details about the connection and secret information required to register new datastores for both Azure Data Lake Storage (ADLS) Gen2 and Azure SQL Database.
 
-In our first datastore registration example, we demonstrate how to register an Azure Data Lake Gen2 datastore. For this, you will need to [create ADLS Gen2 storage account](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account) (or refer to an existing one). The connection information required to complete the datastore registration includes:
+In the first datastore registration example, we demonstrate how to register an Azure Data Lake Gen2 datastore. For this, you need to [create ADLS Gen2 storage account](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account) (or refer to an existing one). The connection information required to complete the datastore registration includes:
 
 - The ADLS Gen2 storage account name
 - The ADLS Gen2 file system name, which you can now create through the Azure portal UI
 - Your Azure Active Directory tenant ID/directory ID
 - The application ID and password associated with an Azure Active Directory application service principal
 
-    > To register an ADLS Gen2 datastore, you will need to have the credentials (client ID and secret) of an Azure AD service principal that has been granted access to your ADLS Gen2 storage account. To learn how to create a service principal, read [Create an Azure service principal with Azure CLI](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
+    > To register an ADLS Gen2 datastore, you need to have the credentials (client ID and secret) of an Azure AD service principal that has been granted access to your ADLS Gen2 storage account. To learn how to create a service principal, read [Create an Azure service principal with Azure CLI](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
 
-With the required information in hand, replace the tokenized values in the command below, and then execute this within a cell in a Jupyter notebook in your AML workspace.
+In the example below, replace the tokenized values and then execute this within a cell in a Jupyter notebook in your AML workspace.
 
 ```python
 adlsGen2DatastoreName = 'workspaceadlsstore'
@@ -200,7 +200,7 @@ adlsDs = Datastore.register_azure_data_lake_gen2(ws,
                               overwrite=False)
 ```
 
-Now, list the datastores registered in your workspace, and you will see the newly added ADLS Gen2 datastore.
+Now, list the datastores registered in your workspace, and you can see the newly added ADLS Gen2 datastore.
 
 ```python
 ws.datastores
@@ -214,9 +214,9 @@ In the output, which should resemble the following, note the addition of the `wo
  'workspaceadlsstore': <azureml.data.azure_data_lake_datastore.AzureDataLakeGen2Datastore at 0x7f9620285dd8>}
 ```
 
-For the next datastore registration example, you are adding an Azure SQL Database datastore. As with the Azure Data Lake Gen2 datastore, you need to provide the credentials (client ID and secret) of a service principal with access to your Azure SQL Database. This can be the same service principal, or a different one depending on how you handle security and isolate resources within your environment.
+In the next example, you add an Azure SQL Database datastore. As with the Azure Data Lake Gen2 datastore, you need to provide the credentials (client ID and secret) of a service principal with access to your Azure SQL Database. You can use the same service principal as before or a different one depending on how you handle security and isolate resources within your environment.
 
-> **Important**: Prior to running the datastore registration for an Azure SQL Database, the service principal must be assigned as an Azure Active Directory admin on the Azure SQL DB resource. The service principal cannot be added as an admin directly, so you will need to create an Azure AD security group, add the service principal to that group, and then make the group the Azure AD admin on your SQL Database. Detailed steps to do this can be found [here](https://blogs.technet.microsoft.com/stefan_stranger/2018/06/06/connect-to-azure-sql-database-by-obtaining-a-token-from-azure-active-directory-aad/).
+> **Important**: Before running the datastore registration for an Azure SQL Database, the service principal must be an Azure Active Directory admin on the Azure SQL DB resource. The service principal cannot be added as an admin directly, so you need to create an Azure AD security group, add the service principal to that group, and then make the group the Azure AD admin on your SQL Database. Detailed steps to do this are available [here](https://blogs.technet.microsoft.com/stefan_stranger/2018/06/06/connect-to-azure-sql-database-by-obtaining-a-token-from-azure-active-directory-aad/).
 
 The connection information required to complete the Azure SQL DB datastore registration is:
 
@@ -297,11 +297,11 @@ ds = Datastore.get(ws, 'workspaceblobstore')
 
 ### Upload
 
-You can upload both directories and individual files to the datastore using the Python SDK. To use the `upload()` methods, you must import the `azureml.data` namespace, and then import the `AzureBlobDatastore` class.
+You can upload both directories and individual files to the datastore using the Python SDK. To use the upload methods, you must import the `azureml.data` namespace, and then import the appropriate `AzureBlobDatastore` or `AzureFileDatastore` class.
 
 #### Upload directory
 
-For this example, a folder named `data` has been added to the local workspace, and will be used to demonstrate the upload functionality. In the example below, the `data` folder is uploaded to the Azure Blob storage account, and placed in a folder named `crime-data`.
+To upload a directory, use the `upload()` method. For this example, a folder named `data` has been added to the local workspace and is used to demonstrate the upload directory functionality. In the example below, the `data` folder is uploaded to the Azure Blob storage account, and placed in a folder named `crime-data`.
 
 ```python
 import azureml.data
@@ -322,7 +322,7 @@ You can verify the directory was uploaded by browsing to the storage account in 
 
 #### Upload individual files
 
-To upload individual files, you use the `upload_files()` method. In the example below, a new file named `crime-summer.csv` has been added to `data` directory, and that file is being added to the `crime-data` folder in blob storage. You can upload any number of files, by adding the absolute path of each file to the list of files.
+To upload individual files, you use the `upload_files()` method. The example below uploads a file named `crime-summer.csv` located in the `data` directory to the `crime-data` folder in blob storage. You can upload any number of files, by adding the absolute path of each file to the list of files.
 
 ```python
 # Create a list of absolute paths to individual files to upload
@@ -338,17 +338,41 @@ ds.upload_files(files,
 
 ![The upload_files command is entered into the notebook cell, and the output from the command is displayed.](media/upload-files-and-output.png "Upload")
 
-As you did above, you can verify the individual file was upload by looking in the associated blob storage account.
+As you did above, you can verify that the individual file was upload by looking in the associated blob storage account.
 
 ### Download
 
-For the parameters, the `target_path` is the local directory you want to download the files into. The `prefix` defines the path to the folder in the blob container to download. If `prefix` is set to `None`, 
+To download folders and files, you use the `download()` method. For demonstration purposes, you will download the `crime-data` folder you uploaded in the steps above.
+
+For the parameters, the `target_path` is the local directory into which you want to download files. The `prefix` parameter defines the path to the folder in the blob container to download. If `prefix` is set to `None`, the entire contents of the storage container are downloaded.
+
+#### Download directory
+
+To download an entire directory, specify the directory path in the `prefix` parameter.
 
 ```python
-ds.download(target_path='your target path',
-            prefix='your prefix',
+# Download the crime-data directory into a local folder named crime-data.
+ds.download(target_path='crime-data',
+            prefix='crime-data',
             show_progress=True)
 ```
+
+![The download command is entered into the notebook cell, and the output from the command is displayed.](media/download-directory-and-output.png "Download")
+
+![The download files are displayed in the Jupyter notebook workspace folder.](media/download-directory.png "Download")
+
+#### Download individual file
+
+To download an individual file, include the full path of the file in the `prefix` parameter. In the example below, `prefix` is set to `crime-data/crime-summer.csv`, so only that file is downloaded.
+
+```python
+# Download the crime-data/crime-summer.csv file into a local folder named data/summer.
+ds.download(target_path='data/summer',
+            prefix='crime-data/crime-summer.csv',
+            show_progress=True)
+```
+
+![The download command is entered into the notebook cell, and the output from the command is displayed.](media/download-file-and-output.png "Download")
 
 ## Next steps
 
@@ -357,5 +381,7 @@ You can continue learning about accessing data with AML by reviewing the links t
 - [Access data from your datastores](https://docs.microsoft.com/azure/machine-learning/service/how-to-access-data)
 - [Datastore class documentation](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)
 - [Workspace class documentation](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py)
+
+In the next article, methods for reading and writing data to and from your datastores are examined.
 
 Read next: [Load, transform, and write data with Azure Machine Learning and the AML Data Prep SDK](./loading-and-writing-data.md)
