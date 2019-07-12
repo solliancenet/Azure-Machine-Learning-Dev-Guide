@@ -379,7 +379,9 @@ data.download('.', show_progress=True)
 
 ## Next steps
 
+Please see the following additional references for deploying to different compute targets:
+
 - [Configure your development environment](./environment-setup.md)
 - [Tools for data engineering, data science, and AI](./tools.md)
 
-Read next: [Overview of Azure Machine Learning service architecture and concepts](./architecture-overview.md)
+Read next: [MLOps - DevOps for AI](./devops-for-ai/README.md)
