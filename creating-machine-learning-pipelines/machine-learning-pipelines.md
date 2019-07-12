@@ -239,7 +239,7 @@ The RunDetails show the different steps of the pipelines, their execution status
    
 Note that as new training data is available, you can reuse the pipeline steps to train a new model with the new data to improve model performance.
 
-## Creating a pipeline for repeatable data prep and batch scoring using Azure Notebooks
+## Creating a pipeline for repeatable data prep and batch scoring
 
 In this section, we are going to learn how to setup a `Batch Scoring` pipeline that leverages the data processing logic encapsulated in `process.py`, and uses the trained model form the `Data Prep – Model Training` pipeline to generate batch predictions on new input data.
 
