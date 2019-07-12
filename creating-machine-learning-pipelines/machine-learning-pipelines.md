@@ -380,9 +380,9 @@ data.download('.', show_progress=True)
 
 ## Next steps
 
-Please see the following additional references for deploying to different compute targets:
+Please see the following additional references on ML pipelines in Azure Machine Learning service:
 
-- [Configure your development environment](./environment-setup.md)
-- [Tools for data engineering, data science, and AI](./tools.md)
+- [Create and run a machine learning pipeline by using Azure Machine Learning SDK](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-create-your-first-pipeline)
+- [Azure Machine Learning Notebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 
 Read next: [MLOps - DevOps for AI](../devops-for-ai/README.md)
