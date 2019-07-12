@@ -126,7 +126,7 @@ These challenges are commonly referred as “the curse of dimensionality”. In 
 - t-SNE (T-Distributed Stochastic Neighboring Entities) - a dimensionality reduction technique based on a probabilistic approach. Ideally suited for cases where the target number of dimensions is 2 or 3. 
 - Feature embedding – a class of dimensionality reduction techniques based on using machine learning models to “encode” a larger number of features into a smaller number of features (sometimes also referred as “super-features”). Commonly used to avoid problems with categorical features, especially the ones with high cardinality.
 
-Since the results of dimensionality reduction techniques are essentially new features, they are commonly considered to be a part of the larger family of Feature Engineering techniques.
+Since the results of dimensionality reduction techniques are essentially new features, they are commonly considered to be a part of the larger family of Feature Engineering techniques. They are also considered to be a part of the Feature Learning class of techniques.
 
 ## Next steps
 
