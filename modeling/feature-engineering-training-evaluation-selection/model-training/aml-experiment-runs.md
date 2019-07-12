@@ -176,31 +176,6 @@ pipeline_run.wait_for_completion(show_output=True)
 ```
 For a more detailed discussion about pipelines see the [Overview of machine learning pipelines using the Azure Machine Learning SDK](../../../creating-machine-learning-pipelines/machine-learning-pipelines.md) section of this guide.
 
-## Models
-
-The most important result produced by a Run in the context of an Experiment is a Model. Basically, a trained Model is a piece of code that takes some inputs and produces some outputs and is registered with the Azure Machine Learning service. In additon to models trained by Runs, you can also register models that were trained elswhere than on a compute target provided by Azure Machine Learning. In fact, Azure Machine Learning supports any trained model that can be loaded through Python 3, regardless of where it was trained.
-
-You can use the SDK to register a model programatically.
-
-```python
-model_description = 'Some model description.'
-model = Model.register(
-    model_path='model.h5',  # this points to a local file
-    model_name=<model_name>,  # this is the name the model is registered as
-    tags={"type": "classification", "run_id": run.id}, # tags associated to the model
-    description=model_description,
-    workspace=run.experiment.workspace
-)
-```
-
-All registered models are available throughthe Azure Portal.
-
-![Azure Machine Learning Model details in Azure Portal](./media/model-in-portal.png)
-
-Each model can also be retrieved programatically using the SDK.
-
-![Azure Machine Learning Model details using the Python SDK](./media/model-in-sdk.png)
-
 ## Next steps
 
 You can learn more about Experiments and Runs by reviewing these links to additional resources:
