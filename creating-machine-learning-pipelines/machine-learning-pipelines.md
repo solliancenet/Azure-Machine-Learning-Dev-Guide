@@ -255,7 +255,7 @@ In this example, raw input data is periodically uploaded in bulk to the Azure bl
 
 ![batch scoring pipeline](./media/batch_score.png)
 
-## Create the Data Prep Pipeline Step object
+### Create the Data Prep Pipeline Step object
 
 The new `Data Prep` pipeline step to process the input dataset requires the following:
 
@@ -268,5 +268,65 @@ The new `Data Prep` pipeline step to process the input dataset requires the foll
 There are two key differences in this `Data Prep` step compared to the `Data Prep` step used in the `Data Prep – Model Training` pipeline. First, the `process_mode` is set to `inference`, and second, the `allow_reuse` property is set to `False`. The `allow_reuse` controls if the step can reuse previous results when re-run with the same settings. However, we want to repeatably call the pipeline step as new data is uploaded to storage, and thus we set `allow_reuse = False`.
 
 ```python
+# Create a DataReference to the raw data input file for batch scoring
+raw_batch_scoring_data = DataReference(datastore=def_blob_store, 
+                                        data_reference_name="raw_batch_scoring_data", 
+                                        path_on_datastore=".../...")
+                                  
+# Create a PipelineData to ouput the processed data
+batch_scoring_processed_data = PipelineData('batch_scoring_processed_data', datastore=def_blob_store)
 
+# Create the new Data Prep Pipeline Step Object for batch scoring data
+batchDataPrepStep = PythonScriptStep(
+    name="process_batch_scoring_data",
+    source_directory="...",
+    script_name="process.py", 
+    arguments=["--process_mode", 'inference',
+               "--input", raw_batch_scoring_data,
+               "--output", batch_scoring_processed_data],
+    inputs=[raw_batch_scoring_data],
+    outputs=[batch_scoring_processed_data],
+    allow_reuse = False,
+    compute_target=aml_compute,
+    runconfig=run_amlcompute
+)
 ```
+### Create the Inference Pipeline Step object
+
+Next, we are going to create the `Inference` pipeline step to make predictions on the `batch_scoring_processed_data`.
+
+This step, takes two PipelineData objects as inputs: (1) `batch_scoring_processed_data` and (2) `trained_model`. Note that the `trained_model` is the output from the `Model Training` pipeline step. The batch scoring results are saved in a new PipelineData obect named `batch_scoring_results`. The code in the python script file `inference.py` has four steps (not shown): (1) load the trained model from `trained_model`, (2) load the data from `batch_scoring_processed_data`, (3) make predictions on the data using the model, and (4) save the predictions in `batch_scoring_results`.
+
+```python
+batch_scoring_results = PipelineData('batch_scoring_results', datastore=def_blob_store)
+
+inferenceStep = PythonScriptStep(
+    name="inference",
+    source_directory="...",
+    script_name="inference.py", 
+    arguments=["--input", batch_scoring_processed_data,
+               "--model", trained_model,
+               "--output", batch_scoring_results],
+    inputs=[batch_scoring_processed_data, trained_model],
+    outputs=[batch_scoring_results],
+    compute_target=aml_compute,
+    runconfig=run_amlcompute
+)
+```
+### Create and Publish Batch Scoring Pipeline
+
+As described above, the Batch Scoring pipeline is made up of two steps: (1) Data Prep for Batch Input, and (2) Inference. The Inference pipeline step has implicit data dependencies on the outputs from the `Data Prep for Batch Input` and the `Trained Model` steps. Thus, we can define the Batch Scoring pipeline with just the Inference pipeline step. 
+
+Since we want to repeatably use the Batch Scoring pipeline as new input data is available, we will **publish** the pipeline so that it is available to run as needed. Later we will define a schedule to monitor the datastore and trigger the published pipeline when new data is available.
+
+```python
+batch_scoring_pipeline = Pipeline(workspace=ws, steps=[inferenceStep])
+print ("Batch Scoring Pipeline is built")
+
+batch_scoring_pipeline.validate()
+print("Simple validation complete")
+
+pipeline_name = 'Batch Scoring Pipeline'
+published_pipeline = batch_scoring_pipeline.publish(name = pipeline_name)
+```
+
