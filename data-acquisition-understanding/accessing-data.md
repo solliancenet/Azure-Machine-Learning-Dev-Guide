@@ -342,7 +342,7 @@ As you did above, you can verify that the individual file was upload by looking 
 
 ### Download
 
-To download folders and files, you use the `download()` method. For demonstration purposes, you will download the `crime-data` folder you uploaded in the steps above.
+To download folders and files, you use the `download()` method. For demonstration purposes, download the `crime-data` folder you uploaded in the steps above.
 
 For the parameters, the `target_path` is the local directory into which you want to download files. The `prefix` parameter defines the path to the folder in the blob container to download. If `prefix` is set to `None`, the entire contents of the storage container are downloaded.
 
