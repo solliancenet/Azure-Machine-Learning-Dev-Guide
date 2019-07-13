@@ -7,5 +7,5 @@
 - [Production Monitoring](./test.md)
 - [Querying and Analyzing Collected Data](./test.md)
 - [Web Service Performance Telermetry](./test.md)
-- [Querying and Analyzing Model web service Performance](./test.md)
+- [Querying and Analyzing Model Web Service Performance](./test.md)
 - [Verzioning with AML Model Registry](./test.md)
