@@ -2,7 +2,7 @@
 
 - [Overview](./test.md)
 - [Relationship between ML Ops vs Traditional DevOps](./test.md)
-- [Using Azure DevOps](./test.md)
+- [Using Azure DevOps](./Using-Azure-DevOps.md)
 - [Overview - Post Deployment Monitoring](./test.md)
 - [Production Monitoring](./test.md)
 - [Querying and Analyzing Collected Data](./test.md)
