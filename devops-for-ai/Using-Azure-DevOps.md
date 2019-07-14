@@ -117,3 +117,9 @@ Artifacts allow you to apply the same DevOps best practices to the packages you 
 
 The reality of the great features of Azure DevOps are that you can use them in conjuction with AI & machine Learning and use all the features whether Projects, Boards, repos, Pipelines, Test Plans or Artifcats to effectivly be on top of you ML project, your models, your notebooks, your deployments and web services.
 
+## Next steps
+
+- [Post Deployment Monitoring environment](./Post-Deployment-Monitoring.md)
+- [Production Monitoring](./Production-Monitoring.md)
+
+Read next: [Post Deployment Monitoring environment](./Post-Deployment-Monitoring.md)
