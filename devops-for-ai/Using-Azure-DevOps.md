@@ -85,9 +85,35 @@ Azure Pipelines can pull your code from the most popular source control systems.
 
 Azure Pipelines also offer hosted Windows, Mac and Linux operating build agents.
 
-On the **Releases** sub tab, you will be able to create a new pipeline where you can start with an empty job or drag and drop a featured deployment pipeline from the many templates available in Azure Pipelines.
+On the **Releases** sub tab, you will be able to create a new pipelines where you can start with an empty job or drag and drop a featured deployment pipeline from the many templates available in Azure Pipelines.
 
 ![](media/ReleaseTemplates.png)
 
+You are able to deploy to any platform with Releases, on Mac, Linux and Windows using their prespective OS agents. With the integration with App Center, you can also deploy directly to mobile as well.
 
+You can create a pipeline by adding Stages and Artifacts
+
+![](media/Stages.png)
+
+You can pull the Artifacts from several sources, for example Jenkins...
+
+![](media/Jenkins.png)
+
+For Stages, you have a wide varity of Tasks to choose from by a simple drag and drop to run on Agents
+
+![](media/Tasks.png)
+
+## Test Plans
+
+![](media/TestPlansTab.png)
+
+Test Plans allow you to manage your entire Testing efforts across all your platforms and configurations. 
+
+![](media/TestPlans.png)
+
+## Artifacts
+
+Artifacts allow you to apply the same DevOps best practices to the packages you develop and maintain.
+
+The reality of the great features of Azure DevOps are that you can use them in conjuction with AI & machine Learning and use all the features whether Projects, Boards, repos, Pipelines, Test Plans or Artifcats to effectivly be on top of you ML project, your models, your notebooks, your deployments and web services.
 
