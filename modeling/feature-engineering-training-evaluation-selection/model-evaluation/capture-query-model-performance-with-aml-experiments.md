@@ -145,6 +145,34 @@ To get access to the files that were logged, you can use the `get_file_names` me
 
 ![Get Azure Machine Learning run metrics files using the SDK](./media/model-logging-sdk-04.png)
 
+## Using properties and tags to find runs
+
+Earlier we noted the use of the custom `Build Number` tag to show how tags can be used to link Azure DevOps builds to Azure Machine Learning sevice runs. Here is an example of how the build number can be used to identify a specific run:
+
+![Find Azure Machine Learning run based on tags using the SDK](./media/model-logging-sdk-05.png)
+
+### Properties vs. tags
+
+The example at the beginning of this article uses the following approach to tag the run:
+
+```python
+run.tag('Build Number', value='20190715.4')
+```
+
+An alternative approach is to use properties instead of tags:
+
+```python
+run.add_properties({'author': 'John Doe'})
+```
+
+Retrieving a run based on its properties is similar to retrieving it using tags:
+
+```python
+exp.get_runs(properties={'author': 'John Doe'})
+```
+
+The main difference between properties and tags is that properties are immutable while tags are mutable. Consequently, properties are better suited for cases when you need to create permanent records for auditing purposes. 
+
 ## Next steps
 
 You can learn more about capturing and querying model performance data by reviewing these links to additional resources:
