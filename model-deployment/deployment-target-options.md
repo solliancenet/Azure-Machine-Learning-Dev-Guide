@@ -91,13 +91,13 @@ service.update([different_model], inference_config, deployment_config)
 
 For large-scale production workloads, it is best to deploy your model to AKS.
 
-[Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/) makes it simple to deploy a managed Kubernetes cluster in Azure. AKS reduces the complexity and operational overhead of managing Kubernetes by offloading much of that responsibility to Azure. As a hosted Kubernetes service, Azure handles critical tasks like health monitoring and maintenance for you. The Kubernetes masters are managed by Azure. You only manage and maintain the agent nodes. As a managed Kubernetes service, AKS is free - you only pay for the agent nodes within your clusters, not for the masters.
+[Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/) is a fully managed service that reduces the amount of operational overhead and complexity of deploying and maintaining a Kubernetes cluster in Azure. Most of the operational overhead of managing Kubernetes, such as health monitoring and maintenance, is handled for you by Azure. Also, the Kubernetes masters are managed for you by Azure. You only need to maintain and manage the agent nodes. Using AKS is also cost-effective. The AKS service itself is free. You only need to pay for the agent nodes within your clusters, and not the masters.
 
-When you deploy your model to AKS as a target, all you are required to do is provision the AKS service in Azure. Once created, Azure Machine Learning service manages the AKS cluster for you, meaning, you do not need to manage and maintain the agent nodes.
+When you deploy your model to AKS as a target, all you are required to do is provision the AKS service in Azure. Once created, Azure Machine Learning service manages the AKS cluster for you, meaning, you do not need to maintain and manage the agent nodes.
 
-Creating or attaching an AKS cluster is a one time process for your workspace. You can reuse this cluster for multiple deployments. If you delete the cluster or the resource group that contains it, you must create a new cluster the next time you need to deploy.
+The AKS cluster you create or attach to your workspace can be reused for multiple deployments. Unless you delete the cluster or its resource group, it only needs to be created or attached to your workspace one time. Otherwise, you will need to create a new cluster during your next deployment.
 
-You can either create the [AKS cluster yourself](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest), or use the Azure Machine Learning SDK to do it, specifying parameters such as VM size and agent count. Using the SDK helps you automate creating the cluster as part of your overall deployment pipeline.
+You can either create the [AKS cluster yourself](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest) or use the Azure Machine Learning SDK to do it, specifying parameters such as VM size and agent count. Using the SDK helps you automate creating the cluster as part of your overall deployment pipeline.
 
 This example demonstrates creating an AKS cluster with the Azure Machine Learning SDK:
 
