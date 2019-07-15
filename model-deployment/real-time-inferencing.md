@@ -328,7 +328,7 @@ You can view your ACI deployment in the Azure portal by selecting your AML works
 
 ![The ACI deployment is highlighted within the Deployments blade.](media/aml-workspace-deployments-aci.png 'Deployments')
 
-When you select the compute target, you will see details such as the state (whether it is healthy or in a failed state), the service ID, scoring URI, and other details. You also have tabs to view associated models and images.
+When you select the deployment, you will see details such as the state (whether it is healthy or in a failed state), the service ID, scoring URI, and other details. You also have tabs to view associated models and images.
 
 ![The deployment details are displayed.](media/aml-workspace-deployment-details.png 'Deployment details')
 
@@ -380,6 +380,8 @@ print(aks_service.get_logs())
 Your cell output should look similar to the following if the deployment was successful:
 
 ![The cell shows a successful output.](media/aks-deployment-output.png 'AKS deployment output')
+
+Notice that in the deployment script, we are specifying the size of the VM used for the agent nodes by setting the desired number of CPU cores and memory size in gigabytes: `aks_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)`. If you are not certain what values you should use for `cpu_cores` and `memory_gb`, you can optionally profile your model to determine the optimal CPU and memory requirements using either the SDK or CLI. Model profiling results are emitted as a `Run` object. The full details of [the Model Profile schema can be found in the API documentation](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py). Learn more about [how to profile your model using the SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-). You can also use the profiler before deploying to local or ACI compute targets.
 
 Execute the following script in a cell to test consuming your deployed AKS web service endpoint (Scoring URI) over HTTP. Notice that in this case, we are adding an authorization header. This is because deployments to AKS have authentication enabled by default:
 
