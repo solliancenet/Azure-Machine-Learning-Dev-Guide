@@ -2,7 +2,7 @@
 
 ## What are machine learning pipelines?
 
-Machine learning pipelines are cyclical and iterative in nature that facilitate both continuous improvement of model performance and deploying and making inferences on the best performing model to date. The pipelines comprise of distinct steps, for example, data preparation, model training, and batch predictions. Often data scientists, data engineers and IT professionals need to collaborate on building robust, scalable, and reusable machine learning pipelines.
+Machine learning pipelines are cyclical and iterative in nature that facilitate continuous improvement of model performance, model deployment, and making inferences on the best performing model to date. The pipelines comprise of distinct steps, for example, data preparation, model training, and batch predictions. Often data scientists, data engineers and IT professionals need to collaborate on building robust, scalable, and reusable machine learning pipelines.
 
 The following diagram shows an example pipeline:
 

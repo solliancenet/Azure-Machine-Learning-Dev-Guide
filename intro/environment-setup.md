@@ -444,4 +444,4 @@ Please see the following additional references for configuring your development 
 - [What is the Azure Machine Learning SDK for Python?](https://docs.microsoft.com/en-us/python/api/overview/azure/ml/intro?view=azure-ml-py)
 - [Configure dev environments](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-configure-environment)
 
-Read next: [What is Azure Machine Learning?](./what-is-azure-machine-learning.md)
+Read next: [The Data Science lifecycle](../data-science-lifecycle/README.md)
