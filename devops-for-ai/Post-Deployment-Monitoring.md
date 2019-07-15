@@ -18,3 +18,7 @@ In this AML Dev Guide, you went through the concepts of working with AML from th
 
 Now, in this part of the guide, we want to share what can be done in Azure DevOps **AFTER** the deployment in order to **MONITOR** and **MANAGE** tasks pertaining to the running cluster, current model and deployed service.
 
+![](media/ReleasePipeline.png)
+
+![](media/MakingChanges.png)
+
