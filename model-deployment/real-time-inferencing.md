@@ -396,7 +396,7 @@ if aks_service.auth_enabled:
 print(headers)
 
 url = aks_service.scoring_uri
-print('AKS Service: {} scoring URI is: {}'.format(service_name, url))
+print('AKS Service: {} scoring URI is: {}'.format(aks_service_name, url))
 
 response = requests.post(url, json.dumps(data1), headers=headers)
 print('Predictions for data1')
