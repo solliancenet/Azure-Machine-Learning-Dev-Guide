@@ -15,4 +15,4 @@ You can learn more about Model Evaluation by reviewing these links to additional
 - [Track metrics and deploy models with MLflow and Azure Machine Learning service (Preview)](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-use-mlflow)
 - [Visualize experiment runs and metrics with TensorBoard and Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-monitor-tensorboard)
 
-Read next: [Measuring performance of regression, classification models](./measure-performance-regression-classification.md)
+Read next: [Measuring performance of classification and models](./measure-performance-regression-classification.md)
