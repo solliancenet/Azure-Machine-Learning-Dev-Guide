@@ -67,6 +67,16 @@ print(Model.get_model_path(model_name='my-best-model'))
 
 This example prints out the local path (relative to `/var/azureml-app`) in the container where your scoring script expects to find the model file or folder. You can use the local path output to verify if the file or folder is indeed where it is expected to be.
 
+### View error messages in the Azure portal
+
+In some instances, the Azure portal can be used to view error messages that occur during the deployment process. For instance, if an error occurs during the compute target creation stage of the deployment, you can view the provisioning state and failure output of the compute target by selecting the **Compute** option from the left-hand menu of your Machine Learning service workspace:
+
+![The Compute blade is displayed with the Failed provisioning state value highlighted for the amldev-aks compute target.](media/aml-workspace-compute-failed.png 'Compute blade with failed compute target')
+
+When you select the failed compute target, you can see a detailed output from the failure that can help you troubleshoot the problem. In this example, provisioning a new AKS compute target failed because the core quota limits are exceeded. The error displayed in this example can be resolved by requesting a quota increase for the subscription, by deleting or using an existing compute target, or by reducing the number of requested cores for the compute target you are trying to create.
+
+![The detailed error message is shown and the reason for failure is highlighted: Operation results in exceeding quota limits.](media/aml-workspace-compute-failed-details.png 'Detailed error message for the failed compute target')
+
 ## Azure Notebook prerequisites
 
 1. Set up your AML workspace and Azure Notebooks environments per the instructions within [environment setup](../intro/environment-setup.md).
@@ -270,7 +280,7 @@ Your cell output should look like the following:
 
 ![The ACI deployment cell is displayed with a successful output.](media/aci-deployment-output.png 'ACI deployment output')
 
-Finally, test the deployed model with direct calls on service object by calling the service endpoint (Scoring URI) over HTTP:
+Finally, test the deployed model with direct calls on service object:
 
 ```python
 import json
@@ -293,9 +303,118 @@ The cell output of the test should look similar to the following:
 
 ![The ACI web service test cell is displayed with a successful output.](media/aci-test-output.png 'ACI test output')
 
+Now, execute the following script in a cell to test consuming your deployed web service endpoint (Scoring URI) over HTTP:
+
+```python
+import requests
+
+url = aci_service.scoring_uri
+print('ACI Service: {} scoring URI is: {}'.format(service_name, url))
+headers = {'Content-Type':'application/json'}
+
+response = requests.post(url, json.dumps(data1), headers=headers)
+print('Predictions for data1')
+print(response.text)
+response = requests.post(url, json.dumps(data2), headers=headers)
+print('Predictions for data2')
+print(response.text)
+```
+
+The cell output of the test should look similar to the following:
+
+![The ACI web service call over HTTP test cell is displayed with a successful output.](media/aci-test-output-http.png 'ACI test output - HTTP')
+
+You can view your ACI deployment in the Azure portal by selecting your AML workspace and selecting **Deployments** in the left-hand menu.
+
+![The ACI deployment is highlighted within the Deployments blade.](media/aml-workspace-deployments-aci.png 'Deployments')
+
+When you select the compute target, you will see details such as the state (whether it is healthy or in a failed state), the service ID, scoring URI, and other details. You also have tabs to view associated models and images.
+
+![The deployment details are displayed.](media/aml-workspace-deployment-details.png 'Deployment details')
+
 ## Deploying to a web service hosted on AKS from an Azure Notebook
 
-Text
+For large-scale production workloads, [Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/) (AKS) is a better option than ACI. AKS is a fully managed service that makes it easier to run Kubernetes clusters in Azure. The cluster can be scaled to meet demand, which is an important feature when you have spikes in your workloads. When you deploy your model to AKS as a target, all you are required to do is provision the AKS service in Azure. Once created, Azure Machine Learning service manages the AKS cluster for you, meaning, you do not need to maintain and manage the agent nodes.
+
+Execute the following cell within your notebook to create a new AKS cluster for deployment. Make sure you replace the `aks_name` value with a unique AKS cluster name for your workspace (between 2-16 characters in length). We use the `AksCompute.ClusterPurpose.DEV_TEST` value in the `AksCompute` configuration for this example. In production workloads, remove the DEV_TEST configuration. This script can take up to 20 minutes to execute:
+
+```python
+from azureml.core.compute import AksCompute, ComputeTarget
+
+# Use the default configuration, but set the cluster_purpose to DEV_TEST
+prov_config = AksCompute.provisioning_configuration(cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST)
+
+aks_name = 'amldev-aks'
+# Create the cluster
+aks_target = ComputeTarget.create(workspace = ws,
+                                    name = aks_name,
+                                    provisioning_configuration = prov_config)
+
+# Wait for the create process to complete
+aks_target.wait_for_completion(show_output = True)
+```
+
+Execute the following code in a new cell within your notebook to deploy the image created in the pre-requisites to the AKS cluster that you created:
+
+```python
+from azureml.core.webservice import AksWebservice, Webservice
+
+aks_service_name = 'nyc-taxi-automl-service-aks'
+
+aks_config = AksWebservice.deploy_configuration(
+    cpu_cores = 1,
+    memory_gb = 1,
+    description = 'NYC Taxi Fare Predictor Web Service (AKS)')
+
+aks_service = Webservice.deploy_from_image(deployment_config=aks_config,
+                                           deployment_target=aks_target,
+                                           image=image,
+                                           name=aks_service_name,
+                                           workspace=ws)
+
+aks_service.wait_for_deployment(show_output = True)
+print(aks_service.state)
+print(aks_service.get_logs())
+```
+
+Your cell output should look similar to the following if the deployment was successful:
+
+![The cell shows a successful output.](media/aks-deployment-output.png 'AKS deployment output')
+
+Execute the following script in a cell to test consuming your deployed AKS web service endpoint (Scoring URI) over HTTP. Notice that in this case, we are adding an authorization header. This is because deployments to AKS have authentication enabled by default:
+
+```python
+import requests
+
+headers = {'Content-Type':'application/json'}
+
+if aks_service.auth_enabled:
+    headers['Authorization'] = 'Bearer '+aks_service.get_keys()[0]
+
+print(headers)
+
+url = aks_service.scoring_uri
+print('AKS Service: {} scoring URI is: {}'.format(service_name, url))
+
+response = requests.post(url, json.dumps(data1), headers=headers)
+print('Predictions for data1')
+print(response.text)
+response = requests.post(url, json.dumps(data2), headers=headers)
+print('Predictions for data2')
+print(response.text)
+```
+
+The cell output of the test should look similar to the following:
+
+![The AKS web service call over HTTP test cell is displayed with a successful output.](media/aks-test-output-http.png 'AKS test output - HTTP')
+
+You can view your AKS deployment in the Azure portal by selecting your AML workspace and selecting **Deployments** in the left-hand menu. If you followed the steps in the ACI deployment section, you should see that deployment as well.
+
+![The AKS deployment is highlighted within the Deployments blade.](media/aml-workspace-deployments-aks.png 'Deployments')
+
+When you select the deployment, you will see its details. The screenshot below highlights interesting attributes, including the deployment state, scoring URI, whether authentication is enabled and the keys you can use for the bearer token in the auth header, as well as whether autoscale is enabled for the AKS cluster. You also have tabs to view associated models and images.
+
+![The deployment details are displayed.](media/aml-workspace-deployment-details-aks.png 'AKS deployment details')
 
 ## Deploying to a web service running on FPGAs from an Azure Notebook
 
