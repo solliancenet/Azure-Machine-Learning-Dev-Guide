@@ -2,6 +2,8 @@
 
 ...content in development...
 
+- [Model explainability (Code Sample)](./automl-model-explainability-code-sample.md)
+
 ## Next steps
 
 You can learn more about understanding automated machine learning generated models using the model explainability capability of azure machine learning by reviewing these links to additional resources:
