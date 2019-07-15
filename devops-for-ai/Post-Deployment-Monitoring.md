@@ -22,3 +22,6 @@ Now, in this part of the guide, we want to share what can be done in Azure DevOp
 
 ![](media/MakingChanges.png)
 
+![](media/ReleasePipelineFiring.png)
+
+![](media/PostGates.png)
