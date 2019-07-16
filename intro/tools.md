@@ -2,15 +2,15 @@
 
 ## Introducing the notebook paradigm
 
-Executable, or interactive, notebooks have a long history in science and academia. Notebooks were traditionally provided by applications such as [MATLAB](https://www.mathworks.com/products/matlab.html) and [Wolfram Mathematica](https://www.wolfram.com/mathematica/) to help scientists, students, professors, and mathematicians create self-documenting notebooks that others can use to reproduce experiments. To accomplish this, notebooks contain a combination of runnable code, output, formatted text, and visualizations. Over the past several years, web-based interactive notebooks have gained popularity with data scientists and data engineers to conduct exploratory data analysis and model training using a number of languages, such as Python, Scala, SQL, R, and others. The most popular notebooks in use today are [Jupyter](http://jupyter.org/), [Databricks Notebooks](https://docs.azuredatabricks.net/user-guide/notebooks/index.html), [R Markdown](jhttp://rmarkdown.rstudio.com/), and [Apache Zeppelin](https://zeppelin.apache.org/).
+Executable, or interactive, notebooks have a long history in science and academia. Notebooks were traditionally provided by applications such as [MATLAB](https://www.mathworks.com/products/matlab.html) and [Wolfram Mathematica](https://www.wolfram.com/mathematica/) to help scientists, students, professors, and mathematicians create self-documenting notebooks that others can use to reproduce experiments. To accomplish this, notebooks contain a combination of runnable code, output, formatted text, and visualizations. Over the past several years, web-based interactive notebooks have gained popularity with data scientists and data engineers to conduct exploratory data analysis and model training using several languages, such as Python, Scala, SQL, R, and others. The most popular notebooks in use today are [Jupyter](http://jupyter.org/), [Databricks Notebooks](https://docs.azuredatabricks.net/user-guide/notebooks/index.html), [R Markdown](jhttp://rmarkdown.rstudio.com/), and [Apache Zeppelin](https://zeppelin.apache.org/).
 
-Notebooks are made up of one or more of cells that allow for the execution of the code snippets or commands within those cells. They store commands and the results of running those commands. The image below shows a notebook that contains a cell on top that displays formatted text using markdown, followed by a cell containing Python code that gets executed to display an output. In this case, we chose a line chart visualization in place of the default text or table output. When the notebook is saved and shared with others, any outputs can be included so others can see the intended outcome of each cell.
+Notebooks are made up of one or more cells that allow for the execution of the code snippets or commands within those cells. They store commands and the results of running those commands. The image below shows a notebook that contains a cell on top that displays formatted text using markdown, followed by a cell containing Python code that gets executed to display an output. In this case, we chose a line chart visualization in place of the default text or table output. When the notebook is saved and shared with others, any outputs can be included so others can see the intended outcome of each cell.
 
 ![A screenshot of a notebook is displayed showing two cells. The first cell contains formatted text, and the second cell contains Python code and an output containing a line chart visualization.](media/notebook-cells.png 'Sample notebook cells')
 
-Notebooks can be run locally, on a notebook server, such as [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/), or in a hosted environment, such as [Azure Notebooks](https://notebooks.azure.com/) or [Azure Databricks](https://docs.microsoft.com/en-us/azure/azure-databricks/what-is-azure-databricks). Depending on your notebook environment, you can connect to a number of data sources and select from a large collection of open source libraries and SDKs (such as the Azure Machine Learning SDK) supported by the notebook's kernel (Python, etc.) to accelerate your development efforts. When you execute the cells in your notebook, you must first connect to a local execution engine or a cluster. This gives you the flexibility to change the environment in which the embedded code can execute, allowing you to share the notebook across different environments and scale out computational workloads as needed. In most cases, you will run your notebooks in a cluster environment when performing model training. This allows you to execute more complex computational processing and use larger data sets than you would be able to from your own machine.
+Notebooks can be run locally, on a notebook server, such as [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/), or in a hosted environment, such as [Azure Notebooks](https://notebooks.azure.com/) or [Azure Databricks](https://docs.microsoft.com/en-us/azure/azure-databricks/what-is-azure-databricks). Depending on your notebook environment, you can connect to a number of data sources and select from a large collection of open source libraries and SDKs (such as the Azure Machine Learning SDK) supported by the notebook's kernel (Python, etc.) to accelerate your development efforts. When you execute the cells in your notebook, you must first connect to a local execution engine or a cluster. This gives you the flexibility to change the environment in which the embedded code can execute, allowing you to share the notebook across different environments and scale-out computational workloads as needed. In most cases, you will run your notebooks in a cluster environment when performing model training. This allows you to execute more complex computational processing and use larger data sets than you would be able to from your own machine.
 
-If you are used to developing software and applications using your favorite IDE, then you will realize that there are some disadvantages to using notebooks in place of a more traditional development platform. For example, you cannot set breakpoints and run in debug mode, allowing you to step through the code and inspect object and environment states during execution. However, there are many advantages notebooks do provide. They offer an environment that allows for exploration, documentation, collaboration, and visualization. When a data scientist creates and shares it with a colleague, they are sharing notes and insights about the data with access to all of the queries, formulas, visualizations, and models. This enables interactive conversations and further exploration, with simple reproducibility by anyone running the notebook in the same or similar environment, without others needing to know a sequence of shell commands and environment variables known only to the original author. This collaborative knowledge exchange within an easy to share self-contained package is far more valuable than simply sharing a static, final report.
+If you are used to developing software and applications using your favorite IDE, then you will realize that there are some disadvantages to using notebooks in place of a more traditional development platform. For example, you cannot set breakpoints and run in debug mode, allowing you to step through the code and inspect object and environment states during execution. However, there are many advantages notebooks do provide. They offer an environment that allows for exploration, documentation, collaboration, and visualization. When a data scientist creates and shares it with a colleague, they are sharing notes and insights about the data with access to all of the queries, formulas, visualizations, and models. This enables interactive conversations and further exploration, with simple reproducibility by anyone running the notebook in the same or similar environment, without others needing to know a sequence of shell commands and environment variables known only to the original author. This collaborative knowledge exchange within an easy to share self-contained package is far more valuable than merely sharing a static, final report.
 
 ## Azure Notebooks and Jupyter notebooks
 
@@ -20,7 +20,7 @@ The primary way to use the Azure Machine Learning service SDK is with Python-bas
 
 To start using notebooks for your own experimentation and model training, you can quickly get up and running by using Jupyter notebooks in the hosted Microsoft [Azure Notebooks](https://notebooks.azure.com/) environment. Azure Notebooks provides a globally available environment for running Jupyter notebooks within your own projects that you can share with others. A project in Azure Notebooks is essentially a configuration of the underlying Linux virtual machine in which Jupyter notebooks run, along with a file folder and descriptive metadata. You can choose to run your notebooks on a free compute tier, or on an Azure virtual machine, such as an Azure Data Science Virtual Machine (DSVM) using the [Data Science Virtual Machine for Linux (Ubuntu) image](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro).
 
-Azure Notebooks comes pre-configured with the necessary environment to work with [Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/). There are two Azure ML-related projects you can use to quickly get started in Azure Notebooks. We will walk you through two options for cloning a project into your Azure Notebooks account so you can start experimenting with both projects.
+Azure Notebooks is ready to work with [Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/), thanks to its pre-configured environment. There are two Azure ML-related projects you can use to get started in Azure Notebooks quickly. Below, we walk you through two options for cloning a project into your Azure Notebooks account so you can start experimenting with both projects.
 
 #### Option 1: Clone an existing project with the Clone button
 
@@ -46,15 +46,15 @@ The second project you can clone is the [Azure Machine Learning service Tutorial
 
    ![The Upload GitHub Repository dialog is displayed with the previously described fields filled out.](media/azure-notebooks-upload-github-repo.png 'Upload GitHub Repository')
 
-5. After a minute or two, Azure Notebooks automatically takes you to the new project's dashboard.
+5. After a couple minutes, Azure Notebooks automatically takes you to the new project's dashboard.
 
 ### Using Jupyter notebook servers
 
-If you choose to run Jupyter notebooks on your own notebook server, you can get started by either using a managed notebook server in the cloud, or installing and running the notebook server locally.
+If you choose to run Jupyter notebooks on your own notebook server, you can get started by either using a managed notebook server in the cloud or installing and running the notebook server locally.
 
 #### Option 1: Use a cloud-based notebook server
 
-With this option, you can quickly get started with Azure Machine Learning service by configuring a managed Jupyter notebook server in the cloud. The environment is provided by a [notebook VM](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-configure-environment#notebookvm), which is a secure, cloud-based Azure workstation that comes configured with a Jupyter notebook server (JupyterLab) and a fully prepared ML environment. You do not need to install any additional software or libraries to begin running notebooks and logging experiments in your ML workspace. To get started, perform the following steps:
+With this option, you can quickly get started with Azure Machine Learning service by configuring a managed Jupyter notebook server in the cloud. The environment is provided by a [notebook VM](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-configure-environment#notebookvm), which is a secure, cloud-based Azure workstation that comes configured with a fully prepared machine learning environment and a Jupyter notebook server (JupyterLab). You can immediately start running notebooks and logging experiments in your ML workspace. There is no need to install any additional software or libraries in this environment. To get started, perform the following steps:
 
 1. Sign in to the [Azure portal](https://portal.azure.com/) and open your Azure Machine Learning service workspace. [Create your workspace](./environment-setup.md#create-your-azure-machine-learning-service-workspace) if you have not already done so.
 2. On your workspace page, select **Notebook VMs** on the left-hand menu.
@@ -66,26 +66,26 @@ With this option, you can quickly get started with Azure Machine Learning servic
 
    ![The New Notebook VM form is displayed with the previously described fields.](media/new-notebook-vm.png 'New Notebook VM')
 
-5. Wait approximately 4-5 minutes, until the status changes to **Running**.
-6. After the VM is created, you will see it in the list of Notebook VMs. Select the **Jupyter** link in the **URI** column for your new VM.
+5. Wait until the status changes to **Running**. This will take approximately 4-5 minutes.
+6. You will see the new VM in the list of Notebook VMs after it is created. Select the **Jupyter** link in the **URI** column for your new VM.
 
    ![The Jupyter link for the new Notebook VM is highlighted.](media/notebook-vm-jupyter-link.png 'Notebook VMs')
 
-   The link starts your notebook server and opens the Jupyter notebook webpage in a new browser tab. This link will only work for the person who creates the VM.
+   Clicking this link starts your notebook server and opens the Jupyter notebook in a new web browser tab. Only the person who created the VM can use this link.
 
 7. On the Jupyter notebook webpage, the top folder name is your username. Select this folder.
-8. The samples folder name includes a version number, for example **samples-1.0.33.1**. Select the samples folder.
+8. The samples folder name includes a version number, for example, **samples-1.0.33.1**. Select the samples folder.
 9. Select the quickstart folder, then open the **01.run-experiment.ipynb** file.
 
    > The config.json file that is located in the top-level parent folder was created for you with details of your Azure Machine Learning service workspace. All notebooks in the samples folder use this file to connect to your workspace. If you want to download the file to use in other environments, you can go to the Overview blade of your Azure Machine Learning service workspace and select the **Download config.json** file. This config file is what the following command in the notebooks use to load your workspace configuration: `Workspace.from_config()`.
 
-10. After running all the cells in the notebook, the final cell will provide a link to view your experiment you just ran, within your AML workspace. From here you can go to your experiment and view this and all other runs.
+10. After running all the cells in the notebook, the last cell provides you with a link to view the experiment you just ran, within your AML workspace. From here you can go to your experiment and view this and all the other runs.
 
     ![The last cell contains a link to the Azure Portal.](media/aml-experiment-link.png 'Link on last cell')
 
     ![AML Workspace experiment run.](media/aml-experiment-run.png 'Experiment run')
 
-    > The plots of logged values you see were automatically created in the workspace. Whenever you log multiple values with the same name parameter, a plot is automatically generated for you.
+    > The plots of logged values  are automatically created in the workspace whenever you log multiple values within the same name parameter.
 
 #### Option 2: Use your own notebook server
 
@@ -107,13 +107,15 @@ If you do not want to set up a Notebook VM and wish to run Jupyter notebooks on 
 
 5. Download or create a configuration file (config.json) that will be used by your notebooks to interact with your Machine Learning service workspace. The file should be saved to the top-level parent folder that contains your Jupyter notebooks. To download a generated configuration file, go to the Overview blade of your Azure Machine Learning service workspace in the Azure portal and select the **Download config.json** file. Alternately, you can [create your own configuration file](https://docs.microsoft.com/en-us/azure/machine-learning/service/setup-create-workspace#write-a-configuration-file) manually.
 
-> If you are using a Data Science Virtual Machine (DSVM), you do not need to install the Machine Learning SDK. Create an [Ubuntu DSVM](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro).
+> You do not need to install the Machine Learning SDK if you are using a Data Science Virtual Machine (DSVM). Create an [Ubuntu DSVM](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro).
 
 > If you are using Azure Databricks, [follow these instructions](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-configure-environment#azure-databricks) to install the SDK and configure your cluster.
 
 #### Use the workspace on your own notebook server
 
-Create a script or start a notebook in the same directory as your workspace configuration file. Run this code that uses the basic APIs of the SDK to track experiment runs. The steps that follow will show you how to:
+Find the directory in which your workspace configuration file is located, and start a notebook or create a new script. Add and execute the following code to use the basic SDK APIs to track experiment runs. 
+
+These steps show you how to:
 
 1. Create an experiment in the workspace.
 2. Log a single value into the experiment.
@@ -128,7 +130,7 @@ exp = Experiment(workspace=ws, name='myexp')
 # Start a run and start the logging service.
 run = exp.start_logging()
 
-# Log a single  number.
+# Log a single number.
 run.log('my magic number', 42)
 
 # Log a list (Fibonacci numbers).
@@ -138,37 +140,35 @@ run.log_list('my list', [1, 1, 2, 3, 5, 8, 13, 21, 34, 55])
 run.complete()
 ```
 
-When the run finishes, you can view the experiment run in the Azure portal. To print a URL that navigates to the results for the last run, use the following code:
+Wait until the run completes, then execute the following to display a URL that shows the experiment run in the Azure portal:
 
 ```python
 print(run.get_portal_url())
 ```
 
-This code returns a link you can use to view the logged values in the Azure portal in your browser.
-
 ![This screenshot shows the output of the above experiment as viewed from the Azure portal.](media/simple-experiment-run.png 'Logged values from experiment')
 
 ## Visual Studio Code with the Azure Machine Learning extension
 
-[Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview) is a lightweight but powerful source code editor which runs on your desktop and is available for Windows, macOS and Linux. It comes with built-in support for JavaScript, TypeScript and Node.js and has a rich ecosystem of extensions for other languages (such as C++, C#, Java, Python, PHP, Go) and runtimes (such as .NET and Unity).
+[Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview) is a powerful and flexible, yet lightweight source code editor that runs on your Windows, Linux, or macOS desktop. It comes with built-in support for JavaScript, TypeScript, and Node.js, but can be extended to support other languages and runtimes such as C++, C#, Java, Python, PHP, Go, .NET, and Unity.
 
-Visual Studio Code has rapidly become one of the most popular free cross-platform integrated development environments (IDE) in use today. The primary reasons for this are its very lightweight size which allows it to quickly run on almost any desktop hardware, and its large extension marketplace that helps developers add capabilities for a wide range of development tasks.
+Visual Studio Code has rapidly become one of the most popular free cross-platform integrated development environments (IDE) in use today. The primary reasons for this are its very lightweight size, which allows it to quickly run on almost any desktop hardware and its large extension marketplace that helps developers add capabilities for a wide range of development tasks.
 
-The [Azure Machine Learning extension](https://aka.ms/vscodetoolsforai) for Visual Studio Code adds features that help you manage your Machine Learning service workspace, and train and deploy machine learning and deep learning models. When you install this extension, the [Azure Account extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) and the [Microsoft Python extension ](https://marketplace.visualstudio.com/items?itemName=ms-python.python) are also installed. These extensions allow you to connect to your Azure subscription and configure the Machine Learning service workspace, and turns Visual Studio Code into a Python IDE. The Microsoft Python extension uses all of the power of Visual Studio Code to provide autocomplete, IntelliSense, linting, debugging, and unit testing. The extension also allows you to easily switch between Python environments, including virtual and conda environments. For more information about editing, running, and debugging Python code, see the [Python hello-world tutorial](https://code.visualstudio.com/docs/python/python-tutorial).
+The [Azure Machine Learning extension](https://aka.ms/vscodetoolsforai) for Visual Studio Code adds features that help you manage your Machine Learning service workspace, and train and deploy machine learning and deep learning models. When you install this extension, the [Azure Account extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) and the [Microsoft Python extension ](https://marketplace.visualstudio.com/items?itemName=ms-python.python) are also installed. These extensions allow you to connect to your Azure subscription and configure the Machine Learning service workspace and turns Visual Studio Code into a Python IDE. The Microsoft Python extension harnesses the power of Visual Studio Code to provide debugging, unit testing, linting, IntelliSense, and autocomplete capabilities to your Python scripts and applications. You can also easily switch between Python environments with the extension, including virtual and conda environments. See the [Python hello-world tutorial](https://code.visualstudio.com/docs/python/python-tutorial) for information about editing, running, and debugging Python code.
 
-You will need to [install Python version **3.7.3** or higher](https://www.python.org/downloads/) before you begin. If Visual Studio Code is open during the install, you will need to restart it after installing Python.
+You need to [install Python version **3.7.3** or higher](https://www.python.org/downloads/) before you begin. If Visual Studio Code is open during the install, you need to restart it after installing Python.
 
 Before you can begin using the new Python capabilities in VS Code, you must select your Python interpreter. You do this by opening the **Command Palette** in VS Code (`Ctrl+Shift+P`), typing **Python: Select Interpreter** and selecting that command. If you see an error stating that `python.pythonPath` cannot be set or does not exist, you may not have installed an interpreter, such as [Anaconda](https://www.anaconda.com/download/). Install Anaconda and restart Visual Studio Code before attempting to select the interpreter.
 
-In the lower-right corner of the window, a notification will appear indicating that the Azure Machine Learning SDK is being automatically installed. The newly created Python environment is local and private, and it has the Visual Studio Code prerequisites for working with the Azure Machine Learning service.
+A notification will appear in the lower-right corner of the window, indicating that the Azure Machine Learning SDK is automatically being installed. The newly created Python environment is local and private and contains the Visual Studio Code prerequisites for working with the Azure Machine Learning service.
 
 ![A dialog appears stating that the Azure ML extension starting runtime dependencies...](media/vscode-azure-ml-extension-installing.png 'VS Code notification')
 
 Follow the instructions [here](https://code.visualstudio.com/docs/python/python-tutorial) for configuring VS Code for Python development.
 
-The AML extension adds a section to the Azure menu item on VS Code's left-hand menu (the Azure menu item is added by the extension if it does not already exist) named "MACHINE LEARNING". Within this section is a list of each of your Azure subscriptions. You can right-click on a subscription and add a new Azure Machine Learning service workspace through prompts in VS Code's command palette. When you expand an existing workspace, you can view experiments, pipelines, compute targets, models (each are versioned), deployed model images, and deployments.
+The AML extension adds a section to the Azure menu item on VS Code's left-hand menu (the extension adds the Azure menu item if it does not already exist) named _MACHINE LEARNING_. Within this section is a list of each of your Azure subscriptions. You can right-click on a subscription and add a new Azure Machine Learning service workspace through prompts in VS Code's command palette. When you expand an existing workspace, you can view experiments, pipelines, compute targets, models (each is versioned), deployed model images, and deployments.
 
-The screenshot below shows these features for an AML workspace that has been expanded underneath a subscription in this new section. In this screenshot, a context menu is displayed after right-clicking on one of the models. You can see the following actions you can take on a model:
+The screenshot below shows the features for an AML workspace that have been expanded underneath a subscription in this new section. In this screenshot, a context menu displays after right-clicking on one of the models. You can see the following actions you can take on a model:
 
 - Download Model file
 - Remove Model
@@ -193,7 +193,7 @@ Here is a quick comparison of both options:
 
 It is important to note that any models created and deployed using visual interface can be managed through the Azure Machine Learning service workspace. This is another big advantage over Machine Learning Studio, where there are no options to export and use the models elsewhere.
 
-To use Azure Machine Learning service visual interface, open your workspace in the Azure portal, then select the **Visual interface** link on the left-hand menu. This opens a blade that gives you the option to launch visual interface in a new browser window, or read the documentation.
+To use Azure Machine Learning service visual interface, open your workspace in the Azure portal, then select the **Visual interface** link on the left-hand menu. This opens a blade that gives you the option to launch visual interface in a new browser window or read the documentation.
 
 ![Visual interface is launched by using the left-hand menu in your AML workspace.](media/visual-interface-link.png 'Visual interface')
 
@@ -201,9 +201,9 @@ The screenshot below shows an experiment in visual interface that contains steps
 
 ![This screenshot shows the UI for a visual interface experiment.](media/visual-interface-experiment.png 'Visual interface experiment')
 
-When you are ready to run the experiment, you have the choice to select an existing compute target, or create a new one. If you need more options for configuring the compute target, such as VM size and type (CPU or GPU) or number of nodes, you can create your custom compute targets within your workspace in the Azure portal. Compute target options include Machine Learning Compute, Kubernetes Service, Virtual Machine (running Ubuntu), Azure Databricks, Data Lake Analytics, and HDInsight.
+When you are ready to run the experiment, you have the choice to select an existing compute target or create a new one. If you need more options for configuring the compute targets, such as VM size and type (CPU or GPU) or the number of nodes, you can create your custom compute targets within your workspace in the Azure portal. Compute target options include Machine Learning Compute, Kubernetes Service, Virtual Machine (running Ubuntu), Azure Databricks, Data Lake Analytics, and HDInsight.
 
-When using a Machine Learning Compute target, there is a warmup time of approximately 5 minutes if you re-run your experiment after a long period of time. That is because the compute resource will autoscale to 0 nodes when it is idle to save cost.
+When using a Machine Learning Compute target, there is a warmup time of approximately 5 minutes if you re-run your experiment after a long time. That is because the compute resource autoscales to 0 nodes when it is idle to save cost.
 
 ![The Setup Compute Target to Run Experiment dialog is displayed with Create new selected.](media/visual-interface-compute-target.png 'Setup compute target to run experiment')
 
@@ -215,7 +215,7 @@ After running the predictive experiment, you have the option to deploy a web ser
 
 ![The toolbar on the bottom of the page provides an option to deploy a web service.](media/visual-interface-deploy-web-service.png 'Deploy Web Service')
 
-If you wish to deploy to a secure web service, we recommend that you add a Kubernetes Service compute target to your workspace and [follow the instructions](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-secure-web-service) to use SSL to secure the web service. You can either select an existing Kubernetes Service or create a new one.
+To deploy to a secure web service, we recommend adding a Kubernetes Service compute target to your workspace and [following the instructions](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-secure-web-service) to use SSL to secure the web service. You can either select an existing Kubernetes Service or create a new one.
 
 ![The Compute menu item is selected in the AML workspace, and Kubernetes Service is selected as the compute type.](media/visual-interface-create-kubernetes-compute-target.png 'Add Compute')
 
@@ -223,7 +223,7 @@ After creating the compute target, you can select it from the list of existing t
 
 ![The newly created Kubernetes Service compute target is selected.](media/visual-interface-web-service-compute-target.png 'Setup Compute Target to Deploy Web Service')
 
-After your web service is deployed, you can view its details under Web Services on the visual interface site. The information provided includes the compute target and deployment state, and there are tabs that allow you to test your deployed model, sample code for consuming the web service, and an API Doc created from the generated Swagger file.
+After your web service deploys, you can view its details under Web Services on the visual interface site. The information provided includes the compute target and deployment state, and there are tabs that allow you to test your deployed model, sample code for consuming the web service, and an API Doc created from the generated Swagger file.
 
 ![The web service details includes sample code for consuming the service.](media/visual-interface-web-service.png 'Deployed web service')
 
