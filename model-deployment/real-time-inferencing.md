@@ -253,7 +253,7 @@ When you want to test a model deployment, or if your deployment is very low-scal
 
 Unlike deploying to AKS, you do not need to create ACI containers in advance because they are created on the fly. This means you can go straight to deploying to ACI.
 
-After completing the pre-requisites above, you have used the Azure ML Python SDK to download and register the trained model, create a scoring file, and package these along with dependencies in a Docker image for deployment. To deploy the model to ACI as a web service, execute the following in a new cell within your notebook:
+After completing the [pre-requisites](#Azure-Notebook-prerequisites) above, you have used the Azure ML Python SDK to download and register the trained model, create a scoring file, and package these along with dependencies in a Docker image for deployment. To deploy the model to ACI as a web service, execute the following in a new cell within your notebook:
 
 ```python
 from azureml.core.webservice import AciWebservice, Webservice
@@ -354,7 +354,7 @@ aks_target = ComputeTarget.create(workspace = ws,
 aks_target.wait_for_completion(show_output = True)
 ```
 
-Execute the following code in a new cell within your notebook to deploy the image created in the pre-requisites to the AKS cluster that you created:
+Execute the following code in a new cell within your notebook to deploy the image created in the [pre-requisites](#Azure-Notebook-prerequisites) above to the AKS cluster that you created:
 
 ```python
 from azureml.core.webservice import AksWebservice, Webservice
