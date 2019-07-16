@@ -33,7 +33,7 @@ The remainder of this article will focus on your deployment target options.
 
 ## Available compute targets
 
-The following compute targets, or compute resources, can be used to host your web service deployment.
+You can use the following compute targets to host your web service deployment:
 
 | Compute target                                                    | Usage                     | Description                                                                                |
 | ----------------------------------------------------------------- | ------------------------- | ------------------------------------------------------------------------------------------ |
@@ -45,9 +45,9 @@ The following compute targets, or compute resources, can be used to host your we
 
 ## Local web service
 
-Deploy locally to quickly test your model image (Docker), or for troubleshooting purposes. To do this, you must have [**Docker installed**](https://docs.docker.com/install/) on your local machine. Docker must be running before you deploy a local web service. This is the recommended compute target if you have problems deploying a model to Azure Kubernetes Service (AKS) or Azure Container Instances (ACI).
+Deploy locally to quickly test your model image (Docker), or for troubleshooting purposes. To do this, you must have [**Docker installed**](https://docs.docker.com/install/) on your local machine. Make sure Docker is running before you deploy a local web service. This is the recommended compute target if you have problems deploying a model to Azure Kubernetes Service (AKS) or Azure Container Instances (ACI).
 
-Local web service deployments are not supported for production scenarios. If you need to deploy to production web services, the recommended target is [AKS](#azure-kubernetes-service-aks) for high-scale production workloads. For low-scale, CPU-based workloads, use [ACI](#azure-container-instances-aci).
+Please note that local web service deployments are unsupported for production workloads. If you need to deploy to production web services, the recommended target is [AKS](#azure-kubernetes-service-aks) for high-scale production workloads. For low-scale, CPU-based workloads, use [ACI](#azure-container-instances-aci).
 
 The following sample deploys a model (contained in the `model` variable) as a local web service:
 
@@ -72,16 +72,16 @@ print(service.port)
 
 You can work with the service just as you would if the compute target were ACI or AKS.
 
-During local testing, you may need to update the `score.py` file to add logging or attempt to resolve any problems that you've discovered. To reload changes to the `score.py` file, use `reload()`. For example, the following code reloads the script for the service, and then sends data to it. The data is scored using the updated `score.py` file:
+If you update the `score.py` file during local testing to resolve any problems or add additional logging, you will need to reload changes by using the `reload()` method. For example, the code below calls the `reload()` method on the service to reload the script, and then sends data to it. The data is then scored using the updated `score.py` file:
 
 ```python
 service.reload()
 print(service.run(input_data=test_sample))
 ```
 
-The script is reloaded from the location specified by the `InferenceConfig` object used by the service.
+The script reloads from the location specified within the `InferenceConfig` object used by the service.
 
-To change the model, Conda dependencies, or deployment configuration, use `update()`. The following example updates the model used by the service:
+Use `update()` to change the deployment configuration, model, or Conda dependencies. The example code below updates the model (`different_model`) used by the service:
 
 ```python
 service.update([different_model], inference_config, deployment_config)
@@ -140,14 +140,11 @@ Finally, you can use the [Visual Studio Code extension to deploy to AKS](https:/
 
 For low-scale, CPU-based workloads or testing, deploy to ACI.
 
-[Azure Container Instances](https://docs.microsoft.com/en-us/azure/container-instances/) offers the fastest and simplest way to run a container in Azure, without having to manage any virtual machines and without having to adopt a higher-level service. As opposed to AKS, you use ACI to run isolated containers. ACI is good for smaller or short-term workloads, since you only pay for the time they are up and running. They are also very fast to start, usually within seconds, and delete when you no longer needed. As a point of comparison, AKS clusters are meant to host long-running web services that can scale out to meet heavy workload requirements, and scale back in during lighter workloads.
+Using [Azure Container Instances](https://docs.microsoft.com/en-us/azure/container-instances/) is the fastest and most straightforward way to run a container in Azure, without having to manage any virtual machines or adopt a higher-level service. As opposed to AKS, you use ACI to run isolated containers. ACI is suitable for smaller or short-term workloads since you only pay for the time they are up and running. They are also swift to start, usually within seconds, and delete when you no longer needed. As a point of comparison, AKS clusters are meant to host long-running web services that can scale out to meet heavy workload requirements, and scale back in during lighter workloads.
 
-Use Azure Container Instances for deploying your models as a web service if one or more of the following conditions is true:
+Deploy your models to ACI if you need to deploy and validate your model quickly, or if you are testing a model that is under development.
 
-- You need to quickly deploy and validate your model.
-- You are testing a model that is under development.
-
-To see quota and region availability for ACI, see the [Quotas and region availability for Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-quotas) article.
+> Review the [Quotas and region availability for Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-quotas) article.
 
 Unlike deploying to AKS, you do not need to create ACI containers in advance because they are created on the fly. This means you can go straight to deploying to ACI, as in this deployment script example using the SDK:
 
@@ -170,15 +167,15 @@ Finally, you can use the [Visual Studio Code extension to deploy to ACI](https:/
 
 If you need to make predictions on large quantities of data asynchronously, or if you require intensive compute for scoring, you can use Azure Machine Learning service to make batch predictions. Making batch predictions (or batch scoring) provides a cost-effective inference with unparalleled throughput for asynchronous applications. If you are trying to perform inference on data sets up to terabytes of data, requiring high throughput, performing batch processing using the Azure Machine Learning compute target is your best bet.
 
-When you perform batch scoring, you store the results output to a file store, like [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) or [Blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction), either of which are created for you when you provision your Azure Machine Learning service workspace. Whereas, with real-time scoring using a web service-deployed model, you are making low-latency requests by sending small amounts of data and receiving a score immediately as an output from the service.
+When you perform batch scoring, you store the results output to a file store, like [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) or [Blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction), either of which is created for you when you provision your Azure Machine Learning service workspace. Whereas, with real-time scoring using a web service-deployed model, you are making low-latency requests by sending small amounts of data and receiving a score immediately as an output from the service.
 
 ## Azure IoT Edge
 
 If you need to perform analytics on a Linux hardware device that lives "on the edge", that is, not in the cloud but close to where your IoT hardware or sensors live, you can deploy your models to an Azure IoT Edge device. One such use case is you want to respond to emergencies as quickly as possible by running anomaly detection workloads at the edge.
 
-[Azure IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/about-iot-edge) is an Internet of Things (IoT) service that builds on top of [Azure IoT Hub](https://docs.microsoft.com/en-us/azure/iot-hub/about-iot-hub). This service is meant for customers who want to analyze data on devices, a.k.a. "at the edge", instead of in the cloud. By moving parts of your workload to the edge, your devices can spend less time sending messages to the cloud and react more quickly to changes in status.
+[Azure IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/about-iot-edge) is a service built on top of [Azure IoT Hub](https://docs.microsoft.com/en-us/azure/iot-hub/about-iot-hub) that helps you analyze data on devices (at the edge) rather than in the cloud. This strategy works well when internet connectivity or latency is an issue, and when you want your devices to react more quickly to status changes by moving parts of your workload to the edge.
 
-When you deploy to an Azure IoT Edge device using Azure Machine Learning service, you are deploying your model into an **IoT Edge module**, which is a Docker-compatible container. This is not unlike deploying to AKS or an ACI container. Multiple modules can be configured to communicate with each other, creating a pipeline of data processing. You can develop custom modules or package certain Azure services into modules that provide insights offline and at the edge.
+When you deploy to an Azure IoT Edge device using Azure Machine Learning service, you are deploying your model into an **IoT Edge module**, which is a Docker-compatible container. This is not unlike deploying to AKS or an ACI container. You can create a data processing pipeline by enabling multiple modules to communicate with each other. These modules can be ones you develop from scratch or can be created by packaging certain Azure services, such as Stream Analytics or Azure Functions, to provide insights offline and at the edge.
 
 ## Next steps
 
