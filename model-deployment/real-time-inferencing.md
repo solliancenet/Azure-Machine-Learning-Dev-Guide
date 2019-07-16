@@ -420,7 +420,107 @@ When you select the deployment, you will see its details. The screenshot below h
 
 ## Deploying to a web service running on FPGAs from an Azure Notebook
 
-Text
+A [field-programmable gate array](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-accelerate-with-fpgas) (FPGA) is a unique type of chip that contains an array of programmable logic blocks with a flexible hierarchy of reconfigurable interconnects. These interconnects allow you to reconfigure the logic blocks in various ways after manufacturing, which leads to their unique flexibility. For example, you can reconfigure FPGAs for different types of machine learning models, making it easier to accelerate your applications based on the most optimal memory model and numerical precision you are using. This flexible reconfiguration helps you stay current with the requirements of rapidly changing AI algorithms.
+
+FPGAs are based on [Intel's FPGA devices](https://www.intel.ai/intel-fpgas-powering-real-time-ai-inferencing/) to enable developers and data scientists to accelerate real-time AI calculations. Microsoft Azure is the world's largest cloud investment in FPGAs. The FPGA-enabled architecture provides performance, flexibility, and scale. In addition, FPGAs on Azure supports:
+
+- Image classification and recognition scenarios
+- TensorFlow deployment
+- DNNs: ResNet 50, ResNet 152, VGG-16, SSD-VGG, and DenseNet-121
+- Intel FPGA hardware
+
+Using an FPGA-enabled hardware architecture on Azure accelerates running trained neural networks with lower latency. This acceleration is accomplished by parallelizing pre-trained deep neural networks (DNN) across FPGAs to scale out your service.
+
+### Pre-requisites
+
+You must have a quota of at least 6 vCPUs available for the PBS Family of VMs. The PBS-based VMs contain Intel Arria 10 FPGAs. When you use Azure ML to deploy a model to an FPGA, the PB6 VM is automatically provisioned. This VM has six vCPUs and one FPGA.
+
+- Verify that you have available FPGA quota by running the following in Azure Cloud Shell within your target Azure subscription:
+
+  ```shell
+  az vm list-usage --location "eastus" -o table
+  ```
+
+  Other valid locations are `southeastasia`, `westeurope`, and `westus2`.
+
+  Look under the "Name" column in the table output for **Standard PBS Family vCPUs** and ensure you have at least 6 vCPUs available by subtracting `CurrentValue` from `Limit`.
+
+  If you do not have quota, submit a request form [here](https://aka.ms/accelerateAI).
+
+  ![The command and output are displayed in Azure Cloud Shell.](media/cloud-shell-vm-usage.png 'Azure Cloud Shell - VM usage script')
+
+- Azure ML workspace deployed in one of the following regions, due to FPGA availability:
+
+  - East US
+  - Southeast Asia
+  - West Europe
+  - West US 2
+
+- The Python SDK for hardware-accelerated models:
+
+  ```shell
+  pip install --upgrade azureml-accel-models
+  ```
+
+### Sample notebooks
+
+Load the [sample notebooks](https://aka.ms/aml-accel-models-notebooks) in your Azure Notebooks environment. You can upload the notebooks from the GitHub repo into your Azure Notebooks account by following [these instructions](https://github.com/solliancenet/Azure-Machine-Learning-Dev-Guide/blob/master/intro/tools.md#option-2-upload-project-from-a-github-repository).
+
+When you upload the GitHub repository in Azure Notebooks, enter the following form fields:
+
+- **GitHub repository**: Azure/MachineLearningNotebooks
+- **Clone recursively**: Checked
+- **Project name**: MachineLearningNotebooks
+- **Project ID**: Make sure the name is unique
+- **Public**: Unchecked (unless you want your copy publicly available)
+
+![The Upload GitHub Repository form is displayed with the previously shown values.](media/azure-notebooks-upload-github-repo.png 'Upload GitHub Repository')
+
+After the GitHub repo is uploaded, navigate to `/how-to-use-azureml/deployment/accelerated-models` and follow the instructions in **README.md**.
+
+![The folder path and README.md files are highlighted.](media/azure-notebooks-cloned-repo.png 'Cloned repo')
+
+### Deploy model to an FPGA-powered AKS cluster
+
+Deploying a model to an FPGA-powered AKS is a matter of selecting a PBS Family VM for the `vm_size` parameter of the `AksCompute.provisioning_configuration` method when you create the AKS cluster. For example, in the script below we set the `vm_size` to **Standard_PB6s**:
+
+```python
+from azureml.core.compute import AksCompute, ComputeTarget
+
+# Specify the Standard_PB6s Azure VM
+prov_config = AksCompute.provisioning_configuration(vm_size = "Standard_PB6s",
+                                                    agent_count = 1)
+
+aks_name = 'fpga-aks'
+# Create the cluster
+aks_target = ComputeTarget.create(workspace = ws,
+                                  name = aks_name,
+                                  provisioning_configuration = prov_config)
+
+aks_target.wait_for_completion(show_output = True)
+print(aks_target.provisioning_state)
+print(aks_target.provisioning_errors)
+```
+
+Deploying the container to the AKS cluster is similar to how we showed an AKS deployment earlier:
+
+```python
+from azureml.core.webservice import Webservice, AksWebservice
+
+# For this deployment, set the web service configuration without enabling auto-scaling or authentication for testing
+aks_config = AksWebservice.deploy_configuration(autoscale_enabled=False,
+                                                num_replicas=1,
+                                                auth_enabled = False)
+
+aks_service_name ='fpga-aks-svc'
+
+aks_service = Webservice.deploy_from_image(workspace = ws,
+                                           name = aks_service_name,
+                                           image = image,
+                                           deployment_config = aks_config,
+                                           deployment_target = aks_target)
+aks_service.wait_for_deployment(show_output = True)
+```
 
 ## Deploying to a web service hosted on AKS or ACI using Azure Machine Learning visual interface
 
