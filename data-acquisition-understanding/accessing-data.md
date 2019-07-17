@@ -63,8 +63,7 @@ ws.datastores
 The output of `ws.datastores` is a dictionary of datastores. The dictionary contains the datastore name as the key and the datastore object as the value. For a new workspace, it should look like the following:
 
 ```json
-{'workspaceblobstore': <azureml.data.azure_storage_datastore.AzureBlobDatastore at 0x7f962103aa58>,
- 'workspacefilestore': <azureml.data.azure_storage_datastore.AzureFileDatastore at 0x7f9620f14a20>}
+{'workspaceblobstore': <azureml.data.azure_storage_datastore.AzureBlobDatastore at 0x7f962103aa58>, 'workspacefilestore': <azureml.data.azure_storage_datastore.AzureFileDatastore at 0x7f9620f14a20>}
 ```
 
 Let's use the `ws.datastores` property to capture the datastores dictionary in a variable. You can use this to access datastores by name and type in the examples below.
