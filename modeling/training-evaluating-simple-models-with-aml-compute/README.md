@@ -1,5 +1,14 @@
 # Training and Evaluating a few simple models Using Azure Notebooks and Azure Machine Learning compute (Code Sample)
 
+Azure Machine Learning service provides a code-first experience where you can use the Azure Machine Learning SDK for Python to start training your models on your local machine and then scale out to use Azure Machine Learning compute target to train better performing, highly accurate both machine learning and deep learning models. Azure Machine Learning service supports many of the popular open-source machine learning and deep learning Python packages, such as:
+
+- [Scikit-learn](https://scikit-learn.org/stable/)
+- [Tensorflow](https://www.tensorflow.org/)
+- [PyTorch](https://pytorch.org/)
+- [Keras](https://keras.io/)
+
+The goal of this article is to show how Machine Learning SDK for Python can be used to train models locally and on AML compute cluster. We will also look at how to log metrics during training and monitor training runs in Azure Machine Learning.
+
 ## Training using local compute (of Azure Notebook)
 
 ## Training using AML compute cluster
