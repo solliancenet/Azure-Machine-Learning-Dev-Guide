@@ -32,7 +32,8 @@ numeric_transformations = [([f], Pipeline(steps=[
     ('imputer', SimpleImputer(strategy='median')),
     ('scaler', StandardScaler())])) for f in numerical]
     
-categorical_transformations = [([f], OneHotEncoder(handle_unknown='ignore', sparse=False)) for f in categorical]
+categorical_transformations = [([f], OneHotEncoder(handle_unknown='ignore', 
+                               sparse=False)) for f in categorical]
 
 transformations = numeric_transformations + categorical_transformations
 
