@@ -11,6 +11,83 @@ The goal of this article is to show how [Azure Machine Learning SDK for Python](
 
 ## Training using local compute (of Azure Notebook)
 
+As stated, you can use Azure Machine Learning SDK for Python to train your machine learning models on local compute. In Azure Notebooks, the when your run your training script on local compute, it run on the Azure Notebook compute environment. There are three components needed to run your training script on local compute using Azure Machine Learning: (1) model training script, (2) script run configuration and (3) an experiment in your workspace to run the training job. Let’s look at each of these components next.
+
+### Model training script
+
+You can use any of the popular open-source machine learning and deep learning Python packages to train your model. The following code snippet use the Scikit-learn library for model training.
+
+```python
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn_pandas import DataFrameMapper
+from sklearn.pipeline import Pipeline
+from sklearn.ensemble import GradientBoostingRegressor
+
+# Data transformations for numerical and categorical features
+numerical = ['...', '...', '...']
+categorical = ['...', '...']
+
+numeric_transformations = [([f], Pipeline(steps=[
+    ('imputer', SimpleImputer(strategy='median')),
+    ('scaler', StandardScaler())])) for f in numerical]
+    
+categorical_transformations = [([f], OneHotEncoder(handle_unknown='ignore', sparse=False)) for f in categorical]
+
+transformations = numeric_transformations + categorical_transformations
+
+# Setup the data processing and model training pipeline
+clf = Pipeline(steps=[('preprocessor', DataFrameMapper(transformations)),
+                      ('regressor', GradientBoostingRegressor())])
+
+# Train the model
+clf.fit(X_train, y_train)
+```
+
+### Script run configuration
+
+The Script Run Configuration defines the training script and the environment needed to run the training job.  There are two main ways to define the required environment: 
+
+User Managed Environment - When using a user-managed environment, you are responsible for ensuring that all the necessary packages are available in the Python environment you choose to run the script in.
+
+System Managed Environment - You can ask the Azure Machine Learning service to build a new conda environment for running your script.
+
+The following code snippet shows how to create a system managed environment:
+
+```python
+from azureml.core import ScriptRunConfig
+from azureml.core.conda_dependencies import CondaDependencies
+
+# Create the script run config that specifies the script folder and the script filename on the local compute
+src = ScriptRunConfig(source_directory='...', script='...')
+
+# Create a system managed environment
+system_managed_env = Environment("system-managed-env")
+system_managed_env.python.user_managed_dependencies = False
+
+# Specify conda dependencies with scikit-learn
+cd = CondaDependencies.create(conda_packages=['scikit-learn'])
+system_managed_env.python.conda_dependencies = cd
+
+# Set the system managed environment in your script run config
+src.run_config.environment = system_managed_env
+```
+
+### Create experiment and start the training job
+
+Finally, you create an experiment in your machine learning workspace, and start the training job. The following code snippet, shows how to the use the script run configuration created above to start a new training job:
+
+```python
+from azureml.core import Workspace, Experiment, Run
+
+# Create a new experiment in the machine learning workspace (ws)
+experiment_name = '...'
+experiment = Experiment(ws, experiment_name)
+
+# Submit the script run config to start the experiment run
+run = experiment.submit(src)
+```
+
 ## Training using AML compute cluster
 
 ## Logging during the model training process
