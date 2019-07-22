@@ -70,7 +70,7 @@ system_managed_env.python.user_managed_dependencies = False
 cd = CondaDependencies.create(conda_packages=['scikit-learn'])
 system_managed_env.python.conda_dependencies = cd
 
-# Set the system managed environment in your script run config
+# Set the system managed environment in the script run config
 src.run_config.environment = system_managed_env
 ```
 
@@ -91,7 +91,25 @@ run = experiment.submit(src)
 
 ## Training using AML compute cluster
 
-[Introducing AML compute options](../../modeling/feature-engineering-training-evaluation-selection/model-training/aml-compute-options.md)
+The section [Introducing AML compute options](../../modeling/feature-engineering-training-evaluation-selection/model-training/aml-compute-options.md) provides details on the various AML compute options and how to create them. In this section we will look at how the submit the above training script to run on Azure Machine Learning Compute cluster.
+
+The key difference, in running the training job on local vs AML compute is to define the appropriate run configuration. As described in the section [Introducing AML Estimators]( ../../modeling/feature-engineering-training-evaluation-selection/model-training/aml-estimators.md), you can also use a specialized estimator that serves as an abstraction to construct run configurations for standard libraries such as Scikit-learn, Keras TensorFlow, PyTorch etc. Here we will look at an example of creating a run configuration using a Docker based environment.
+
+```python
+# Create the Dockor environment and specify the conda dependencies
+remote_env = Environment("remote-env")
+remote_env.docker.enabled = True
+remote_env.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'])
+
+# Set compute target name that is created in the workspace in the script run config
+src.run_config.target = aml_compute_name
+
+# Set the environment in the script run config
+src.run_config.environment = remote_env
+
+# Submit the script run config to start the experiment run on the AML compute
+run = experiment.submit(src)
+```
 
 ## Logging during the model training process
 
