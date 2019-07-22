@@ -122,5 +122,8 @@ run = experiment.submit(src)
 Please see the following additional references on training on local and AML compute custer in Azure Machine Learning service:
 
 - [Azure Machine Learning Notebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training)
+- [Start, monitor, and cancel training runs in Python](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-manage-runs)
+- [Log metrics during training runs in Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-track-experiments)
+- [Visualize experiment runs and metrics with TensorBoard and Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-monitor-tensorboard)
 
 Read next: [Simplify the process with Automated Machine Learning, a component of Azure Machine Learning service](../simplify-process-with-automated-ml/README.md)
