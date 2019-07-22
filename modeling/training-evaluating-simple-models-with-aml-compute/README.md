@@ -48,9 +48,9 @@ clf.fit(X_train, y_train)
 
 The Script Run Configuration defines the training script and the environment needed to run the training job.  There are two main ways to define the required environment: 
 
-User Managed Environment - When using a user-managed environment, you are responsible for ensuring that all the necessary packages are available in the Python environment you choose to run the script in.
+- User Managed Environment - When using a user-managed environment, you are responsible for ensuring that all the necessary packages are available in the Python environment you choose to run the script in.
 
-System Managed Environment - You can ask the Azure Machine Learning service to build a new conda environment for running your script.
+- System Managed Environment - You can ask the Azure Machine Learning service to build a new conda environment for running your script.
 
 The following code snippet shows how to create a system managed environment:
 
