@@ -58,7 +58,7 @@ The following code snippet shows how to create a system managed environment:
 from azureml.core import ScriptRunConfig
 from azureml.core.conda_dependencies import CondaDependencies
 
-# Create the script run config that specifies the script folder and the script filename on the local compute
+# Create the script run config that specifies the path to script folder and filename
 src = ScriptRunConfig(source_directory='...', script='...')
 
 # Create a system managed environment
@@ -89,6 +89,8 @@ run = experiment.submit(src)
 ```
 
 ## Training using AML compute cluster
+
+[Introducing AML compute options](../../modeling/feature-engineering-training-evaluation-selection/model-training/aml-compute-options.md)
 
 ## Logging during the model training process
 
