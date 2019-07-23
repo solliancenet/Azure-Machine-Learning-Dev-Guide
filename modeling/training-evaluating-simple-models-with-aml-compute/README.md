@@ -113,6 +113,29 @@ run = experiment.submit(src)
 
 ## Logging during the model training process
 
+The Azure Machine Learning service provides support for monitoring experiment run, logging metrics, saving artifacts, and viewing the results of a run. Also, if you are already using [MLflow]( https://www.mlflow.org/) for managing your machine learning lifecycle, Azure Machine Learning service provides integration with MLFlow for consolidating your logs, metrics, and training artifacts within Azure Machine Learning service. You can refer to the section [Tools to measure model performance](../../ modeling/feature-engineering-training-evaluation-selection/model-evaluation/measure-model-performance.md) to learn more on the MLFlow integration with Azure Machine Learning service. In this section, we will look at how Azure Machine Learning SDK for Python allow you to log model metrics and upload artifacts to the run while training an experiment.
+
+The Azure Machine Learning SDK for Python provides support to log a wide variety of data types to the experiment run. This includes, scalar values, lists, row, table, images, upload file or a directory, and also you can tag a run with custom properties. The following example, shows you how you can log metrics and upload files to the experiment run from the model training script.
+
+```python
+from azureml.core import Run
+import math
+
+# Get the Run from context in which the script is running
+run = Run.get_context()
+
+# Evaluate your trained model on test data
+y_predict = clf.predict(X_test)
+y_actual = y_test.values.flatten().tolist()
+rmse = math.sqrt(mean_squared_error(y_actual, y_predict))
+
+# Log the RMSE metric to the run
+run.log('rmse', rmse, 'The RMSE score on test data')
+
+# Load files or directory from the machine where the script is running to the run
+run.upload_file(destination_path, source_path) # destination, source
+```
+
 ## Monitoring model training progress
 
 ## Visualizing model performance
