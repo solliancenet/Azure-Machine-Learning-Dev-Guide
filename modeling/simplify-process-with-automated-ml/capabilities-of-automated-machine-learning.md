@@ -99,7 +99,7 @@ print(per_class_imp)
 print(per_class_summary)
 ```
 
-Read the [Understanding automated machine learning generated models, using the model explainability capability of automated machine learning](./automl-understand_models-with-explainability/README.MD) section for a detailed discussion about using the SDK to explain models.
+Read the [Understanding automated machine learning generated models, using the model explainability capability of automated machine learning](./automl-understand-models-with-explainability/README.MD) section for a detailed discussion about using the SDK to explain models.
 
 ## Next steps
 
