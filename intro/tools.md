@@ -8,45 +8,13 @@ Notebooks are made up of one or more cells that allow for the execution of the c
 
 ![A screenshot of a notebook is displayed showing two cells. The first cell contains formatted text, and the second cell contains Python code and an output containing a line chart visualization.](media/notebook-cells.png 'Sample notebook cells')
 
-Notebooks can be run locally, on a notebook server, such as [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/), or in a hosted environment, such as [Azure Notebooks](https://notebooks.azure.com/) or [Azure Databricks](https://docs.microsoft.com/en-us/azure/azure-databricks/what-is-azure-databricks). Depending on your notebook environment, you can connect to a number of data sources and select from a large collection of open source libraries and SDKs (such as the Azure Machine Learning SDK) supported by the notebook's kernel (Python, etc.) to accelerate your development efforts. When you execute the cells in your notebook, you must first connect to a local execution engine or a cluster. This gives you the flexibility to change the environment in which the embedded code can execute, allowing you to share the notebook across different environments and scale-out computational workloads as needed. In most cases, you will run your notebooks in a cluster environment when performing model training. This allows you to execute more complex computational processing and use larger data sets than you would be able to from your own machine.
+Notebooks can be run locally, on a notebook server, such as [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/), or in a hosted environment, such as [notebook VMs](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-configure-environment#notebookvm), [Azure Notebooks](https://notebooks.azure.com/), or [Azure Databricks](https://docs.microsoft.com/en-us/azure/azure-databricks/what-is-azure-databricks). Depending on your notebook environment, you can connect to several data sources and select from a large collection of open-source libraries and SDKs (such as the Azure Machine Learning SDK) supported by the notebook's kernel (Python, etc.) to accelerate your development efforts. When you execute the cells in your notebook, you must first connect to an execution engine or a cluster. The execution context can be powered by local compute resources, such as your laptop or an on-premises cluster, or remote resources like a VM or cluster in Azure. Being able to select the execution context gives you the flexibility to change the environment in which the embedded code can execute, allowing you to share the notebook across different environments and scale-out computational workloads as needed. In most cases, you will run your notebooks in a cluster environment when performing model training. This allows you to execute more complex computational processing and use larger data sets than you would be able to from your own machine.
 
-If you are used to developing software and applications using your favorite IDE, then you will realize that there are some disadvantages to using notebooks in place of a more traditional development platform. For example, you cannot set breakpoints and run in debug mode, allowing you to step through the code and inspect object and environment states during execution. However, there are many advantages notebooks do provide. They offer an environment that allows for exploration, documentation, collaboration, and visualization. When a data scientist creates and shares it with a colleague, they are sharing notes and insights about the data with access to all of the queries, formulas, visualizations, and models. This enables interactive conversations and further exploration, with simple reproducibility by anyone running the notebook in the same or similar environment, without others needing to know a sequence of shell commands and environment variables known only to the original author. This collaborative knowledge exchange within an easy to share self-contained package is far more valuable than merely sharing a static, final report.
+Notebooks provide many advantages over traditional IDEs. They offer an environment that allows for exploration, documentation, collaboration, and visualization. When a data scientist creates and shares it with a colleague, they are sharing notes and insights about the data with access to all of the queries, formulas, visualizations, and models. This enables interactive conversations and further exploration, with simple reproducibility by anyone running the notebook in the same or similar environment, without others needing to know a sequence of shell commands and environment variables known only to the original author. This collaborative knowledge exchange within an easy to share self-contained package is far more valuable than merely sharing a static, final report. However, if you are used to developing software and applications using your favorite IDE, then you will realize that there are some disadvantages to using notebooks in place of a more traditional development platform. For example, you cannot set breakpoints and run in debug mode, allowing you to step through the code and inspect object and environment states during execution.
 
 ## Azure Notebooks and Jupyter notebooks
 
-The primary way to use the Azure Machine Learning service SDK is with Python-based Jupyter notebooks. In this section, we will describe how to get up and running using Jupyter notebooks and Azure ML within the free Azure Notebooks service, or with one of the Jupyter notebook server options.
-
-### Using the Azure Notebooks service
-
-To start using notebooks for your own experimentation and model training, you can quickly get up and running by using Jupyter notebooks in the hosted Microsoft [Azure Notebooks](https://notebooks.azure.com/) environment. Azure Notebooks provides a globally available environment for running Jupyter notebooks within your own projects that you can share with others. A project in Azure Notebooks is essentially a configuration of the underlying Linux virtual machine in which Jupyter notebooks run, along with a file folder and descriptive metadata. You can choose to run your notebooks on a free compute tier, or on an Azure virtual machine, such as an Azure Data Science Virtual Machine (DSVM) using the [Data Science Virtual Machine for Linux (Ubuntu) image](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro).
-
-Azure Notebooks is ready to work with [Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/), thanks to its pre-configured environment. There are two Azure ML-related projects you can use to get started in Azure Notebooks quickly. Below, we walk you through two options for cloning a project into your Azure Notebooks account so you can start experimenting with both projects.
-
-#### Option 1: Clone an existing project with the Clone button
-
-The first project is [Getting Started](https://notebooks.azure.com/azureml/projects/azureml-getting-started), provided by the Microsoft Azure Machine Learning Team ([azureml](https://notebooks.azure.com/azureml)). To clone this project, perform the following steps:
-
-1. Sign into [Azure Notebooks](https://notebooks.azure.com/).
-2. Navigate to the [Getting Started](https://notebooks.azure.com/azureml/projects/azureml-getting-started) project.
-3. Select the **Clone** button at the top of the page.
-
-   ![The Clone button is highlighted at the top of the page.](media/azure-notebooks-clone-button.png 'Clone Azure Notebooks project')
-
-4. In the Clone Project dialog that appears, optionally change the project name and Project ID (the custom ID used to create a simple URL to your project for sharing), specify whether to make the project publicly visible to others, then select **Clone**.
-5. After a few seconds, a copy of the project will be available for you to configure and run within your own Azure Notebooks account.
-
-#### Option 2: Upload project from a GitHub repository
-
-The second project you can clone is the [Azure Machine Learning service Tutorial](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) hosted on GitHub. This project contains additional tutorials you can run that covers various machine learning scenarios. To clone this project, perform the following steps:
-
-1. Sign into [Azure Notebooks](https://notebooks.azure.com/).
-2. Select **My Projects** to navigate to the projects dashboard.
-3. Select the **Upload GitHub Repo** (the up arrow) button to open the Upload GitHub Repository dialog.
-4. In the dialog, enter `Azure/MachineLearningNotebooks` in the **GitHub repository** field, clear **Clone recursively** since it is not needed for this project, provide a name for the project in the **Project Name** field, such as "Azure ML Services", provide an identifier in the **Project ID** field, clear **Public** if you want your clone to be private, then select **Import**.
-
-   ![The Upload GitHub Repository dialog is displayed with the previously described fields filled out.](media/azure-notebooks-upload-github-repo.png 'Upload GitHub Repository')
-
-5. After a couple minutes, Azure Notebooks automatically takes you to the new project's dashboard.
+The one way to use the Azure Machine Learning service SDK is with Python-based Jupyter notebooks. In this section, we will describe how to get up and running using Jupyter notebooks and Azure ML within the free Azure Notebooks service, or with one of the Jupyter notebook server options.
 
 ### Using Jupyter notebook servers
 
@@ -85,7 +53,7 @@ With this option, you can quickly get started with Azure Machine Learning servic
 
     ![AML Workspace experiment run.](media/aml-experiment-run.png 'Experiment run')
 
-    > The plots of logged values  are automatically created in the workspace whenever you log multiple values within the same name parameter.
+    > The plots of logged values are automatically created in the workspace whenever you log multiple values within the same name parameter.
 
 #### Option 2: Use your own notebook server
 
@@ -113,7 +81,7 @@ If you do not want to set up a Notebook VM and wish to run Jupyter notebooks on 
 
 #### Use the workspace on your own notebook server
 
-Find the directory in which your workspace configuration file is located, and start a notebook or create a new script. Add and execute the following code to use the basic SDK APIs to track experiment runs. 
+Find the directory in which your workspace configuration file is located, and start a notebook or create a new script. Add and execute the following code to use the basic SDK APIs to track experiment runs.
 
 These steps show you how to:
 
@@ -146,7 +114,41 @@ Wait until the run completes, then execute the following to display a URL that s
 print(run.get_portal_url())
 ```
 
+Copy and paste the URL from the command above into a new browser window. The URL will direct you to the Azure portal and open the experiment you just ran. Below is an example chart and attributes for the first run of the experiment.
+
 ![This screenshot shows the output of the above experiment as viewed from the Azure portal.](media/simple-experiment-run.png 'Logged values from experiment')
+
+### Using the Azure Notebooks service
+
+To start using notebooks for your own experimentation and model training, you can quickly get up and running by using Jupyter notebooks in the hosted Microsoft [Azure Notebooks](https://notebooks.azure.com/) environment. Azure Notebooks provides a globally available environment for running Jupyter notebooks within your own projects that you can share with others. A project in Azure Notebooks is essentially a configuration of the underlying Linux virtual machine in which Jupyter notebooks run, along with a file folder and descriptive metadata. You can choose to run your notebooks on a free compute tier, or on an Azure virtual machine, such as an Azure Data Science Virtual Machine (DSVM) using the [Data Science Virtual Machine for Linux (Ubuntu) image](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro).
+
+Azure Notebooks is ready to work with [Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/), thanks to its pre-configured environment. There are two Azure ML-related projects you can use to get started in Azure Notebooks quickly. Below, we walk you through two options for cloning a project into your Azure Notebooks account so you can start experimenting with both projects.
+
+#### Option 1: Clone an existing project with the Clone button
+
+The first project is [Getting Started](https://notebooks.azure.com/azureml/projects/azureml-getting-started), provided by the Microsoft Azure Machine Learning Team ([azureml](https://notebooks.azure.com/azureml)). To clone this project, perform the following steps:
+
+1. Sign into [Azure Notebooks](https://notebooks.azure.com/).
+2. Navigate to the [Getting Started](https://notebooks.azure.com/azureml/projects/azureml-getting-started) project.
+3. Select the **Clone** button at the top of the page.
+
+   ![The Clone button is highlighted at the top of the page.](media/azure-notebooks-clone-button.png 'Clone Azure Notebooks project')
+
+4. In the Clone Project dialog that appears, optionally change the project name and Project ID (the custom ID used to create a simple URL to your project for sharing), specify whether to make the project publicly visible to others, then select **Clone**.
+5. After a few seconds, a copy of the project will be available for you to configure and run within your own Azure Notebooks account.
+
+#### Option 2: Upload project from a GitHub repository
+
+The second project you can clone is the [Azure Machine Learning service Tutorial](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) hosted on GitHub. This project contains additional tutorials you can run that covers various machine learning scenarios. To clone this project, perform the following steps:
+
+1. Sign into [Azure Notebooks](https://notebooks.azure.com/).
+2. Select **My Projects** to navigate to the projects dashboard.
+3. Select the **Upload GitHub Repo** (the up arrow) button to open the Upload GitHub Repository dialog.
+4. In the dialog, enter `Azure/MachineLearningNotebooks` in the **GitHub repository** field, clear **Clone recursively** since it is not needed for this project, provide a name for the project in the **Project Name** field, such as "Azure ML Services", provide an identifier in the **Project ID** field, clear **Public** if you want your clone to be private, then select **Import**.
+
+   ![The Upload GitHub Repository dialog is displayed with the previously described fields filled out.](media/azure-notebooks-upload-github-repo.png 'Upload GitHub Repository')
+
+5. After a couple minutes, Azure Notebooks automatically takes you to the new project's dashboard.
 
 ## Visual Studio Code with the Azure Machine Learning extension
 
@@ -180,16 +182,16 @@ The screenshot below shows the features for an AML workspace that have been expa
 
 ## Visual interface
 
-The Azure Machine Learning service visual interface can be used to prepare and visualize your data, run experiments, and quickly build, test, and deploy models through its easy-to-use visual drag-and-drop interface. If you are familiar with Azure Machine Learning Studio, you will see many similarities with Azure ML visual interface. Both services provide the same features using a nearly identical interface with low or node code, and Azure Machine Learning service visual interface is considered the successor to Azure Machine Learning Studio. However, there are some differences between both offerings. The two main advantages that visual interface provides are that you can scale your compute, and you can deploy your models to targets outside of Azure web services, such as Azure Kubernetes Service (AKS).
+The Azure Machine Learning service visual interface can be used to prepare and visualize your data, run experiments, and quickly build, test, and deploy models through its easy-to-use visual drag-and-drop interface. If you are familiar with Azure Machine Learning Studio, you will see many similarities with Azure ML visual interface. Both services provide the same features using a nearly identical interface with low or node code, and Azure Machine Learning service visual interface is the successor to Azure Machine Learning Studio. However, there are some differences between both offerings. The two main advantages that visual interface provides are that you can scale your compute, and you can deploy your models to targets outside of Azure web services, such as Azure Kubernetes Service (AKS).
 
 Here is a quick comparison of both options:
 
-|                                                    | Machine Learning Studio                          | Azure Machine Learning service:<br/>Visual interface                                                                                                                                      |
-| -------------------------------------------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Modules for interface                              | Many                                             | Initial set of popular modules                                                                                                                                                            |
-| Training compute targets                           | Proprietary compute target, CPU support only     | Supports Azure Machine Learning compute, GPU or CPU.<br/>(Other computes supported in SDK)                                                                                                |
-| Deployment compute targets                         | Proprietary web service format, not customizable | Enterprise security options & Azure Kubernetes Service. <br/>([Other computes](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-deploy-and-where) supported in SDK) |
-| Automated model training and hyperparameter tuning | No                                               | Not yet in visual interface. <br/> (Supported in the SDK and Azure portal.)                                                                                                               |
+|                                                    | Machine Learning Studio                          | Azure Machine Learning service:<br/>Visual interface |
+| -------------------------------------------------- | ------------------------------------------------ | ---------------------------------------------------- |
+| Modules for interface                              | Many                                             | Initial set of popular modules                       |
+| Training compute targets                           | Proprietary compute target, CPU support only     | Supports Azure Machine Learning compute, GPU or CPU  |
+| Deployment compute targets                         | Proprietary web service format, not customizable | Azure Kubernetes Service                             |
+| Automated model training and hyperparameter tuning | No                                               | Not yet in visual interface                          |
 
 It is important to note that any models created and deployed using visual interface can be managed through the Azure Machine Learning service workspace. This is another big advantage over Machine Learning Studio, where there are no options to export and use the models elsewhere.
 
@@ -201,7 +203,7 @@ The screenshot below shows an experiment in visual interface that contains steps
 
 ![This screenshot shows the UI for a visual interface experiment.](media/visual-interface-experiment.png 'Visual interface experiment')
 
-When you are ready to run the experiment, you have the choice to select an existing compute target or create a new one. If you need more options for configuring the compute targets, such as VM size and type (CPU or GPU) or the number of nodes, you can create your custom compute targets within your workspace in the Azure portal. Compute target options include Machine Learning Compute, Kubernetes Service, Virtual Machine (running Ubuntu), Azure Databricks, Data Lake Analytics, and HDInsight.
+When you are ready to run the experiment, you have the choice to select an existing compute target or create a new one. If you need more options for configuring the compute targets, such as VM size and type (CPU or GPU) or the number of nodes, you can create your custom compute targets within your workspace in the Azure portal.
 
 When using a Machine Learning Compute target, there is a warmup time of approximately 5 minutes if you re-run your experiment after a long time. That is because the compute resource autoscales to 0 nodes when it is idle to save cost.
 
