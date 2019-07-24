@@ -12,7 +12,7 @@ The exploratory nature of machine learning development is very well described by
 The fundamental idea behind autoML is to enable the automated exploration of the above-mentioned combinations governed by an initial set of constraints defined as inputs for the process. Examples of such constraints include:
 
 - The compute resources to be used.
-- The machine learning prediction task type – currently only Classification, Regression, or Forecasting are supported.
+- The machine learning prediction task type – currently only Classification, Regression, and Forecasting are supported (internally, Forecasting - which is a Time-Series prediction task - is handled as a multivariate regression problem).
 - THe metric used for performance evaluation – like accuracy, spearman_correlation, normalized_root_mean_squared_error, and others.
 - Whether preprocessing should be used or not.
 - Exit criteria – limits imposed on the number of iterations, time of execution, and performance metric threshold.
