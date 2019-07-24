@@ -4,7 +4,7 @@ Azure Machine Learning service provides a comprehensive environment you can use 
 
 ## Components and concepts
 
-The top-level component of the Azure Machine Learning (AML) service is the [workspace](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-workspace). Your first step to using AML is to create a workspace within an Azure region and resource group (a logical grouping of Azure services). When you do this, the script creates all services alongside your workspace. Once created, you reference workspace any time you need to train, evaluate, monitor, or deploy a model.
+The top-level component of the Azure Machine Learning (AML) service is the [workspace](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-workspace). Your first step to using AML is to create a workspace within an Azure region and resource group (a logical grouping of Azure services). When you do this, the script creates all services alongside your workspace. Once created, you reference the workspace any time you need to train, evaluate, monitor, or deploy a model.
 
 Here is an example of creating a new workspace, using the Machine Learning CLI (command-line interface). See [Getting your environment set up](./environment-setup.md) for more information.
 
@@ -35,7 +35,7 @@ The diagram includes the following components:
 
 Beyond the workspace, there are a few related Azure resources that are used to manage, monitor, and secure the workspace components. These are created for you automatically when you create a new workspace. However, you can choose to use existing Azure services in place of creating new versions.
 
-- [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): Registers docker containers that you use during training and when you deploy a model. To minimize costs, ACR is **lazy-loaded** until deployment images are created.
+- [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): Registers docker containers that you use during training and when you deploy a model. To minimize costs, ACR is lazy-loaded until deployment images are created. This means that the ACR service is provisioned when you first register a model in your workspace.
 - [Azure Storage account](https://azure.microsoft.com/services/storage/): Is used as the default data store for the workspace. Jupyter notebooks that are used with your notebook VMs are stored here as well.
 - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/): Allows you to monitor your models and view metrics on their usage.
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): Securely stores secrets and other sensitive information used by your workspace and any compute targets.
@@ -46,7 +46,7 @@ Beyond the workspace, there are a few related Azure resources that are used to m
 
 ### 1 - Train
 
-At the core of the modern data science process is [training, evaluating, and selecting machine learning models](../modeling/feature-engineering-training-evaluation-selection/README.md). After selecting an algorithm for your model, you train it with data that has been evaluated and prepared with the transformations and features required for training. At a very high level, training a model with Azure Machine Learning service involves the following steps:
+At the core of the modern data science process is [training, evaluating, and selecting machine learning models](../modeling/feature-engineering-training-evaluation-selection/README.md). Leading up to this point, you have collected and prepared the data for training. The next step is to select an algorithm for your model then train it with data that has been evaluated and prepared with the transformations and features required for training. At a very high level, training a model with Azure Machine Learning service involves the following steps:
 
 - Using your favorite [Python environment](./environment-setup.md), create a machine learning training script along with any associated files. Specify the directory that contains these files, as well as an experiment name. Alternately, use visual interface for a code-free experience.
 - Create and configure a compute target for executing the training. During training, the complete directory copies to the compute target before the training script executes.
