@@ -165,7 +165,13 @@ RunDetails(run).show()
 
 ## Visualizing model performance
 
-   ![Example output from RunDetails Notebook Widget showing model performance metrics](../media/model_perf_1.png 'Visualizing model performance')
+As discussed, the model performance metrics are available to be visualized in the RunDetails Jupyter notebook widget, and in the run details page within Azure portal. You can also visualize model performance metrics in TensorBoard using the [tensorboard package]( https://docs.microsoft.com/en-us/python/api/azureml-tensorboard/?view=azure-ml-py). The details of leveraging TensorBoard with Azure Machine Learning experiments are outside the scope of this article and are made available in the links provided below.
+
+### Option 1: Jupyter notebook widget
+
+  ![Example output from RunDetails Notebook Widget showing model performance metrics](../media/model_perf_1.png 'Visualizing model performance')
+
+### Option 2: Run details within Azure portal
 
    ![Snapshot of model performance as seen in Azure portal](../media/model_perf_3.png 'Visualizing model performance')
         
