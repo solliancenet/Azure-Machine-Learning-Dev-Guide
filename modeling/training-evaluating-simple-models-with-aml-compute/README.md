@@ -146,17 +146,21 @@ Azure Machine Learning service provides ability to manage your model training ru
 
 The following code examples show you the two main ways to monitor the model training progress from within your notebook.
 
+### Option 1: Wait for run completion with show_output = True
+
 ```python
 run.wait_for_completion(show_output = True)
 ```
 
    ![Example output from wait_for_completion method on the Run object](../media/model_monitoring_1.png 'Monitoring model training progress')
 
+### Option 2: Use Jupyter notebook widget
+
 ```python
 from azureml.widgets import RunDetails
-
 RunDetails(run).show()
 ```
+
    ![Example output from RunDetails Notebook Widget](../media/model_monitoring_2.png 'Monitoring model training progress')
 
 ## Visualizing model performance
