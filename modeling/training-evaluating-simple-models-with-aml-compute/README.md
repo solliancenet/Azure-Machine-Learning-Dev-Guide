@@ -117,7 +117,7 @@ The Azure Machine Learning service provides support for monitoring experiment ru
 
 The Azure Machine Learning SDK for Python provides support to log a wide variety of data types to the experiment run. This includes, scalar values, lists, row, table, images, upload file or a directory, and also you can tag a run with custom properties. Depending how the metrics are logged, they can be viewed as charts in the run details page. For example, if you log an array of numeric values, or a single numeric value with the same metric name repeatedly, then you can view the metric as a single variable line chart. In another example, if you log a table with two numerical columns – two metrics, or log a row with two columns repeatedly, then you can view the metrics as two variable line chart. 
 
-The following example, shows you how you can log a single numeric value metric and upload files to the experiment run from the model training script.
+The following example, shows you how you can log a single numeric value with the same metric name repeatedly and upload files to the experiment run from the model training script.
 
 ```python
 from azureml.core import Run
@@ -126,13 +126,15 @@ import math
 # Get the Run from context in which the script is running
 run = Run.get_context()
 
-# Evaluate your trained model on test data
-y_predict = clf.predict(X_test)
-y_actual = y_test.values.flatten().tolist()
-rmse = math.sqrt(mean_squared_error(y_actual, y_predict))
-
-# Log the RMSE metric to the run
-run.log('rmse', rmse, 'The RMSE score on test data')
+for i in range(len(depths)):
+    ...
+    y_predict = clf.predict(X_test)
+    y_actual = y_test.values.flatten().tolist()
+    rmse = math.sqrt(mean_squared_error(y_actual, y_predict))
+    run.log('max_depth', depth, 'Maximum depth of the individual regression estimators')
+    run.log('rmse', rmse, 'The RMSE score for max_depth: {}'.format(depth))
+    print('max_depth: {} RMSE score: {}'.format(depth, rmse))
+    ...
 
 # Load files or directory from the machine where the script is running to the run
 run.upload_file(destination_path, source_path) # destination, source
