@@ -169,12 +169,16 @@ As discussed, the model performance metrics are available to be visualized in th
 
 ### Option 1: Jupyter notebook widget
 
+The following example shows the details from an Automated Machine Learning experiment run, where you can toggle between the various performance metrics to visualize and compare the performance of the various model pipelines. You can also select an individual model pipeline run to view metrics for that specific run. You will learn more on Automated Machine Learning experiments with Azure Machine Learning service in the next section.
+
   ![Example output from RunDetails Notebook Widget showing model performance metrics](../media/model_perf_1.png 'Visualizing model performance')
 
 ### Option 2: Run details within Azure portal
 
+This example shows the details of a specific pipeline run for an Automated Machine Learning experiment within the Azure Portal. You can evaluate the various model performance metrics, visualize the model’s predictions against true data.
+
    ![Snapshot of model performance as seen in Azure portal](../media/model_perf_3.png 'Visualizing model performance')
-        
+
 ## Next steps
 
 Please see the following additional references on training on local and AML compute custer in Azure Machine Learning service:
