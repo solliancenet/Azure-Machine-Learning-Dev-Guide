@@ -138,6 +138,21 @@ run.upload_file(destination_path, source_path) # destination, source
 
 ## Monitoring model training progress
 
+Azure Machine Learning service provides ability to manage your model training runs from within your Python code. For example, in the above section we saw an example of how to start an experiment run. You can also query your run status, run details, cancel run, or mark a run complete. Typically, the model training script is going to generate output, and log metrics to the run as the model is trained. You can monitor your training script output in real-time from within your Python notebooks in two common ways: (1) to call `wait_for_completion(show_output = True)` on the run object, and (2) use the Jupyter notebook widget: `RunDetails`. The following code examples show you the two main ways to monitor the model training progress from within your notebook.
+
+```python
+run.wait_for_completion(show_output = True)
+```
+
+   ![Example output from wait_for_completion method on the Run object](../media/model_monitoring_1.png 'Monitoring model training progress')
+
+```python
+from azureml.widgets import RunDetails
+
+RunDetails(run).show()
+```
+   ![Example output from RunDetails Notebook Widget](../media/model_monitoring_2.png 'Monitoring model training progress')
+
 ## Visualizing model performance
         
 ## Next steps
