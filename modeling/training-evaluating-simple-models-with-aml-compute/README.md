@@ -175,7 +175,7 @@ The following example shows the details from an Automated Machine Learning exper
 
 ### Option 2: Run details within Azure portal
 
-This example shows the details of a specific pipeline run for an Automated Machine Learning experiment within the Azure Portal. You can evaluate the various model performance metrics, visualize the model’s predictions against true data.
+This example shows the details of a specific pipeline run for an Automated Machine Learning experiment within the Azure Portal. You can evaluate the various model performance metrics, and visualize the model’s predictions against true data.
 
    ![Snapshot of model performance as seen in Azure portal](../media/model_perf_3.png 'Visualizing model performance')
 
