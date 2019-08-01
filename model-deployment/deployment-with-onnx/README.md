@@ -19,7 +19,7 @@ In the [intro](../../intro/tools.md) section we learned how to get started with 
 
 ### Converting deep learning model to ONNX
 
-In this example, we will use a pre-trained Keras model (`model`) with Tensorflow backend. The ONNXMLTools(https://github.com/onnx/onnxmltools) library provides support for converting models from various machine learning libraries, such as Keras, Tensorflow, scikit-learn, etc. to the ONNX format. The following example, show how to convert a Keras model to ONNX format:
+In this example, we will use a pre-trained Keras model (`model`) with Tensorflow backend. The [ONNXMLTools](https://github.com/onnx/onnxmltools) library provides support for converting models from various machine learning libraries, such as Keras, Tensorflow, scikit-learn, etc. to the ONNX format. The following example, show how to convert a Keras model to ONNX format:
 
 ```python
 import onnxmltools
