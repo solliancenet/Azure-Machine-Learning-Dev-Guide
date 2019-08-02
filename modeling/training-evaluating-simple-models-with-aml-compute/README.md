@@ -115,7 +115,9 @@ run = experiment.submit(src)
 
 The Azure Machine Learning service provides support for monitoring experiment run, logging metrics, saving artifacts, and viewing the results of a run. Also, if you are already using [MLflow]( https://www.mlflow.org/) for managing your machine learning lifecycle, Azure Machine Learning service provides integration with MLFlow for consolidating your logs, metrics, and training artifacts within Azure Machine Learning service. You can refer to the section [Tools to measure model performance](../../modeling/feature-engineering-training-evaluation-selection/model-evaluation/measure-model-performance.md) to learn more on the MLFlow integration with Azure Machine Learning service. In this section, we will look at how Azure Machine Learning SDK for Python allow you to log model metrics and upload artifacts to the run while training an experiment.
 
-The Azure Machine Learning SDK for Python provides support to log a wide variety of data types to the experiment run. This includes, scalar values, lists, row, table, images, upload file or a directory, and also you can tag a run with custom properties. The following example, shows you how you can log metrics and upload files to the experiment run from the model training script.
+The Azure Machine Learning SDK for Python provides support to log a wide variety of data types to the experiment run. This includes, scalar values, lists, row, table, images, upload file or a directory, and also you can tag a run with custom properties. Depending how the metrics are logged, they can be viewed as charts in the run details page. For example, if you log an array of numeric values, or a single numeric value with the same metric name repeatedly, then you can view the metric as a single variable line chart. In another example, if you log a table with two numerical columns – two metrics, or log a row with two columns repeatedly, then you can view the metrics as two variable line chart. 
+
+The following example, shows you how you can log a single numeric value with the same metric name repeatedly and upload files to the experiment run from the model training script.
 
 ```python
 from azureml.core import Run
@@ -124,13 +126,15 @@ import math
 # Get the Run from context in which the script is running
 run = Run.get_context()
 
-# Evaluate your trained model on test data
-y_predict = clf.predict(X_test)
-y_actual = y_test.values.flatten().tolist()
-rmse = math.sqrt(mean_squared_error(y_actual, y_predict))
-
-# Log the RMSE metric to the run
-run.log('rmse', rmse, 'The RMSE score on test data')
+for i in range(len(depths)):
+    ...
+    y_predict = clf.predict(X_test)
+    y_actual = y_test.values.flatten().tolist()
+    rmse = math.sqrt(mean_squared_error(y_actual, y_predict))
+    run.log('max_depth', depth, 'Maximum depth of the individual regression estimators')
+    run.log('rmse', rmse, 'The RMSE score for max_depth: {}'.format(depth))
+    print('max_depth: {} RMSE score: {}'.format(depth, rmse))
+    ...
 
 # Load files or directory from the machine where the script is running to the run
 run.upload_file(destination_path, source_path) # destination, source
@@ -138,8 +142,43 @@ run.upload_file(destination_path, source_path) # destination, source
 
 ## Monitoring model training progress
 
+Azure Machine Learning service provides ability to manage your model training runs from within your Python code. For example, in the above section we saw an example of how to start an experiment run. You can also query your run status, run details, cancel run, or mark a run complete. Typically, the model training script is going to generate output, and log metrics to the run as the model is trained. You can monitor your training script output in real-time from within your Python notebooks in two common ways: (1) to call `wait_for_completion(show_output = True)` on the run object, and (2) use the Jupyter notebook widget: `RunDetails`. You can also monitor the training run from the Azure portal by navigating to the `Experiments` section in your `Machine Learning Workspace`, or open the direct link to the run details page in Azure portal that is available from the call `run.get_portal_url()`. In the run details page within Azure portal, you can see properties, metrics, images, and charts that are logged to the experiment run.
+
+The following code examples show you the two main ways to monitor the model training progress from within your notebook.
+
+### Option 1: Wait for run completion with show_output = True
+
+```python
+run.wait_for_completion(show_output = True)
+```
+
+   ![Example output from wait_for_completion method on the Run object](../media/model_monitoring_1.png 'Monitoring model training progress')
+
+### Option 2: Use Jupyter notebook widget
+
+```python
+from azureml.widgets import RunDetails
+RunDetails(run).show()
+```
+
+   ![Example output from RunDetails Notebook Widget](../media/model_monitoring_2.png 'Monitoring model training progress')
+
 ## Visualizing model performance
-        
+
+As discussed, the model performance metrics are available to be visualized in the RunDetails Jupyter notebook widget, and in the run details page within Azure portal. You can also visualize model performance metrics in TensorBoard using the [tensorboard package]( https://docs.microsoft.com/en-us/python/api/azureml-tensorboard/?view=azure-ml-py). The details of leveraging TensorBoard with Azure Machine Learning experiments are outside the scope of this article and are made available in the links provided below.
+
+### Option 1: Jupyter notebook widget
+
+The following example shows the details from an Automated Machine Learning experiment run, where you can toggle between the various performance metrics to visualize and compare the performance of the various model pipelines. You can also select an individual model pipeline run to view metrics for that specific run. You will learn more on Automated Machine Learning experiments with Azure Machine Learning service in the next section.
+
+  ![Example output from RunDetails Notebook Widget showing model performance metrics](../media/model_perf_1.png 'Visualizing model performance')
+
+### Option 2: Run details within Azure portal
+
+This example shows the details of a specific pipeline run for an Automated Machine Learning experiment within the Azure Portal. You can evaluate the various model performance metrics, and visualize the model’s predictions against true data.
+
+   ![Snapshot of model performance as seen in Azure portal](../media/model_perf_3.png 'Visualizing model performance')
+
 ## Next steps
 
 Please see the following additional references on training on local and AML compute custer in Azure Machine Learning service:

@@ -6,7 +6,7 @@ Whether you are using the Azure Machine Learning service SDK on your local machi
 
 The [Azure Machine Learning service workspace](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-workspace) is the top-level resource and central place in which you create and work with your artifacts. The primary components that are added to a new workspace, if regionally available, are:
 
-- [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): To minimize costs, ACR is **lazy-loaded** until deployment images are created.
+- [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)
 - [Azure Storage](https://azure.microsoft.com/services/storage/)
 - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/)
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
@@ -32,7 +32,7 @@ Follow these steps to create your workspace through the Azure portal.
    | Workspace name | Enter a unique name that identifies your workspace. In this example, we use **aml-guide-workspace**. Names must be unique across the resource group. Use a name that's easy to recall and differentiate from workspaces created by others. |
    | Subscription   | Select the Azure subscription that you want to use.                                                                                                                                                                                        |
    | Resource group | Use an existing resource group in your subscription, or enter a name to create a new resource group. A resource group is a container that holds related resources for an Azure solution. In this example, we use **aml-guide**.            |
-   | Location       | Select the location closest to your users and the data resources. The workspace is created in this location.                                                                                                                         |
+   | Location       | Select the location closest to your users and the data resources. The workspace is created in this location.                                                                                                                               |
 
    ![The Machine Learning Service Workspace creation dialog is displayed with the previously described fields.](media/azure-ml-service-workspace-create-dialog.png 'Create Machine Learning Service Workspace dialog')
 
@@ -173,6 +173,33 @@ The _config.json_ file contains the following:
 
 Alternatively, you may download the configuration file (config.json) that will be used by your notebooks to interact with your Machine Learning service workspace. You should save the file to the top-level parent folder that contains your Jupyter notebooks. To download a generated configuration file, go to the Overview blade of your Azure Machine Learning service workspace in the Azure portal and select the **Download config.json** file. Alternatively, you can [create a custom configuration file](https://docs.microsoft.com/en-us/azure/machine-learning/service/setup-create-workspace#write-a-configuration-file) manually.
 
+### Notebook VMs
+
+With notebook virtual machines, you can quickly get started with Azure Machine Learning service by configuring a managed Jupyter notebook server in the cloud. The environment is provided by a [notebook VM](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-configure-environment#notebookvm), which is a secure, cloud-based Azure workstation that comes configured with a fully prepared machine learning environment and a Jupyter notebook server (JupyterLab). You can immediately start running notebooks and logging experiments in your ML workspace. There is no need to install any additional software or libraries in this environment. To get started, perform the following steps:
+
+1. Sign in to the [Azure portal](https://portal.azure.com/) and open your Azure Machine Learning service workspace. [Create your workspace](./environment-setup.md#create-your-azure-machine-learning-service-workspace) if you have not already done so.
+2. On your workspace page, select **Notebook VMs** on the left-hand menu.
+3. Select **+ New** to create a notebook VM.
+
+   ![The Notebook VMs link is highlighted on the left-hand menu of the Azure ML Service Workspace, and the New button is highlighted within the Notebook VMs blade.](media/new-notebook-vm-link.png 'New Notebook VM')
+
+4. Provide a name for your VM, select a VM size, then select **Create**.
+
+   ![The New Notebook VM form is displayed with the previously described fields.](media/new-notebook-vm.png 'New Notebook VM')
+
+   > Your notebook VM's name must be between 2 and 16 characters, and can contain letters, digits, and hyphens. The name you select must be unique across your Azure subscription.
+
+5. Wait until the status changes to **Running**. This will take approximately 4-5 minutes.
+6. You will see the new VM in the list of Notebook VMs after it is created. Select the **Jupyter** link in the **URI** column for your new VM.
+
+   ![The Jupyter link for the new Notebook VM is highlighted.](media/notebook-vm-jupyter-link.png 'Notebook VMs')
+
+   Clicking this link starts your notebook server and opens the Jupyter notebook in a new web browser tab. Only the person who created the VM can use this link.
+
+7. Be sure to stop your notebook VM when you are not using it. This will save money since you are only charged while it is running. To do this, select your notebook VM within your AML workspace, then select **Stop**.
+
+   ![The notebook VM is selected and the Stop button is highlighted.](media/notebook-vm-stop.png 'Notebook VMs - Stop')
+
 ### Azure Notebooks
 
 Azure Notebooks gives you a fully managed environment in which you can develop and run Jupyter notebooks and easily share your projects with others. You do not need to sign in to start using Azure Notebooks, but any changes you make to notebooks or data files will not persist. This works well for scenarios where someone only needs to run a notebook, like as part of a tutorial or demonstration, without needing to sign in. However, if you want to Azure Notebooks to retain your projects across sessions, you must sign in with either a Microsoft account or a "Work or School" account. When the account used for Azure Notebooks is also associated with an Azure subscription, you gain additional benefits such as running notebooks on more powerful servers, creating private notebooks and granting permissions to notebooks to individual users.
@@ -200,7 +227,7 @@ Your profile page is publicly viewable, and you can edit your profile to update 
 | Section              | Contents                                                                                                                                                                                                                                                                                                                                                                                                 |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Profile photo        | An image that's shown on your profile page.                                                                                                                                                                                                                                                                                                                                                              |
-| Account Information  | Your display name, user ID, and public email account. The email account here provides other users a means to contact you and can be different from the [account](azure-notebooks-user-account.md) you use to sign in to Azure Notebooks itself.                                                                                                                                                            |
+| Account Information  | Your display name, user ID, and public email account. The email account here provides other users a means to contact you and can be different from the [account](azure-notebooks-user-account.md) you use to sign in to Azure Notebooks itself.                                                                                                                                                          |
 | Profile Information  | Your location, company, job title, web site, and a short description of yourself.                                                                                                                                                                                                                                                                                                                        |
 | Social Profiles      | Your GItHub, Twitter, and Facebook IDs, if you wish to share them.                                                                                                                                                                                                                                                                                                                                       |
 | Privacy Settings     | Provides two commands:<ul><li>**Export My Profile**: creates and downloads a _.zip_ file containing all the information that Azure Notebooks saves in your profile, including your photograph, profile information, and security logs.</li><li>**Delete My Account**: Permanently deletes all your personal information stored in Azure Notebooks.</li></ul>                                             |
@@ -227,11 +254,11 @@ All forms of project configuration are applied whenever the virtual machine is s
 
    ![The Environment tab is selected, and the operation dropdown is highlighted and displayed.](media/azure-notebooks-add-environment-setup-step.png 'Add Environment Setup Step')
 
-   | Operation        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-   | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | Operation        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+   | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | Requirements.txt | Python projects define their dependencies in a requirements.txt file. With this option, select the appropriate file from the project's file list, and also select the Python version in the additional dropdown that appears. If necessary, select **Cancel** to return to the project, upload or create the file, then return to the **Project Settings** > **Environment** tab and create a new step. With this step in place, running a notebook in the project automatically runs `pip install -r <file>` |
-   | Shell script     | Use to indicate a bash shell script (typically a file with the _.sh_ extension) that contains any commands you wish to run to initialize the environment.                                                                                                                                                                                                                                                                                                                                                      |
-   | Environment.yml  | A Python project that uses conda for managing an environment uses an _environments.yml_ file to describe dependencies. With this option, select the appropriate file from the project's file list.                                                                                                                                                                                                                                                                                                             |
+   | Shell script     | Use to indicate a bash shell script (typically a file with the _.sh_ extension) that contains any commands you wish to run to initialize the environment.                                                                                                                                                                                                                                                                                                                                                     |
+   | Environment.yml  | A Python project that uses conda for managing an environment uses an _environments.yml_ file to describe dependencies. With this option, select the appropriate file from the project's file list.                                                                                                                                                                                                                                                                                                            |
 
 4. When you are done adding steps, select **Save**.
 

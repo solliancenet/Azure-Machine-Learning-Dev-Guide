@@ -1,4 +1,4 @@
-# Overview of wrangling, exploring and cleaning data
+# Overview of wrangling, exploring, and cleaning data
 
 *Big Data* has become part of the lexicon of organizations worldwide, as more and more organizations look to leverage data to drive more informed business decisions. With this evolution in business decision-making, the amount of raw data collected, along with the number and diversity of data sources, is growing at an astounding rate. Raw data, however, is often noisy and unreliable and may contain missing values and outliers. Using such data for modeling can produce misleading results. For the data scientist, the ability to combine these large, disparate data sets into a format more appropriate for conducting advanced analytics is an increasingly crucial skill. In the field of data science, this skill is commonly known as **data wrangling**.
 
@@ -94,7 +94,7 @@ crime_all.take_sample(probability=0.25, seed=RAND_SEED).head(4)
 
 Appending rows from other files and data sources can provide a more unified view of data from various sources, and help you understand the differences between each source. As an example, in the results above, notice how the date formats vary between records. This is an indication that the different files and data sources store dates differently, and is an issue that needs to be addressed during the cleansing step.
 
-Next, let's look at another example of a common task performed during this step: column splitting. In the crime dataset, the field `Block` contains both a block number and a street name. To make this data easier to work with during modeling, we are going to split this column into two, one for the block number and one for the street. In this example, we will use the `split_column_by_example()` method of the Azure AL SDK's [builders module](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.api.builders?view=azure-ml-py).
+Next, let's look at another example of a common task performed during this step: column splitting. In the crime dataset, the field `Block` contains both a block number and a street name. To make this data easier to work with during modeling, we are going to split this column into two, one for the block number and one for the street. In this example, we will use the `split_column_by_example()` method of the Azure ML Data Prep SDK's [builders module](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.api.builders?view=azure-ml-py).
 
 ```python
 # Create a builder for the Block column

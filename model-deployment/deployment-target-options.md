@@ -140,7 +140,7 @@ Finally, you can use the [Visual Studio Code extension to deploy to AKS](https:/
 
 For low-scale, CPU-based workloads or testing, deploy to ACI.
 
-Using [Azure Container Instances](https://docs.microsoft.com/en-us/azure/container-instances/) is the fastest and most straightforward way to run a container in Azure, without having to manage any virtual machines or adopt a higher-level service. As opposed to AKS, you use ACI to run isolated containers. ACI is suitable for smaller or short-term workloads since you only pay for the time they are up and running. They are also swift to start, usually within seconds, and delete when you no longer needed. As a point of comparison, AKS clusters are meant to host long-running web services that can scale out to meet heavy workload requirements, and scale back in during lighter workloads.
+Using [Azure Container Instances](https://docs.microsoft.com/en-us/azure/container-instances/) is the fastest and most straightforward way to run a container in Azure, without having to manage any virtual machines or adopt a higher-level service. As opposed to AKS, you use ACI to run isolated containers. ACI is suitable for smaller or short-term workloads since you only pay for the time they are up and running. They are also swift to start, usually within seconds, and delete when they are no longer needed. As a point of comparison, AKS clusters are meant to host long-running web services that can scale out to meet heavy workload requirements, and scale back in during lighter workloads.
 
 Deploy your models to ACI if you need to deploy and validate your model quickly, or if you are testing a model that is under development.
 
