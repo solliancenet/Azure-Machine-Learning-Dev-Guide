@@ -4,4 +4,4 @@
 - [Overview of Real-time inferencing](./real-time-inferencing.md)
 - [Overview of Batch inferencing](./batch-inferencing.md)
 - [Overview of inferencing at the IoT edge](./iot-edge-inferencing.md)
-- Reducing model deployment dependencies and improving model inferencing performance with ONNX
+- [Reducing model deployment dependencies and improving model inferencing performance with ONNX](./deployment-with-onnx/README.md)
