@@ -151,4 +151,4 @@ Please see the following additional references on Azure Machine Learning Visual 
 - [Visual interface for Azure Machine Learning service](https://azure.microsoft.com/en-us/blog/visual-interface-for-azure-machine-learning-service/)
 - [What is Azure Machine Learning Studio?](https://docs.microsoft.com/azure/machine-learning/studio/what-is-ml-studio)
 
-Read next: [Training and Evaluating a few simple models Using Azure Notebooks and Azure Machine Learning compute](../training-evaluating-simple-models-with-aml-compute.md)
+Read next: [Training and Evaluating a few simple models Using Azure Notebooks and Azure Machine Learning compute](./training-evaluating-simple-models-with-aml-compute.md)
