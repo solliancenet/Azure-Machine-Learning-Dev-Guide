@@ -1,10 +1,10 @@
 # Reducing model deployment dependencies and improving model inferencing performance with ONNX
 
-The challenges of optimizing the performance of machine learning models in production is extremely hard considering the range of hardware capabilities on different platforms such as cloud vs edge, CPU vs GPU etc.  and couple that with the variety of frameworks that available for building and training the machine learning models. To support the idea of providing users the flexibility to train their machine learning models on framework of their choice, and run that model anywhere with optimal performance, is at the core of [Open Neural Network Exchange](https://onnx.ai/) (ONNX) format for representing machine learning models. ONNX is an open format, that is supported by a [community of partners](https://onnx.ai/supported-tools), including Microsoft, who create compatible frameworks and tools.
+The challenges of optimizing the performance of machine learning models in production is extremely hard considering the range of hardware capabilities on different platforms such as cloud vs edge, CPU vs GPU etc. and couple that with the variety of frameworks that available for building and training the machine learning models. To support the idea of providing users the flexibility to train their machine learning models on framework of their choice, and run that model anywhere with optimal performance, is at the core of [Open Neural Network Exchange](https://onnx.ai/) (ONNX) format for representing machine learning models. ONNX is an open format, that is supported by a [community of partners](https://onnx.ai/supported-tools), including Microsoft, who create compatible frameworks and tools.
 
 You can create ONNX models from many frameworks, including PyTorch, Chainer, Microsoft Cognitive Toolkit (CNTK), MXNet, ML.Net, TensorFlow, Keras, SciKit-Learn, and more. ONNX Runtime is optimized for both cloud and edge and works on Linux, Windows, and Mac, and it also integrates with accelerators on different hardware such as TensorRT on NVidia GPUs. [ONNX models can be deployed](https://docs.microsoft.com/azure/machine-learning/service/how-to-build-deploy-onnx#deploy) to the cloud using Azure Machine Learning and ONNX Runtime. They can also be deployed to Windows 10 devices using [Windows ML](https://docs.microsoft.com/windows/ai/). They can even be deployed to other platforms using converters that are available from the ONNX community.
 
-![ONNX flow diagram showing training, converters and deployment](../media/onnx_overview.png 'ONNX Flow Diagram')
+![ONNX flow diagram showing training, converters and deployment](media/onnx_overview.png 'ONNX Flow Diagram')
 
 The interoperability you get with ONNX makes it possible to get great ideas into production faster. With ONNX, data scientists can choose their preferred framework for the job. Similarly, developers can spend less time getting models ready for production, and deploy across the cloud and edge.
 
@@ -15,7 +15,7 @@ In this article, we will look at how to first convert a model train in Keras wit
 
 ## Converting a model to ONNX and deploying to a web service hosted on ACI from an Azure Notebook (Code Sample)
 
-In the [intro](../../intro/tools.md) section we learned how to get started with Azure notebooks. As described, Azure Notebooks is a pre-configured environment that is ready to work with Azure Machine Learning service. In this section we will look at code samples that were built in Azure Notebooks.
+In the [intro](../intro/tools.md) section we learned how to get started with Azure notebooks. As described, Azure Notebooks is a pre-configured environment that is ready to work with Azure Machine Learning service. In this section we will look at code samples that were built in Azure Notebooks.
 
 ### Converting deep learning model to ONNX
 
@@ -56,7 +56,7 @@ onnx_session.run(None, {onnx_session.get_inputs()[0].name: x_test})
 
 #### Create a scoring script
 
-As described in the article [Overview of deployment target options](../deployment-target-options.md) the first step to deploy the model to ACI is to register the model in registry hosted in your Azure Machine Learning Service workspace. Following model registration, you need to create the scoring script. Here an example of the scoring script:
+As described in the article [Overview of deployment target options](deployment-target-options.md) the first step to deploy the model to ACI is to register the model in registry hosted in your Azure Machine Learning Service workspace. Following model registration, you need to create the scoring script. Here an example of the scoring script:
 
 ```python
 %%writefile $score.py
@@ -151,7 +151,7 @@ aci_service.wait_for_deployment(show_output=True)
 
 #### Test deployment
 
-Finally, you can test your ACI deployment by consuming your deployed web service endpoint (Scoring URI) over HTTP. You can get the scoring URI by call calling the service object (shown below) or get it from Azure portal as shown in the [Overview of real-time inferencing](../real-time-inferencing.md) article.
+Finally, you can test your ACI deployment by consuming your deployed web service endpoint (Scoring URI) over HTTP. You can get the scoring URI by call calling the service object (shown below) or get it from Azure portal as shown in the [Overview of real-time inferencing](real-time-inferencing.md) article.
 
 ```python
 import requests
@@ -175,4 +175,4 @@ Please see the following additional references on Azure Machine Learning Visual 
 - [ONNX and Azure Machine Learning: Create and accelerate ML models](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-onnx)
 - [ONNX on Azure Machine Learning](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/onnx)
 
-Read next: [Creating machine learning pipelines](../../creating-machine-learning-pipelines/machine-learning-pipelines.md)
+Read next: [Creating machine learning pipelines](../creating-machine-learning-pipelines/machine-learning-pipelines.md)
