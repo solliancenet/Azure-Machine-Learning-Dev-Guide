@@ -1,4 +1,5 @@
-# Overview
+# Using Azure DevOps
+
 The great news about using Azure DevOps is that it was developed to support solutions of any language and on any platform.
 
 ## Why Use Azure DevOps?
@@ -119,7 +120,8 @@ The reality of the great features of Azure DevOps are that you can use them in c
 
 ## Next steps
 
-- [Post Deployment Monitoring environment](./Post-Deployment-Monitoring.md)
-- [Production Monitoring](./Production-Monitoring.md)
+You can learn more about ... by reviewing these links to additional resources:
 
-Read next: [Post Deployment Monitoring environment](./Post-Deployment-Monitoring.md)
+-[]()
+
+Read next: [Overview of post deployment monitoring and management tasks](../post-deployment-monitoring-and-management/README.md)
