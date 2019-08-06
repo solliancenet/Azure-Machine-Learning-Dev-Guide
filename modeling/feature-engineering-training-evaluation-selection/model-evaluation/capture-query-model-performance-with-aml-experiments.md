@@ -177,7 +177,7 @@ The main difference between properties and tags is that properties are immutable
 
 You can learn more about capturing and querying model performance data by reviewing these links to additional resources:
 
-- [Start, monitor, and cancel training runs in Python](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-manage-runs)
-- [Log metrics during training runs in Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-track-experiments)
+- [Start, monitor, and cancel training runs in Python](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-runs)
+- [Log metrics during training runs in Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments)
 
 Read next: [Training and Evaluating a simple model using Azure Machine Learning Studio (Code Sample)](../../training-evaluating-model-with-aml-studio/README.md)

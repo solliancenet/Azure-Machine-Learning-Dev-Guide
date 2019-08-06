@@ -80,7 +80,7 @@ There are four different ways to submit a Run in an Experiment using code:
 - Use a Run Configuration (see the section below for details).
 - Use an Estimator object (see [Introducing AML Estimators](./aml-estimators.md))
 - Use the Azure CLI extension (via `az ml run submit-script`)
-- Use the Visual Studio Code extension (see [Train and tune models from Visual Studio Code](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-vscode-tools#train-and-tune-models))
+- Use the Visual Studio Code extension (see [Train and tune models from Visual Studio Code](https://docs.microsoft.com/azure/machine-learning/service/how-to-vscode-tools#train-and-tune-models))
 
 ### Run configurations
 
@@ -131,7 +131,7 @@ The same information can be obtained programatically using the SDK by setting th
 
 ![Get Azure Machine Learning Runs and Child Runs for Experiment](./media/experiment-in-sdk-runs-with-children.png)
 
-The typicall case involving child runs is the use on [Azure Machine Learning service Pipelines](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-ml-pipelines).
+The typicall case involving child runs is the use on [Azure Machine Learning service Pipelines](https://docs.microsoft.com/azure/machine-learning/service/concept-ml-pipelines).
 
 Conceptually, your code will look like this (parts were omitted for improved clarity):
 
@@ -182,11 +182,11 @@ For a more detailed discussion about pipelines see the [Overview of machine lear
 
 You can learn more about Experiments and Runs by reviewing these links to additional resources:
 
-- [How Azure Machine Learning service works: Architecture and concepts](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture)
-- [Start, monitor, and cancel training runs in Python](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-manage-runs)
-- [Set up compute targets for model training](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-set-up-training-targets)
-- [Get started with Azure Machine Learning for Visual Studio Code](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-vscode-tools)
-- [Build reusable ML pipelines in Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-ml-pipelines)
+- [How Azure Machine Learning service works: Architecture and concepts](https://docs.microsoft.com/azure/machine-learning/service/concept-azure-machine-learning-architecture)
+- [Start, monitor, and cancel training runs in Python](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-runs)
+- [Set up compute targets for model training](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets)
+- [Get started with Azure Machine Learning for Visual Studio Code](https://docs.microsoft.com/azure/machine-learning/service/how-to-vscode-tools)
+- [Build reusable ML pipelines in Azure Machine Learning service](https://docs.microsoft.com/azure/machine-learning/service/concept-ml-pipelines)
 
 
 Read next: [Introducing AML Estimators](./aml-estimators.md)

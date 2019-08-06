@@ -13,7 +13,7 @@ From the point of view of the place where the process is taking place, we can di
 - Enginerring features in a dedicated data engineering environment (like a Spark cluster or an Azure Data Factory flow)
 - Engineering features in the model training context
 
-The immediate question is: ``Where is the right place to perform feature engineering?``. The answer to it is that it depends on the method of feature calculation and the capabilities of the various platforms involved. For example, if the data source is a relational database, it makes more sense to calculate a new feature based on summarization (e.g. sum or average) at the database layer, as it most probably is better equipped for the task than a Python library like Pandas. On the other hand, if we’re talking about deriving features by feature learning, a specialized Python library will be the better choice. This library can be run either in a dedicated environment for data engineering (like [Azure Databricks](https://azure.microsoft.com/en-us/services/databricks/)) or in the same context used for model training. Also, there is nothing preventing you from using any combination of the above mentioned options. In fact, modern data platforms are converging in terms of capabilities which opens a whole range of options. Take Python code for example. You can run it today directly in data sources (like [SQL Server 2017 and beyond](https://docs.microsoft.com/en-us/sql/advanced-analytics/tutorials/sql-server-python-tutorials?view=sql-server-2017)), in dedicated data engineering environment (like Azure Databricks), or in model training contexts (like Azure Machine Learning compute resources).
+The immediate question is: ``Where is the right place to perform feature engineering?``. The answer to it is that it depends on the method of feature calculation and the capabilities of the various platforms involved. For example, if the data source is a relational database, it makes more sense to calculate a new feature based on summarization (e.g. sum or average) at the database layer, as it most probably is better equipped for the task than a Python library like Pandas. On the other hand, if we’re talking about deriving features by feature learning, a specialized Python library will be the better choice. This library can be run either in a dedicated environment for data engineering (like [Azure Databricks](https://azure.microsoft.com/en-us/services/databricks/)) or in the same context used for model training. Also, there is nothing preventing you from using any combination of the above mentioned options. In fact, modern data platforms are converging in terms of capabilities which opens a whole range of options. Take Python code for example. You can run it today directly in data sources (like [SQL Server 2017 and beyond](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sql-server-python-tutorials?view=sql-server-2017)), in dedicated data engineering environment (like Azure Databricks), or in model training contexts (like Azure Machine Learning compute resources).
 
 This brings us to the next topic, the classification of feature engineering approaches. There are certainly many valid approaches, and some of the most popular ones are:
 
@@ -25,7 +25,7 @@ This brings us to the next topic, the classification of feature engineering appr
 - Embedding (transforming one or more categorical or text features into a new set of features, possibly with a different cardinality)
 - Deriving by example
 
-While there are many options of libraries to use for Feature Engineering tasks, the [Azure Machine Learning Data Prep SDK for Python](https://docs.microsoft.com/en-us/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py) is a great option for both loading and transforming input data. The newer [Azure Machine Learning Datasets](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-explore-prepare-data) library (currently in preview) is also very useful for data exploration and preparation.
+While there are many options of libraries to use for Feature Engineering tasks, the [Azure Machine Learning Data Prep SDK for Python](https://docs.microsoft.com/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py) is a great option for both loading and transforming input data. The newer [Azure Machine Learning Datasets](https://docs.microsoft.com/azure/machine-learning/service/how-to-explore-prepare-data) library (currently in preview) is also very useful for data exploration and preparation.
 
 ### Engineering features at the data source
 
@@ -91,7 +91,7 @@ The most effective way to understand the added value of Feature Engineering is t
 
 For the sake of simplicity, let’s assume we want to build a regression model `Model1` to predict `cnt` using a feature set A that contains the `weather`, `holiday`, `weekday`, and `weekend` features which are originally available in the data set. Using the same algorithm, we build a new model (`Model2`) which uses the feature set A and an extra engineered feature set B which contains the number of bikes that where rented in each of the previous 12 hours. Next, we build a third model (`Model3`) which uses the feature sets A and B and an extra engineered feature set C which contains the number of bikes that were rented in each of the previous 12 days at the same hour. Finally, we build a fourth model (`Model4`) which uses the feature sets A, B, and C and an extra engineered feature set D which contains the number of bikes that were rented in each of the previous 12 weeks at the same hour and the same day.
 
-While the details of training the models are outside the scope of our discussion, the most likely results obtained in terms of model performance will look like this (exact numbers may vary - for more details see Example 1 in [Feature engineering in data science](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/create-features)):
+While the details of training the models are outside the scope of our discussion, the most likely results obtained in terms of model performance will look like this (exact numbers may vary - for more details see Example 1 in [Feature engineering in data science](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/create-features)):
 
 Model | Features | MAE (Mean Absolute Error) | RMSE (Root Mean Square Error)
 --- | --- | --- | ---
@@ -132,11 +132,11 @@ Since the results of dimensionality reduction techniques are essentially new fea
 
 You can learn more about feature engineering by reviewing these links to additional resources:
 
-- [Feature engineering in data science](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/create-features)
-- [Create features in SQL Server using SQL and Python](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/create-features-sql-server)
-- [Create features in a Hadoop cluster using Hive queries](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/create-features-hive)
-- [Explore and prepare data with the Dataset class](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-explore-prepare-data)
-- [Load and read data with the Azure Machine Learning Data Prep SDK](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-load-data)
-- [Transform data with the Azure Machine Learning Data Prep SDK](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-transform-data)
+- [Feature engineering in data science](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/create-features)
+- [Create features in SQL Server using SQL and Python](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/create-features-sql-server)
+- [Create features in a Hadoop cluster using Hive queries](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/create-features-hive)
+- [Explore and prepare data with the Dataset class](https://docs.microsoft.com/azure/machine-learning/service/how-to-explore-prepare-data)
+- [Load and read data with the Azure Machine Learning Data Prep SDK](https://docs.microsoft.com/azure/machine-learning/service/how-to-load-data)
+- [Transform data with the Azure Machine Learning Data Prep SDK](https://docs.microsoft.com/azure/machine-learning/service/how-to-transform-data)
 
 Read next: [Model Training introduced](./model-training/README.md)

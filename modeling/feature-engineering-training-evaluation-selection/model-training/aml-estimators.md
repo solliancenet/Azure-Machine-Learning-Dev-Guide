@@ -84,11 +84,11 @@ Chainer | Used to launch a [Chainer](https://chainer.org) training job on a comp
 
 You can learn more about Estimators by reviewing these links to additional resources:
 
-- [Train models with Azure Machine Learning using estimator](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-train-ml-models)
-- [Train and register Scikit-learn models at scale with Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-train-scikit-learn)
-- [Train and register Tensorflow models at scale with Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-train-tensorflow)
-- [Train and register Keras models at scale with Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-train-keras)
-- [Train and register PyTorch models at scale with Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-train-pytorch)
-- [Train and register Chainer models at scale with Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-train-chainer)
+- [Train models with Azure Machine Learning using estimator](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-ml-models)
+- [Train and register Scikit-learn models at scale with Azure Machine Learning service](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-scikit-learn)
+- [Train and register Tensorflow models at scale with Azure Machine Learning service](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-tensorflow)
+- [Train and register Keras models at scale with Azure Machine Learning service](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-keras)
+- [Train and register PyTorch models at scale with Azure Machine Learning service](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-pytorch)
+- [Train and register Chainer models at scale with Azure Machine Learning service](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-chainer)
 
 Read next: [Introducing AML compute options (local and Azure Machine Learning compute)](./aml-compute-options.md)

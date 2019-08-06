@@ -249,7 +249,7 @@ image.wait_for_creation(show_output=True)
 
 ## Deploying to a web service hosted on ACI from an Azure Notebook
 
-When you want to test a model deployment, or if your deployment is very low-scale and CPU-based, [Azure Container Instances](https://docs.microsoft.com/en-us/azure/container-instances/) (ACI) is a good option. This fully managed service is the fastest and most straightforward way to deploy an isolated container in Azure, which means that no cluster management or orchestration is required.
+When you want to test a model deployment, or if your deployment is very low-scale and CPU-based, [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (ACI) is a good option. This fully managed service is the fastest and most straightforward way to deploy an isolated container in Azure, which means that no cluster management or orchestration is required.
 
 Unlike deploying to AKS, you do not need to create ACI containers in advance because they are created on the fly. This means you can go straight to deploying to ACI.
 
@@ -334,7 +334,7 @@ When you select the deployment, you will see details such as the state (whether 
 
 ## Deploying to a web service hosted on AKS from an Azure Notebook
 
-For large-scale production workloads, [Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/) (AKS) is a better option than ACI. AKS is a fully managed service that makes it easier to run Kubernetes clusters in Azure. The cluster can be scaled to meet demand, which is an important feature when you have spikes in your workloads. When you deploy your model to AKS as a target, all you are required to do is provision the AKS service in Azure. Once created, Azure Machine Learning service manages the AKS cluster for you, meaning, you do not need to maintain and manage the agent nodes.
+For large-scale production workloads, [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) (AKS) is a better option than ACI. AKS is a fully managed service that makes it easier to run Kubernetes clusters in Azure. The cluster can be scaled to meet demand, which is an important feature when you have spikes in your workloads. When you deploy your model to AKS as a target, all you are required to do is provision the AKS service in Azure. Once created, Azure Machine Learning service manages the AKS cluster for you, meaning, you do not need to maintain and manage the agent nodes.
 
 Execute the following cell within your notebook to create a new AKS cluster for deployment. Make sure you replace the `aks_name` value with a unique AKS cluster name for your workspace (between 2-16 characters in length). We use the `AksCompute.ClusterPurpose.DEV_TEST` value in the `AksCompute` configuration for this example. In production workloads, remove the DEV_TEST configuration. This script can take up to 20 minutes to execute:
 
@@ -420,7 +420,7 @@ When you select the deployment, you will see its details. The screenshot below h
 
 ## Deploying to a web service running on FPGAs from an Azure Notebook
 
-A [field-programmable gate array](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-accelerate-with-fpgas) (FPGA) is a unique type of chip that contains an array of programmable logic blocks with a flexible hierarchy of reconfigurable interconnects. These interconnects allow you to reconfigure the logic blocks in various ways after manufacturing, which leads to their unique flexibility. For example, you can reconfigure FPGAs for different types of machine learning models, making it easier to accelerate your applications based on the most optimal memory model and numerical precision you are using. This flexible reconfiguration helps you stay current with the requirements of rapidly changing AI algorithms.
+A [field-programmable gate array](https://docs.microsoft.com/azure/machine-learning/service/concept-accelerate-with-fpgas) (FPGA) is a unique type of chip that contains an array of programmable logic blocks with a flexible hierarchy of reconfigurable interconnects. These interconnects allow you to reconfigure the logic blocks in various ways after manufacturing, which leads to their unique flexibility. For example, you can reconfigure FPGAs for different types of machine learning models, making it easier to accelerate your applications based on the most optimal memory model and numerical precision you are using. This flexible reconfiguration helps you stay current with the requirements of rapidly changing AI algorithms.
 
 FPGAs are based on [Intel's FPGA devices](https://www.intel.ai/intel-fpgas-powering-real-time-ai-inferencing/) to enable developers and data scientists to accelerate real-time AI calculations. Microsoft Azure is the world's largest cloud investment in FPGAs. The FPGA-enabled architecture provides performance, flexibility, and scale. In addition, FPGAs on Azure supports:
 

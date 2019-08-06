@@ -37,7 +37,7 @@ Within the context provided by the same model name, multiple versions cand be ma
 
 You can learn more about the Model Registry by reviewing these links to additional resources:
 
-- [How Azure Machine Learning service works: Architecture and concepts - Models](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#models)
+- [How Azure Machine Learning service works: Architecture and concepts - Models](https://docs.microsoft.com/azure/machine-learning/service/concept-azure-machine-learning-architecture#models)
 
 
 [Model Evaluation introduced](../model-evaluation/README.md)

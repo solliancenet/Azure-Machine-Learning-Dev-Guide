@@ -31,8 +31,8 @@ The following diagram identifies the positions of these elements in the high lev
 
 You can learn more about Model Training by reviewing these links to additional resources:
 
-- [How to choose algorithms for Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/studio/algorithm-choice)
-- [How Azure Machine Learning service works: Architecture and concepts](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture)
-- [What is an Azure Machine Learning service workspace?](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-workspace)
+- [How to choose algorithms for Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio/algorithm-choice)
+- [How Azure Machine Learning service works: Architecture and concepts](https://docs.microsoft.com/azure/machine-learning/service/concept-azure-machine-learning-architecture)
+- [What is an Azure Machine Learning service workspace?](https://docs.microsoft.com/azure/machine-learning/service/concept-workspace)
 
 Read next: [Introducing the AML Experiment and Runs](./aml-experiment-runs.md)

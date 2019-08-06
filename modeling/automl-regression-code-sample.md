@@ -1,9 +1,10 @@
-# Using automated machine learning for Classification (Code Sample)
+# Using automated machine learning for Regression (Code Sample)
+
 
 
 ## The dataset used in this example
 
-In this classification example we will solve the problem of [Sonar Classification](https://archive.ics.uci.edu/ml/datasets/Connectionist+Bench+(Sonar,+Mines+vs.+Rocks)) where `y` (the class to be predicted) has a cardinality of 2 (binary classification). In this particular case, `X` consists of 60 numerical features (normalized values of sonar readings at various angles) and `y` has two categories - Rock (R) or Mine (M). The problem at hand is to create a classifier that, given the sonar readings, will predict whether an object being detected is a rock or a mine (or, alternatively, whether an object being detected is a mine or not). The case R (not a mine) is coded as 1 and the case M (a mine) is coded as 2.
+In this regression example we will solve the problem of predicting the number of bike rentals using the [UCI Bike Sharing Dataset](https://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset) which is based on real data from the Capital Bikeshare company that maintains a bike rental network in Washington DC in the United States. The dataset represents the number of bike rentals within a specific hour of a day in the years 2011 and year 2012 and contains 17389 rows and 17 columns. The raw feature set contains weather conditions (temperature/humidity/wind speed) and the type of the day (holiday/weekday). The field to predict is the `cnt` count, which represents the bike rentals within a specific hour and which ranges from 1 to 977.
 
 Note: All code snippets in this section are designed to run in [Azure Notebooks](https://notebooks.azure.com/).
 
@@ -38,8 +39,8 @@ from azureml.train.automl.run import AutoMLRun
 
 from azureml.widgets import RunDetails
 
-experiment_name = 'sonar-binary-classifier'
-project_folder = './sonar-binary-classifier'
+experiment_name = 'bike-sharing-regression'
+project_folder = './bike-sharing-regression'
 
 # Create a project_folder if it doesn't exist
 if not os.path.exists(project_folder):
@@ -58,12 +59,12 @@ Note: The creation of the `Workspace` variable `ws` is ommited for brewity. Also
 Once everything is in place, you will start loading, analyzing, and preparing your input data:
 
 ```python
-data_flow = dprep.read_csv('https://quickstartsws9073123377.blob.core.windows.net/azureml-blobstore-0d1c4218-a5f9-418b-bf55-902b65277b85/sonar/sonar.all-data.csv', 
-                           header=dprep.api.dataflow.PromoteHeadersMode.NONE,
+data_flow = dprep.read_csv('https://quickstartsws9073123377.blob.core.windows.net/azureml-blobstore-0d1c4218-a5f9-418b-bf55-902b65277b85/bike/bike-rental-hour.csv',
+                           header=dprep.api.dataflow.PromoteHeadersMode.UNGROUPED,
                           infer_column_types=True)
 
-X = data_flow.keep_columns(['Column{:d}'.format(x) for x in range(1,61)]).to_pandas_dataframe()
-y = data_flow.keep_columns(['Column61']).to_pandas_dataframe()
+X = data_flow.keep_columns(['season','mnth','hr','holiday','weekday','workingday','weathersit','temp','atemp','hum','windspeed']).to_pandas_dataframe()
+y = data_flow.keep_columns(['cnt']).to_pandas_dataframe()
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=111)
@@ -71,7 +72,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 data_flow.get_profile()
 ```
 
-Notice how we are splitting the original data set into input features (`X`) and output(`y`) - the categorical feature we are looking to predict.
+Notice how we are splitting the original data set into input features (`X`) and output(`y`) - the numerical feature we are looking to predict. Also notice the list of input features we are considering for our regression model.
 
 ## Create the AutoML configuration
 
@@ -90,12 +91,12 @@ from sklearn.model_selection import train_test_split
 
 def get_data():
 
-    data_flow = dprep.read_csv('https://quickstartsws9073123377.blob.core.windows.net/azureml-blobstore-0d1c4218-a5f9-418b-bf55-902b65277b85/sonar/sonar.all-data.csv', 
-                           header=dprep.api.dataflow.PromoteHeadersMode.NONE,
+    data_flow = dprep.read_csv('https://quickstartsws9073123377.blob.core.windows.net/azureml-blobstore-0d1c4218-a5f9-418b-bf55-902b65277b85/bike/bike-rental-hour.csv', 
+                           header=dprep.api.dataflow.PromoteHeadersMode.UNGROUPED,
                           infer_column_types=True)
 
-    X = data_flow.keep_columns(['Column{:d}'.format(x) for x in range(1,61)]).to_pandas_dataframe()
-    y = data_flow.keep_columns(['Column61']).to_pandas_dataframe()
+    X = data_flow.keep_columns(['season','mnth','hr','holiday','weekday','workingday','weathersit','temp','atemp','hum','windspeed']).to_pandas_dataframe()
+    y = data_flow.keep_columns(['cnt']).to_pandas_dataframe()
 
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=111)
@@ -124,13 +125,13 @@ automl_settings = {
     "iteration_timeout_minutes": 10,
     "iterations": 10,
     "n_cross_validations": 5,
-    "primary_metric": 'accuracy',
+    "primary_metric": 'normalized_root_mean_squared_error',
     "preprocess": True,
     "max_concurrent_iterations": 10,
     "verbosity": logging.INFO
 }
 
-automl_config = AutoMLConfig(task='classification',
+automl_config = AutoMLConfig(task='regression',
                              debug_log='automl_errors.log',
                              path=project_folder,
                              compute_target=cpu_cluster,
@@ -140,23 +141,26 @@ automl_config = AutoMLConfig(task='classification',
                              **automl_settings,
                              )
 ```
-We have now defined a classification task that will use the `accuracy` measure as primary metric for model ranking (and selection).
+
+We have now defined a regression task that will use the `normalized_root_mean_squared_error` measure as primary metric for model ranking (and selection).
 
 ## Running the AutoML experiment
 
 Once you have the `AutoMLConfig` object properly initialized, you are ready to submit your experiment. Depending on the various settings you used, the experiment will run for several minutes or more. Using the `show_output=True` options enables you to get updates on the execution.
 
-![Execution progress for an AutoML classification experiment run](./media/automl-classification-execution-progress.png)
+![Execution progress for an AutoML regression experiment run](./media/automl-regression-execution-progress.png)
 
-Note how the best value of the specified metric (accuracy in our case) is tracked throughout the entire execution. In this particular example, the `VotingEnsemble` pipeline yielded the top trained model, with an accuracy of 0.8255.
+Note how the best value of the specified metric (normalized_root_mean_squared_error in our case) is tracked throughout the entire execution. In this particular example, the `VotingEnsemble` pipeline yielded the top trained model, with an error of 0.0984.
 
 Once the execution is finished you can request detailed information about the results.
 
-![Execution results for an AutoML classification experiment run](./media/automl-classification-execution-results.png)
+![Execution results for an AutoML regression experiment run](./media/automl-regression-execution-results.png)
 
 Also, you can get all the metrics recorded during the experiment run.
 
-![Execution metrics for an AutoML classification experiment run](./media/automl-classification-execution-metrics.png)
+![Execution metrics for an AutoML regression experiment run](./media/automl-regression-execution-metrics.png)
+
+Notice the value of the `root_mean_square_error` metric - 96.04.
 
 ## Retrieve the best model and use it on test data
 
@@ -170,13 +174,20 @@ best_run, fitted_model = run.get_output()
 y_predict = fitted_model.predict(X_test.values)
 print(y_predict)
 ```
+You can also create a visual representation of the scoring on test data:
+
+![Testing of an AutoML regression trained model](./media/automl-regression-testing.png)
+
+Finally, you can calculate the value of the `root_mean_square_error` metric for the test data and compare it with the value resulting from training (96.04 - mentioned above):
+
+![Testing of an AutoML regression trained model - Root Mean Squared Error](./media/automl-regression-testing-rmse.png)
 
 You have now successfully configured an AutoML experiment, submitted it to run on a remote compute resource, analyzed the results it produced, retrieved its best trained model, and used this best model to score on test data.
 
 ## Next steps
 
-You can learn more about using automated machine learning for Classification by reviewing these links to additional resources:
+You can learn more about using automated machine learning for Regression by reviewing these links to additional resources:
 
-- [What is automated machine learning?](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-automated-ml)
+- [What is automated machine learning?](https://docs.microsoft.com/azure/machine-learning/service/concept-automated-ml)
 
-Read next: [Using automated machine learning for Regression (Code Sample)](./automl-regression-code-sample.md)
+Read next: [Using automated machine learning for Forecasting (Code Sample)](./automl-forecasting-code-sample.md)

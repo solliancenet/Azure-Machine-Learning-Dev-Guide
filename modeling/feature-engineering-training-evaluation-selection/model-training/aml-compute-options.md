@@ -30,11 +30,11 @@ The following Compute Targets are supported for hosting service deployments:
 Name | Description
 --- | ---
 Local web service | Used for debugging, testing, and troubleshooting.
-[Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/intro-kubernetes) (AKS) | Used for production deployments, supports very fast response times and autoscaling. 
+[Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/intro-kubernetes) (AKS) | Used for production deployments, supports very fast response times and autoscaling. 
 [Azure Container Instances](https://azure.microsoft.com/en-us/services/container-instances/) (ACI) | Used for testing and development, suitable for low scale CPU-based workloads.
 Azure Machine Learning Compute | Used for batch inference.
 [Azure IoT Edge](https://azure.microsoft.com/en-us/services/iot-edge/) | Used for deployment on IoT devices.
-[Azure Data Box Edge](https://docs.microsoft.com/en-us/azure/databox-online/data-box-edge-overview) | Used for deployment on IoT devices.
+[Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview) | Used for deployment on IoT devices.
 
 For the reminder of this article we will focus on Compute Targets used to run model training scripts.
 
@@ -44,7 +44,7 @@ The Azure Portal provides support for viewing existing Compute Targets as well a
 
 ![View Azure Machine Learning Compute Targets in the Azure Portal](./media/compute-target-in-portal.png)
 
-As mentioned above, the Azure Machine Learning Compute is the only Compute Target that is fully managed by the Azure Machine Learning service. Consequently, it is the only one that can be directly created from a workspace (all the others must be created separately and then attached - for details about setup requirements, read the [Configure a development environment for Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-configure-environment) article). 
+As mentioned above, the Azure Machine Learning Compute is the only Compute Target that is fully managed by the Azure Machine Learning service. Consequently, it is the only one that can be directly created from a workspace (all the others must be created separately and then attached - for details about setup requirements, read the [Configure a development environment for Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-environment) article). 
 
 This is an example of creating an Azure Machine Learning Compute cluster from the Azure Portal:
 
@@ -71,7 +71,7 @@ cpu_cluster.wait_for_completion(show_output=True)
 ```
 Note the Virtal Machine size being used (`STANDARD_D2_V2`) and the maximum number of nodes allowed in the cluster (4).
 
-**Note**: A new option to create Azure Machine Learning Compute resources is being added to the service (currently in preview) - one that allows run-based creation. It uses the `RunConfiguration` object from the SDK to fully specify the requirements of the cluster. It also has some important limitations, namely it does not support automated hyperparameter tuning or automated machine learning. For mode details, read the [Set up compute targets for model training](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-set-up-training-targets) article.
+**Note**: A new option to create Azure Machine Learning Compute resources is being added to the service (currently in preview) - one that allows run-based creation. It uses the `RunConfiguration` object from the SDK to fully specify the requirements of the cluster. It also has some important limitations, namely it does not support automated hyperparameter tuning or automated machine learning. For mode details, read the [Set up compute targets for model training](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets) article.
 
 ## Atach a Virtual Machine as a Compute Target using the SDK
 
@@ -191,8 +191,8 @@ except ComputeTargetException:
 
 You can learn more about compute options by reviewing these links to additional resources:
 
-- [What are compute targets in Azure Machine Learning service?](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-compute-target)
-- [Set up compute targets for model training](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-set-up-training-targets)
-- [Configure a development environment for Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-configure-environment)
+- [What are compute targets in Azure Machine Learning service?](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target)
+- [Set up compute targets for model training](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets)
+- [Configure a development environment for Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-environment)
 
 Read next: [Introducing the AML Model Registry](./aml-model-registry.md)

@@ -50,6 +50,7 @@ Next, get a hold on the compute resource you will use to train your model:
 ```python
 cpu_cluster = ComputeTarget(workspace=ws, name='aml01')
 ```
+
 Note: The creation of the `Workspace` variable `ws` is ommited for brewity. Also, we are assuming there already exists an Azure Machine Learning compute resource named `aml01` (which means we are going to submit an AutoML experiment run to a remote compute resource, not the local machine).
 
 ## Prepare input data
@@ -57,7 +58,7 @@ Note: The creation of the `Workspace` variable `ws` is ommited for brewity. Also
 Once everything is in place, you will start loading, analyzing, and preparing your input data:
 
 ```python
-data_flow = dprep.read_csv('https://quickstartsws9073123377.blob.core.windows.net/azureml-blobstore-0d1c4218-a5f9-418b-bf55-902b65277b85/bike/bike-rental-hour.csv', 
+data_flow = dprep.read_csv('https://quickstartsws9073123377.blob.core.windows.net/azureml-blobstore-0d1c4218-a5f9-418b-bf55-902b65277b85/bike/bike-rental-hour.csv',
                            header=dprep.api.dataflow.PromoteHeadersMode.UNGROUPED,
                           infer_column_types=True)
 
@@ -78,13 +79,13 @@ Let's visualize the evolution of the time series data (and also highlight traini
 
 ![Actual evolution of time series data with training and test split highlight](./media/automl-forecasting-actual-evolution.png)
 
-
 ## Create the AutoML configuration
 
 The following elements are needed to create an AutoML configuration:
+
 - A data script which will be used on the remote compute resource to get the data to train the model.
 - A `RunConfiguration` which provides details about the creation and initialization of the Python environment on the remote compute resource.
-- A set of AutoML experiment settings including the number of iterations, the maximum time the experiment is allowed to run, the primary metric used to rank resulting models,and  the level of logging.
+- A set of AutoML experiment settings including the number of iterations, the maximum time the experiment is allowed to run, the primary metric used to rank resulting models,and the level of logging.
 
 The data script must be saved localy (as it will be referenced by the AutoML configuration) and it has basically the same code you used above to prepare input data:
 
@@ -96,7 +97,7 @@ from sklearn.model_selection import train_test_split
 
 def get_data():
 
-    data_flow = dprep.read_csv('https://quickstartsws9073123377.blob.core.windows.net/azureml-blobstore-0d1c4218-a5f9-418b-bf55-902b65277b85/bike/bike-rental-hour.csv', 
+    data_flow = dprep.read_csv('https://quickstartsws9073123377.blob.core.windows.net/azureml-blobstore-0d1c4218-a5f9-418b-bf55-902b65277b85/bike/bike-rental-hour.csv',
                            header=dprep.api.dataflow.PromoteHeadersMode.UNGROUPED,
                           infer_column_types=True)
 
@@ -133,7 +134,7 @@ automl_settings = {
     "primary_metric": 'normalized_root_mean_squared_error',
     "max_concurrent_iterations": 10,
     "verbosity": logging.INFO,
-    
+
     "time_column_name": "instant",
     "max_horizon": 20
 }
@@ -167,7 +168,6 @@ Also, you can get all the metrics recorded during the experiment run.
 
 ![Execution metrics for an AutoML forecasting experiment run](./media/automl-forecasting-execution-metrics.png)
 
-
 ## Retrieve the best model and use it on test data
 
 Now that you have several trained models ranked based on the metric you specified when configuring the AutoML experiment, you can retrieve the best one and either use it to score immediately (on test data for example) or register and deploy is as a service.
@@ -182,6 +182,7 @@ y_query.fill(np.nan)
 
 y_pred, X_trans = fitted_model.forecast(X_test, y_query)
 ```
+
 You can also create a visual representation of the scoring on test data:
 
 ![Testing of an AutoML forecast trained model](./media/automl-forecasting-testing.png)
@@ -194,6 +195,6 @@ You have now successfully configured an AutoML experiment, submitted it to run o
 
 You can learn more about using automated machine learning for Forecasting by reviewing these links to additional resources:
 
-- [What is automated machine learning?](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-automated-ml)
+- [What is automated machine learning?](https://docs.microsoft.com/azure/machine-learning/service/concept-automated-ml)
 
-Read next: [Understanding automated machine learning generated models, using the model explainability capability of automated machine learning](../automl-understand-models-with-explainability/README.md)
+Read next: [Understanding automated machine learning generated models, using the model explainability capability of automated machine learning](./automl-understand-models-with-explainability.md)
