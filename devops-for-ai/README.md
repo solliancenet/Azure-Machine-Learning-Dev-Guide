@@ -1,11 +1,16 @@
 # MLOps - DevOps for AI
 
-- [Overview](./test.md)
-- [Relationship between ML Ops vs Traditional DevOps](./test.md)
-- [Using Azure DevOps](./Using-Azure-DevOps.md)
-- [Post Deployment Monitoring](./Post-Deployment-Monitoring.md)
-- [Production Monitoring](./Production-Monitoring.md)
-- [Querying and Analyzing Collected Data](./test.md)
-- [Web Service Performance Telermetry](./test.md)
-- [Querying and Analyzing Model Web Service Performance](./test.md)
-- [Verzioning with AML Model Registry](./test.md)
+
+- [Overview of the relationship between model training pipeline (MLOps) and traditional DevOps application CI/CD pipelines](./mlops-and-devops/README.md)
+- [Overview of post deployment monitoring and management tasks](./post-deployment-monitoring-and-management/README.md)
+- [Monitoring a deployed model's telemetry (Code Sample)](./monitoring-telemetry-code-sample.md)
+- [Model version management (Code Sample)](./model-version-management-code-sample.md)
+- [Executing an end-to-end DevOps pipeline with Azure Machine Learning and Azure DevOps (Code Sample)](./e2e-pipeline-code-sample.md)
+
+## Next steps
+
+You can learn more about DevOps for AI by reviewing these links to additional resources:
+
+-[]()
+
+Read next: [Overview of the relationship between model training pipeline (MLOps) and traditional DevOps application CI/CD pipelines](./mlops-and-devops/README.md)
