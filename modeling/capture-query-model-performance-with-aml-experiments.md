@@ -180,4 +180,4 @@ You can learn more about capturing and querying model performance data by review
 - [Start, monitor, and cancel training runs in Python](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-runs)
 - [Log metrics during training runs in Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments)
 
-Read next: [Training and Evaluating a simple model using Azure Machine Learning Studio (Code Sample)](./training-evaluating-model-with-aml-studio.md)
+Read next: [Training and Evaluating a simple model using Azure Machine Learning Visual Interface](./training-evaluating-model-with-visual-interface.md)

@@ -12,7 +12,7 @@ You can access Visual Interface from your machine learning workspace in Azure po
 
 An experiment in Visual Interface comprises of datasets and analytical modules. A dataset is data uploaded to use in the modeling process and a module is an algorithm that you can perform on the data. Visual Interface provides rich set of modules for data preparation, feature engineering, training algorithms, and model evaluation. An experiment is created, using a drag-and-drop workflow, using datasets and modules which you connect together to construct a predictive model.
 
-   ![Example experiment in Azure Machine Learning Visual Interface](media/vi_overview.png 'Azure Machine Learning Visual Interface - Experiment')
+![Example experiment in Azure Machine Learning Visual Interface](media/vi_overview.png 'Azure Machine Learning Visual Interface - Experiment')
 
 In this article we will first look at the list of analytical modules available in Visual Interface, and then look at examples of how to use these modules to do data prep, model training, and model evaluation.
 
@@ -105,7 +105,7 @@ In this example, we are predicting NYC Taxi Fares and our target column name is 
 
 ## Model Scoring and Evaluation Modules Example
 
-The `Score Model` module is used to generate predictions using the trained model, whereas, the `Evaluate Model` module is used to generate performance metrics of the trained model. In this section, we will review how to setup the `Score Model` and the  `Evaluate Model` modules. In the next section, we will review the outputs from these two modules.
+The `Score Model` module is used to generate predictions using the trained model, whereas, the `Evaluate Model` module is used to generate performance metrics of the trained model. In this section, we will review how to setup the `Score Model` and the `Evaluate Model` modules. In the next section, we will review the outputs from these two modules.
 
 1. Select the `Score Model` module from the left navigation under `Machine Learning -> Score` section
 2. Drag and drop the `Score Model` module onto the canvas
@@ -151,4 +151,4 @@ Please see the following additional references on Azure Machine Learning Visual 
 - [Visual interface for Azure Machine Learning service](https://azure.microsoft.com/en-us/blog/visual-interface-for-azure-machine-learning-service/)
 - [What is Azure Machine Learning Studio?](https://docs.microsoft.com/azure/machine-learning/studio/what-is-ml-studio)
 
-Read next: [Training and Evaluating a few simple models Using Azure Notebooks and Azure Machine Learning compute (Code Sample)](../training-evaluating-simple-models-with-aml-compute/README.md)
+Read next: [Training and Evaluating a few simple models Using Azure Notebooks and Azure Machine Learning compute](../training-evaluating-simple-models-with-aml-compute.md)
