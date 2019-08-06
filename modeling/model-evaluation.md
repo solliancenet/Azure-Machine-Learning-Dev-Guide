@@ -21,4 +21,9 @@ You can learn more about Model Evaluation by reviewing these links to additional
 - [Track metrics and deploy models with MLflow and Azure Machine Learning service (Preview)](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-mlflow)
 - [Visualize experiment runs and metrics with TensorBoard and Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-monitor-tensorboard)
 
+### Related topics
+
+- [Feature Engineering introduced](./feature-engineering-training-evaluation-selection.md#feature-engineering-introduced)
+- [Model Training introduced](./model-training.md)
+
 Read next: [Measuring performance of classification and models](./measure-performance-regression-classification.md)
