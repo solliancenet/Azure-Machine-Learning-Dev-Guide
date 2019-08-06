@@ -68,7 +68,7 @@ The following diagram shows the current relationship between meta and direct exp
 
 ## Use the SDK to explain models
 
-The [Model explainability (Code Sample)](./automl-model-explainability-code-sample.md) section provides guidance on using the above mentioned explainers in code.
+The [Model explainability (Code Sample)](./automl-model-explainability-code-sample.md) section provides guidance on using the explainability features available in AutoML.
 
 ## Next steps
 

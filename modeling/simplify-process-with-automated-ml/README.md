@@ -1,6 +1,8 @@
 # Simplify the process with Automated Machine Learning, a component of Azure Machine Learning service
 
-...content in development...
+One of the most popular directions in modern Machine Learning is the automation of processes like feature engineering and selection, model selection, and hyperparameter tuning. The potential in this area is significant and the promise is to assist both seasoned professionals and beginners with jumpstarting their model development processes. This field is commonly referred as Automated Machine Learning (the AutoML abbreviated form is also used quite often).
+
+This section provides information about the Automated Machine Learning concept and capabilities as well as code samples guidance for some of the most important scenarios. The following topics are covered:
 
 - [What is automated machine learning (the concept)?](./what-is-automl.md)
 - [Capabilities of automated machine learning (the feature): feature engineering, algorithm selection, hyperparameter tuning, and model explainability](./capabilities-of-automated-machine-learning.md)
