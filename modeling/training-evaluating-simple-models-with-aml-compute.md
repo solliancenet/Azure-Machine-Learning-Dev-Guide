@@ -165,7 +165,7 @@ RunDetails(run).show()
 
 ## Visualizing model performance
 
-As discussed, the model performance metrics are available to be visualized in the RunDetails Jupyter notebook widget, and in the run details page within Azure portal. You can also visualize model performance metrics in TensorBoard using the [tensorboard package]( https://docs.microsoft.com/en-us/python/api/azureml-tensorboard/?view=azure-ml-py). The details of leveraging TensorBoard with Azure Machine Learning experiments are outside the scope of this article and are made available in the links provided below.
+As discussed, the model performance metrics are available to be visualized in the RunDetails Jupyter notebook widget, and in the run details page within Azure portal. You can also visualize model performance metrics in TensorBoard using the [tensorboard package]( https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py). The details of leveraging TensorBoard with Azure Machine Learning experiments are outside the scope of this article and are made available in the links provided below.
 
 ### Option 1: Jupyter notebook widget
 
@@ -184,8 +184,8 @@ This example shows the details of a specific pipeline run for an Automated Machi
 Please see the following additional references on training on local and AML compute custer in Azure Machine Learning service:
 
 - [Azure Machine Learning Notebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training)
-- [Start, monitor, and cancel training runs in Python](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-manage-runs)
-- [Log metrics during training runs in Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-track-experiments)
-- [Visualize experiment runs and metrics with TensorBoard and Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-monitor-tensorboard)
+- [Start, monitor, and cancel training runs in Python](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-runs)
+- [Log metrics during training runs in Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments)
+- [Visualize experiment runs and metrics with TensorBoard and Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-monitor-tensorboard)
 
 Read next: [Simplify the process with Automated Machine Learning, a component of Azure Machine Learning service](../simplify-process-with-automated-ml/README.md)

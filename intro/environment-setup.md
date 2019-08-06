@@ -4,7 +4,7 @@ Whether you are using the Azure Machine Learning service SDK on your local machi
 
 ## Create your Azure Machine Learning service workspace
 
-The [Azure Machine Learning service workspace](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-workspace) is the top-level resource and central place in which you create and work with your artifacts. The primary components that are added to a new workspace, if regionally available, are:
+The [Azure Machine Learning service workspace](https://docs.microsoft.com/azure/machine-learning/service/concept-workspace) is the top-level resource and central place in which you create and work with your artifacts. The primary components that are added to a new workspace, if regionally available, are:
 
 - [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)
 - [Azure Storage](https://azure.microsoft.com/services/storage/)
@@ -71,7 +71,7 @@ To use Azure Cloud Shell, select the **Cloud Shell** button at the top of the Az
 
    > For a list of valid location names, execute: `az account list-locations -o table`
 
-4. Create your Azure Machine Learning service workspace (see [az ml workspace create](https://docs.microsoft.com/en-us/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-create)), replacing `myworkspace` with your desired globally unique workspace name, and `myresourcegroup` with the name of your resource group:
+4. Create your Azure Machine Learning service workspace (see [az ml workspace create](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-create)), replacing `myworkspace` with your desired globally unique workspace name, and `myresourcegroup` with the name of your resource group:
 
    ```bash
    az ml workspace create -w myworkspace -g myresourcegroup
@@ -102,7 +102,7 @@ Creating a workspace using the Python SDK is very useful for machine learning wo
 
 > If you are using a Data Science Virtual Machine (DSVM), you do not need to install the Machine Learning SDK. Create an [Ubuntu DSVM](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro).
 
-> If you are using Azure Databricks, [follow these instructions](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-configure-environment#azure-databricks) to install the SDK and configure your cluster.
+> If you are using Azure Databricks, [follow these instructions](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-environment#azure-databricks) to install the SDK and configure your cluster.
 
 #### Create a workspace with the SDK
 
@@ -125,7 +125,7 @@ With your Python environment set up and the Python SDK installed, follow these s
    print(azureml.core.VERSION)
    ```
 
-5. Find a value for the `<azure-subscription-id>` parameter in the [subscriptions list in the Azure portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). You need to be in the owner or contributor role in the subscription you choose. For more information on roles, see the [Manage access to an Azure Machine Learning workspace](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-assign-roles) article.
+5. Find a value for the `<azure-subscription-id>` parameter in the [subscriptions list in the Azure portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). You need to be in the owner or contributor role in the subscription you choose. For more information on roles, see the [Manage access to an Azure Machine Learning workspace](https://docs.microsoft.com/azure/machine-learning/service/how-to-assign-roles) article.
 
    ```python
    from azureml.core import Workspace
@@ -171,11 +171,11 @@ The _config.json_ file contains the following:
 
 > To use your workspace in Python scripts or Jupyter Notebooks located in other directories, copy this file to that directory. The file can be in the same directory, a subdirectory named _.azureml_, or in a parent directory.
 
-Alternatively, you may download the configuration file (config.json) that will be used by your notebooks to interact with your Machine Learning service workspace. You should save the file to the top-level parent folder that contains your Jupyter notebooks. To download a generated configuration file, go to the Overview blade of your Azure Machine Learning service workspace in the Azure portal and select the **Download config.json** file. Alternatively, you can [create a custom configuration file](https://docs.microsoft.com/en-us/azure/machine-learning/service/setup-create-workspace#write-a-configuration-file) manually.
+Alternatively, you may download the configuration file (config.json) that will be used by your notebooks to interact with your Machine Learning service workspace. You should save the file to the top-level parent folder that contains your Jupyter notebooks. To download a generated configuration file, go to the Overview blade of your Azure Machine Learning service workspace in the Azure portal and select the **Download config.json** file. Alternatively, you can [create a custom configuration file](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace#write-a-configuration-file) manually.
 
 ### Notebook VMs
 
-With notebook virtual machines, you can quickly get started with Azure Machine Learning service by configuring a managed Jupyter notebook server in the cloud. The environment is provided by a [notebook VM](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-configure-environment#notebookvm), which is a secure, cloud-based Azure workstation that comes configured with a fully prepared machine learning environment and a Jupyter notebook server (JupyterLab). You can immediately start running notebooks and logging experiments in your ML workspace. There is no need to install any additional software or libraries in this environment. To get started, perform the following steps:
+With notebook virtual machines, you can quickly get started with Azure Machine Learning service by configuring a managed Jupyter notebook server in the cloud. The environment is provided by a [notebook VM](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-environment#notebookvm), which is a secure, cloud-based Azure workstation that comes configured with a fully prepared machine learning environment and a Jupyter notebook server (JupyterLab). You can immediately start running notebooks and logging experiments in your ML workspace. There is no need to install any additional software or libraries in this environment. To get started, perform the following steps:
 
 1. Sign in to the [Azure portal](https://portal.azure.com/) and open your Azure Machine Learning service workspace. [Create your workspace](./environment-setup.md#create-your-azure-machine-learning-service-workspace) if you have not already done so.
 2. On your workspace page, select **Notebook VMs** on the left-hand menu.
@@ -204,7 +204,7 @@ With notebook virtual machines, you can quickly get started with Azure Machine L
 
 Azure Notebooks gives you a fully managed environment in which you can develop and run Jupyter notebooks and easily share your projects with others. You do not need to sign in to start using Azure Notebooks, but any changes you make to notebooks or data files will not persist. This works well for scenarios where someone only needs to run a notebook, like as part of a tutorial or demonstration, without needing to sign in. However, if you want to Azure Notebooks to retain your projects across sessions, you must sign in with either a Microsoft account or a "Work or School" account. When the account used for Azure Notebooks is also associated with an Azure subscription, you gain additional benefits such as running notebooks on more powerful servers, creating private notebooks and granting permissions to notebooks to individual users.
 
-[Learn more about signing in to Azure Notebooks](https://docs.microsoft.com/en-us/azure/notebooks/azure-notebooks-user-account) and which accounts you can use.
+[Learn more about signing in to Azure Notebooks](https://docs.microsoft.com/azure/notebooks/azure-notebooks-user-account) and which accounts you can use.
 
 After signing into Azure Notebooks with your account for the first time, your account is automatically assigned a temporary user ID that begins with "anon-". If you have a user ID that begins with "anon-", Azure Notebooks prompts you to change it whenever you sign in. Setting your user ID is an important step because it is used as part of the URLs you use for others to view your profile and to share projects and notebooks. Here are the URL patterns. Notice how your user ID is used in the base path of each:
 
@@ -454,7 +454,7 @@ The Python SDK allows you to create an Azure ML compute environment either as a 
 
 #### Create a new compute target for web services
 
-When you deploy a web service in visual interface, you must select a compute target to host the web service. The recommended compute target for production workloads is Kubernetes Service, [using SSL](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-secure-web-service) to secure the web service.
+When you deploy a web service in visual interface, you must select a compute target to host the web service. The recommended compute target for production workloads is Kubernetes Service, [using SSL](https://docs.microsoft.com/azure/machine-learning/service/how-to-secure-web-service) to secure the web service.
 
 You may use the methods above to create a new Kubernetes Service compute target by specifying the compute type. Below is a screenshot of the Add Compute form for a Kubernetes Service compute target in the Azure portal:
 
@@ -464,8 +464,8 @@ You may use the methods above to create a new Kubernetes Service compute target 
 
 Please see the following additional references for configuring your development environment:
 
-- [Use the CLI extension for Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/reference-azure-machine-learning-cli#resource-management)
-- [What is the Azure Machine Learning SDK for Python?](https://docs.microsoft.com/en-us/python/api/overview/azure/ml/intro?view=azure-ml-py)
-- [Configure dev environments](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-configure-environment)
+- [Use the CLI extension for Azure Machine Learning service](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli#resource-management)
+- [What is the Azure Machine Learning SDK for Python?](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+- [Configure dev environments](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-environment)
 
 Read next: [The Data Science lifecycle](../data-science-lifecycle/README.md)

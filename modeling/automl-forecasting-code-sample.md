@@ -195,6 +195,6 @@ You have now successfully configured an AutoML experiment, submitted it to run o
 
 You can learn more about using automated machine learning for Forecasting by reviewing these links to additional resources:
 
-- [What is automated machine learning?](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-automated-ml)
+- [What is automated machine learning?](https://docs.microsoft.com/azure/machine-learning/service/concept-automated-ml)
 
 Read next: [Understanding automated machine learning generated models, using the model explainability capability of automated machine learning](./automl-understand-models-with-explainability.md)

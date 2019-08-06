@@ -91,7 +91,7 @@ service.update([different_model], inference_config, deployment_config)
 
 For large-scale production workloads, it is best to deploy your model to AKS.
 
-[Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/) is a fully managed service that reduces the amount of operational overhead and complexity of deploying and maintaining a Kubernetes cluster in Azure. Most of the operational overhead of managing Kubernetes, such as health monitoring and maintenance, is handled for you by Azure. Also, the Kubernetes masters are managed for you by Azure. You only need to maintain and manage the agent nodes. Using AKS is also cost-effective. The AKS service itself is free. You only need to pay for the agent nodes within your clusters, and not the masters.
+[Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/) is a fully managed service that reduces the amount of operational overhead and complexity of deploying and maintaining a Kubernetes cluster in Azure. Most of the operational overhead of managing Kubernetes, such as health monitoring and maintenance, is handled for you by Azure. Also, the Kubernetes masters are managed for you by Azure. You only need to maintain and manage the agent nodes. Using AKS is also cost-effective. The AKS service itself is free. You only need to pay for the agent nodes within your clusters, and not the masters.
 
 When you deploy your model to AKS as a target, all you are required to do is provision the AKS service in Azure. Once created, Azure Machine Learning service manages the AKS cluster for you, meaning, you do not need to maintain and manage the agent nodes.
 
@@ -134,13 +134,13 @@ You can also deploy to the AKS cluster using the CLI:
 az ml model deploy -ct myaks -m mymodel:1 -n aksservice -ic inferenceconfig.json -dc deploymentconfig.json
 ```
 
-Finally, you can use the [Visual Studio Code extension to deploy to AKS](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-vscode-tools#deploy-and-manage-models).
+Finally, you can use the [Visual Studio Code extension to deploy to AKS](https://docs.microsoft.com/azure/machine-learning/service/how-to-vscode-tools#deploy-and-manage-models).
 
 ## Azure Container Instances (ACI)
 
 For low-scale, CPU-based workloads or testing, deploy to ACI.
 
-Using [Azure Container Instances](https://docs.microsoft.com/en-us/azure/container-instances/) is the fastest and most straightforward way to run a container in Azure, without having to manage any virtual machines or adopt a higher-level service. As opposed to AKS, you use ACI to run isolated containers. ACI is suitable for smaller or short-term workloads since you only pay for the time they are up and running. They are also swift to start, usually within seconds, and delete when they are no longer needed. As a point of comparison, AKS clusters are meant to host long-running web services that can scale out to meet heavy workload requirements, and scale back in during lighter workloads.
+Using [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) is the fastest and most straightforward way to run a container in Azure, without having to manage any virtual machines or adopt a higher-level service. As opposed to AKS, you use ACI to run isolated containers. ACI is suitable for smaller or short-term workloads since you only pay for the time they are up and running. They are also swift to start, usually within seconds, and delete when they are no longer needed. As a point of comparison, AKS clusters are meant to host long-running web services that can scale out to meet heavy workload requirements, and scale back in during lighter workloads.
 
 Deploy your models to ACI if you need to deploy and validate your model quickly, or if you are testing a model that is under development.
 
@@ -161,7 +161,7 @@ You can also deploy to ACI using the CLI:
 az ml model deploy -m sklearn_mnist:1 -n aciservice -ic inferenceconfig.json -dc deploymentconfig.json
 ```
 
-Finally, you can use the [Visual Studio Code extension to deploy to ACI](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-vscode-tools#deploy-and-manage-models).
+Finally, you can use the [Visual Studio Code extension to deploy to ACI](https://docs.microsoft.com/azure/machine-learning/service/how-to-vscode-tools#deploy-and-manage-models).
 
 ## Azure Machine Learning compute
 
@@ -173,7 +173,7 @@ When you perform batch scoring, you store the results output to a file store, li
 
 If you need to perform analytics on a Linux hardware device that lives "on the edge", that is, not in the cloud but close to where your IoT hardware or sensors live, you can deploy your models to an Azure IoT Edge device. One such use case is you want to respond to emergencies as quickly as possible by running anomaly detection workloads at the edge.
 
-[Azure IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/about-iot-edge) is a service built on top of [Azure IoT Hub](https://docs.microsoft.com/en-us/azure/iot-hub/about-iot-hub) that helps you analyze data on devices (at the edge) rather than in the cloud. This strategy works well when internet connectivity or latency is an issue, and when you want your devices to react more quickly to status changes by moving parts of your workload to the edge.
+[Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/about-iot-edge) is a service built on top of [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) that helps you analyze data on devices (at the edge) rather than in the cloud. This strategy works well when internet connectivity or latency is an issue, and when you want your devices to react more quickly to status changes by moving parts of your workload to the edge.
 
 When you deploy to an Azure IoT Edge device using Azure Machine Learning service, you are deploying your model into an **IoT Edge module**, which is a Docker-compatible container. This is not unlike deploying to AKS or an ACI container. You can create a data processing pipeline by enabling multiple modules to communicate with each other. These modules can be ones you develop from scratch or can be created by packaging certain Azure services, such as Stream Analytics or Azure Functions, to provide insights offline and at the edge.
 

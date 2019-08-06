@@ -2,7 +2,7 @@
 
 The following categories of tools are available for measuring model performance:
 
-- Programatic tools - the [Azure Machine Learning SDK for Python](https://docs.microsoft.com/en-us/python/api/overview/azure/ml/install?view=azure-ml-py) and the [Azure Command-Line Interface](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) (CLI) (plus the [CLI extension for Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/reference-azure-machine-learning-cli))
+- Programatic tools - the [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) and the [Azure Command-Line Interface](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) (CLI) (plus the [CLI extension for Azure Machine Learning service](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli))
 - Automated tools - [Azure Machine Learning service Automated ML](../../simplify-process-with-automated-ml/README.md) (AutoML)
 - Third party tools - [MLFlow](https://mlflow.org/) and [TensorBoard](https://www.tensorflow.org/tensorboard/)
 
@@ -31,7 +31,7 @@ These values are typically generated during the model training process and they 
 
 AutoML is an Azure Machine Learning feature that enables you to train and tune a Classification, Regresion, or Time Series Forecasting model using a specific target metric. To achieve this, AutoML iterates through several algorithms and parameterizations producing on each iteration a model and a training score. When it comes to measuring model performance, AutoML provides out-of-the box support for a significant number of metrics and graphical representations.
 
-The [Measuring performance of classification and regression models](./measure-performance-regression-classification.md) section contains a detailed discussion about the performance metrics supported by AutoML. For an exhaustive list of metrics logged by AutomML, read [Evaluate training accuracy in automated ML with metrics](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-understand-accuracy-metrics).
+The [Measuring performance of classification and regression models](./measure-performance-regression-classification.md) section contains a detailed discussion about the performance metrics supported by AutoML. For an exhaustive list of metrics logged by AutomML, read [Evaluate training accuracy in automated ML with metrics](https://docs.microsoft.com/azure/machine-learning/service/how-to-understand-accuracy-metrics).
 
 ## MLFlow
 
@@ -60,7 +60,7 @@ with mlflow.start_run():
 
 ## TensorBoard
 
-The [TensorBoard package](https://docs.microsoft.com/en-us/python/api/azureml-tensorboard/?view=azure-ml-py) that is part of the main Azure Machine Learning service SDK for Python enables you to view your runs and metrics in [TensorBoard](https://www.tensorflow.org/tensorboard/). TensorBoard is a suite of web applications for inspecting and understanding your TensorFlow runs and graphs.
+The [TensorBoard package](https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py) that is part of the main Azure Machine Learning service SDK for Python enables you to view your runs and metrics in [TensorBoard](https://www.tensorflow.org/tensorboard/). TensorBoard is a suite of web applications for inspecting and understanding your TensorFlow runs and graphs.
 
 There are two options for integration with the TensorBoard environment:
 
@@ -71,10 +71,10 @@ There are two options for integration with the TensorBoard environment:
 
 You can learn more about the tools available to measure model performance by reviewing these links to additional resources:
 
-- [Log metrics during training runs in Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-track-experiments)
-- [Evaluate training accuracy in automated ML with metrics](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-understand-accuracy-metrics)
-- [Track metrics and deploy models with MLflow and Azure Machine Learning service (Preview)](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-use-mlflow)
-- [Visualize experiment runs and metrics with TensorBoard and Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-monitor-tensorboard)
+- [Log metrics during training runs in Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments)
+- [Evaluate training accuracy in automated ML with metrics](https://docs.microsoft.com/azure/machine-learning/service/how-to-understand-accuracy-metrics)
+- [Track metrics and deploy models with MLflow and Azure Machine Learning service (Preview)](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-mlflow)
+- [Visualize experiment runs and metrics with TensorBoard and Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-monitor-tensorboard)
 
 Read next: [Capturing and querying model performance data with AML Experiments](./capture-query-model-performance-with-aml-experiments.md)
 

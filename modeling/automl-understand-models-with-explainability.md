@@ -163,8 +163,8 @@ Clicking on the top iteration (the best one) will enable you to view the graphic
 
 You can learn more about understanding automated machine learning generated models using the model explainability capability of azure machine learning by reviewing these links to additional resources:
 
-- [What is automated machine learning?](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-automated-ml)
-- [Model interpretability with Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/machine-learning-interpretability-explainability)
+- [What is automated machine learning?](https://docs.microsoft.com/azure/machine-learning/service/concept-automated-ml)
+- [Model interpretability with Azure Machine Learning service](https://docs.microsoft.com/azure/machine-learning/service/machine-learning-interpretability-explainability)
 - [Azure Machine Learning interpretability sample notebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)
 
 Read next: [Model deployment](../model-deployment/README.md)

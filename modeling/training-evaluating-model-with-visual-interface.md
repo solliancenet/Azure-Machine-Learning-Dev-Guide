@@ -147,8 +147,8 @@ To visualize results from the `Evaluate Model` module, right-click on the module
 
 Please see the following additional references on Azure Machine Learning Visual Interface:
 
-- [Algorithm & module reference overview](https://docs.microsoft.com/en-us/azure/machine-learning/algorithm-module-reference/module-reference)
+- [Algorithm & module reference overview](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference)
 - [Visual interface for Azure Machine Learning service](https://azure.microsoft.com/en-us/blog/visual-interface-for-azure-machine-learning-service/)
-- [What is Azure Machine Learning Studio?](https://docs.microsoft.com/en-us/azure/machine-learning/studio/what-is-ml-studio)
+- [What is Azure Machine Learning Studio?](https://docs.microsoft.com/azure/machine-learning/studio/what-is-ml-studio)
 
 Read next: [Training and Evaluating a few simple models Using Azure Notebooks and Azure Machine Learning compute (Code Sample)](../training-evaluating-simple-models-with-aml-compute/README.md)

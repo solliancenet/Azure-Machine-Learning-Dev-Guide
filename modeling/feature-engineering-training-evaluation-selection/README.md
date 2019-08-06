@@ -18,20 +18,20 @@ In the [Data acquisition & understanding](../../data-acquisition-understanding/R
 - [Model Training introduced](./model-training/README.md)
 - [Model Evaluation introduced](./model-evaluation/README.md)
 
-The main reason to further discuss Feature Engineering separately from the other data preparation tasks (and together with model training and evaluation) is that it is perhaps the one data preparation tasks that has the most significant impact on the potential success of a Machine Learning model.
+The main reason to further discuss Feature Engineering separately from the other data preparation tasks (and together with model training and evaluation) is that it is perhaps the one data preparation task that has the most significant impact on the potential success of a Machine Learning model.
 
 ## Next steps
 
 You can learn more about feature engineering, model training, and model evaluation by reviewing these links to additional resources:
 
-- [Feature engineering in data science](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/create-features)
-- [Explore and prepare data with the Dataset class](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-explore-prepare-data)
-- [Transform data with the Azure Machine Learning Data Prep SDK](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-transform-data)
-- [Train and register Scikit-learn models at scale with Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-train-scikit-learn)
-- [Train and register Tensorflow models at scale with Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-train-tensorflow)
-- [Train and register Keras models at scale with Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-train-keras)
-- [Train and register PyTorch models at scale with Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-train-pytorch)
-- [Train models with Azure Machine Learning using estimator](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-train-ml-models)
-- [Tune model hyperparameters](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-tune-hyperparameters)
+- [Feature engineering in data science](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/create-features)
+- [Explore and prepare data with the Dataset class](https://docs.microsoft.com/azure/machine-learning/service/how-to-explore-prepare-data)
+- [Transform data with the Azure Machine Learning Data Prep SDK](https://docs.microsoft.com/azure/machine-learning/service/how-to-transform-data)
+- [Train and register Scikit-learn models at scale with Azure Machine Learning service](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-scikit-learn)
+- [Train and register Tensorflow models at scale with Azure Machine Learning service](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-tensorflow)
+- [Train and register Keras models at scale with Azure Machine Learning service](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-keras)
+- [Train and register PyTorch models at scale with Azure Machine Learning service](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-pytorch)
+- [Train models with Azure Machine Learning using estimator](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-ml-models)
+- [Tune model hyperparameters](https://docs.microsoft.com/azure/machine-learning/service/how-to-tune-hyperparameters)
 
 Read next: [Feature Engineering introduced](./feature-engineering-introduced.md)

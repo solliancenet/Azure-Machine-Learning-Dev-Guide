@@ -172,7 +172,7 @@ print(response.text)
 Please see the following additional references on Azure Machine Learning Visual Interface:
 
 - [ONNX](https://onnx.ai/)
-- [ONNX and Azure Machine Learning: Create and accelerate ML models](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-onnx)
+- [ONNX and Azure Machine Learning: Create and accelerate ML models](https://docs.microsoft.com/azure/machine-learning/service/concept-onnx)
 - [ONNX on Azure Machine Learning](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/onnx)
 
 Read next: [Creating machine learning pipelines](../creating-machine-learning-pipelines/machine-learning-pipelines.md)

@@ -29,7 +29,7 @@ We used Azure Automated Machine Learning (AutoML) to run the experiment that tra
 
 **Note**: The charts can display multiple data sets (one for each distinct class of `y` plus some aggregated ones labeled `* Average`), which is typicall for multi-variate classifiers (where the cardinality of `y` is higher than 2). Our discussion will be limited to the binary classification case. Consequently only one dataset is selected on the charts, the one corresponding to the problem of correctly identifying class 2. In other words, the charts display the relevant metrics for the problem of predicting whether an object is a mine (2) or not (1).
 
-For details on how does Azure Machine Learning service calculate various classifier performance metrics for the multi-variate case, read the [Evaluate training accuracy in automated ML with metrics](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-understand-accuracy-metrics) article.
+For details on how does Azure Machine Learning service calculate various classifier performance metrics for the multi-variate case, read the [Evaluate training accuracy in automated ML with metrics](https://docs.microsoft.com/azure/machine-learning/service/how-to-understand-accuracy-metrics) article.
 
 ### Confusion matrix
 
@@ -235,7 +235,7 @@ As mentioned in their associated notes, all charts presented above where created
 
 You can learn more about measuring the performance of classification and regression models by reviewing these links to additional resources:
 
-- [Log metrics during training runs in Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-track-experiments)
-- [Evaluate training accuracy in automated ML with metrics](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-understand-accuracy-metrics)
+- [Log metrics during training runs in Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments)
+- [Evaluate training accuracy in automated ML with metrics](https://docs.microsoft.com/azure/machine-learning/service/how-to-understand-accuracy-metrics)
 
 Read next: [Tools to measure model performance](./measure-model-performance.md)

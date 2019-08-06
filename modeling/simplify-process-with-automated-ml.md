@@ -75,7 +75,7 @@ The standard preprocessing step deals with scaling and normalizing data using th
 - TruncatedSVDWrapper
 - SparseNormalizer
 
-See the [Automatic preprocessing (standard)](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-automated-ml#automatic-preprocessing-standard) section in [What is automated machine learning?](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-automated-ml) for details about these algorithms.
+See the [Automatic preprocessing (standard)](https://docs.microsoft.com/azure/machine-learning/service/concept-automated-ml#automatic-preprocessing-standard) section in [What is automated machine learning?](https://docs.microsoft.com/azure/machine-learning/service/concept-automated-ml) for details about these algorithms.
 
 The advanced preprocessing step deals with the actual feature engineering process. There are several types of actions performed like:
 
@@ -84,11 +84,11 @@ The advanced preprocessing step deals with the actual feature engineering proces
 - Transform, encode, and/or embed features.
 - Compute measures like `Weight of Distance` (WoE) or `Cluster Distance`.
 
-See the [Advanced preprocessing](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-create-portal-experiments#advanced-preprocessing) section in [Create and explore automated machine learning experiments in the Azure portal](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-create-portal-experiments) for details about these approaches.
+See the [Advanced preprocessing](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-portal-experiments#advanced-preprocessing) section in [Create and explore automated machine learning experiments in the Azure portal](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-portal-experiments) for details about these approaches.
 
 ### Algorithm selection
 
-The list of available algorithms for each type of prediction task supported by autoML (Classification, Regression, and Forecasting) includes multiple choices like `Logistic Regression`, `LightGBM`, `Decision Tree`, `Random Forest`, `Xgboost`, to name just a few. The availability of a given algorithm depends on the type of prediction task specified when configuring the autoML experiment. See the [Select your experiment type](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-configure-auto-train#select-your-experiment-type) section in [Configure automated ML experiments in Python](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-configure-auto-train) for details about all available algorithms.
+The list of available algorithms for each type of prediction task supported by autoML (Classification, Regression, and Forecasting) includes multiple choices like `Logistic Regression`, `LightGBM`, `Decision Tree`, `Random Forest`, `Xgboost`, to name just a few. The availability of a given algorithm depends on the type of prediction task specified when configuring the autoML experiment. See the [Select your experiment type](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#select-your-experiment-type) section in [Configure automated ML experiments in Python](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train) for details about all available algorithms.
 
 By default, autoML will take into consideration all the algorithms that are available for a given type of prediction task. When configuring the experiment (either through the Azure Portal or the Python SDK), you have the option specify which ones should not be considered. This is especially useful when you're using autoML for a task about which you know upfront that one or more algorithms yield poor results.
 
@@ -152,15 +152,15 @@ print(per_class_summary)
 
 You can learn more about Automated Machine Learning by reviewing these links to additional resources:
 
-- [What is automated machine learning?](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-automated-ml)
-- [Configure automated ML experiments in Python](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-configure-auto-train)
-- [Create and explore automated machine learning experiments in the Azure portal (Preview)](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-create-portal-experiments)
-- [Train models with automated machine learning in the cloud](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-auto-train-remote)
-- [Evaluate training accuracy in automated ML with metrics](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-understand-accuracy-metrics)
-- [Configure automated ML experiments in Python](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-configure-auto-train)
-- [Create and explore automated machine learning experiments in the Azure portal](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-create-portal-experiments)
-- [Model interpretability with Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/machine-learning-interpretability-explainability)
-- [Understand automated machine learning results](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-understand-automated-ml)
+- [What is automated machine learning?](https://docs.microsoft.com/azure/machine-learning/service/concept-automated-ml)
+- [Configure automated ML experiments in Python](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train)
+- [Create and explore automated machine learning experiments in the Azure portal (Preview)](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-portal-experiments)
+- [Train models with automated machine learning in the cloud](https://docs.microsoft.com/azure/machine-learning/service/how-to-auto-train-remote)
+- [Evaluate training accuracy in automated ML with metrics](https://docs.microsoft.com/azure/machine-learning/service/how-to-understand-accuracy-metrics)
+- [Configure automated ML experiments in Python](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train)
+- [Create and explore automated machine learning experiments in the Azure portal](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-portal-experiments)
+- [Model interpretability with Azure Machine Learning service](https://docs.microsoft.com/azure/machine-learning/service/machine-learning-interpretability-explainability)
+- [Understand automated machine learning results](https://docs.microsoft.com/azure/machine-learning/service/how-to-understand-automated-ml)
 
 ### Auto ML code samples
 
