@@ -1,6 +1,6 @@
 # Overview of Feature Engineering, Model Training, Model Evaluation and Model Selection
 
-Training, evaluating, and selecting the right Machine Learning models is at the core of each modern data science process. These processes are not possible though without another critical step: the correct preparation of data.  Correctly prepared data implies the following:
+Training, evaluating, and selecting the right Machine Learning models is at the core of each modern data science process. These processes are not possible though without another critical step: the correct preparation of data. Correctly prepared data implies the following:
 
 - Thorough understanding of the data - typically gained via a mix of business process knowledge and exploration.
 - High quality of data - resulting from a combination of processes like cleaning, missing values handling, outlier detection, and transformation.
@@ -22,7 +22,7 @@ The main reason to further discuss Feature Engineering separately from the other
 
 ## Next steps
 
-You can learn more about feature engineering, model traning, and model evaluation by reviewing these links to additional resources:
+You can learn more about feature engineering, model training, and model evaluation by reviewing these links to additional resources:
 
 - [Feature engineering in data science](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/create-features)
 - [Explore and prepare data with the Dataset class](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-explore-prepare-data)

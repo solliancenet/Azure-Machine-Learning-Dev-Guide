@@ -1,6 +1,6 @@
 # Leveraging automated machine learning to train models for classification, regression, and forecasting
 
-This section contains code sample for the following scenarios:
+This section contains code samples for the following scenarios:
 
 - [Using automated machine learning for Classification (Code Sample)](./automl-classification-code-sample.md)
 - [Using automated machine learning for Regression (Code Sample)](./automl-regression-code-sample.md)

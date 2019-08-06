@@ -1,4 +1,4 @@
-# Training and Evaluating a few simple models Using Azure Notebooks and Azure Machine Learning compute (Code Sample)
+# Training and Evaluating a few simple models Using Azure Notebooks and Azure Machine Learning compute
 
 Azure Machine Learning service provides a code-first experience where you can use the [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) to start training your models on your local machine and then scale out to use Azure Machine Learning compute target to train better performing, highly accurate machine learning and deep learning models. Azure Machine Learning service supports many of the popular open-source machine learning and deep learning Python packages, such as:
 
@@ -152,7 +152,7 @@ The following code examples show you the two main ways to monitor the model trai
 run.wait_for_completion(show_output = True)
 ```
 
-   ![Example output from wait_for_completion method on the Run object](../media/model_monitoring_1.png 'Monitoring model training progress')
+   ![Example output from wait_for_completion method on the Run object](media/model_monitoring_1.png 'Monitoring model training progress')
 
 ### Option 2: Use Jupyter notebook widget
 
@@ -161,7 +161,7 @@ from azureml.widgets import RunDetails
 RunDetails(run).show()
 ```
 
-   ![Example output from RunDetails Notebook Widget](../media/model_monitoring_2.png 'Monitoring model training progress')
+   ![Example output from RunDetails Notebook Widget](media/model_monitoring_2.png 'Monitoring model training progress')
 
 ## Visualizing model performance
 
@@ -171,13 +171,13 @@ As discussed, the model performance metrics are available to be visualized in th
 
 The following example shows the details from an Automated Machine Learning experiment run, where you can toggle between the various performance metrics to visualize and compare the performance of the various model pipelines. You can also select an individual model pipeline run to view metrics for that specific run. You will learn more on Automated Machine Learning experiments with Azure Machine Learning service in the next section.
 
-  ![Example output from RunDetails Notebook Widget showing model performance metrics](../media/model_perf_1.png 'Visualizing model performance')
+  ![Example output from RunDetails Notebook Widget showing model performance metrics](media/model_perf_1.png 'Visualizing model performance')
 
 ### Option 2: Run details within Azure portal
 
 This example shows the details of a specific pipeline run for an Automated Machine Learning experiment within the Azure Portal. You can evaluate the various model performance metrics, and visualize the model’s predictions against true data.
 
-   ![Snapshot of model performance as seen in Azure portal](../media/model_perf_3.png 'Visualizing model performance')
+   ![Snapshot of model performance as seen in Azure portal](media/model_perf_3.png 'Visualizing model performance')
 
 ## Next steps
 
