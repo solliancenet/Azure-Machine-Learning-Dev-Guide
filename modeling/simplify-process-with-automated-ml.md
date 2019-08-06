@@ -162,4 +162,13 @@ You can learn more about Automated Machine Learning by reviewing these links to 
 - [Model interpretability with Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/machine-learning-interpretability-explainability)
 - [Understand automated machine learning results](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-understand-automated-ml)
 
-Read next: [Leveraging automated machine learning to train models for classification, regression, and forecasting](./automl-for-classification-regression-forecasting.md)
+### Auto ML code samples
+
+Review the following code samples for the listed scenarios:
+
+- [Using automated machine learning for Classification (Code Sample)](./automl-classification-code-sample.md)
+- [Using automated machine learning for Regression (Code Sample)](./automl-regression-code-sample.md)
+- [Using automated machine learning for Forecasting (Code Sample)](./automl-forecasting-code-sample.md)
+- [Using automated machine learning with model explainability (Code Sample)](./automl-understand-models-with-explainability.md#Model-explainability-code-sample)
+
+Read next: [Understanding automated machine learning generated models, using the model explainability capability of automated machine learning](./automl-understand-models-with-explainability.md)
