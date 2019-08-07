@@ -522,9 +522,11 @@ aks_service = Webservice.deploy_from_image(workspace = ws,
 aks_service.wait_for_deployment(show_output = True)
 ```
 
-## Deploying to a web service hosted on AKS or ACI using Azure Machine Learning visual interface
+## Deploying to a web service hosted on AKS using Azure Machine Learning visual interface
 
-Text
+The Azure Machine Learning service visual interface provides a powerful and intuitive visual drag-and-drop interface for preparing and visualizing your data, running experiments, building, and testing models. Previously, we covered how to deploy a trained model to Azure Kubernetes Service (AKS) from notebooks using the Azure ML SDK. Visual interface allows you to complete this final step through its friendly UI, as demonstrated below.
+
+![The launch visual interface dialog is displayed.](../intro/media/visual-interface-link.png)
 
 ## Next steps
 
