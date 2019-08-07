@@ -524,13 +524,91 @@ aks_service.wait_for_deployment(show_output = True)
 
 ## Deploying to a web service hosted on AKS using Azure Machine Learning visual interface
 
-The Azure Machine Learning service visual interface provides a powerful and intuitive visual drag-and-drop interface for preparing and visualizing your data, running experiments, building, and testing models. Previously, we covered how to deploy a trained model to Azure Kubernetes Service (AKS) from notebooks using the Azure ML SDK. Visual interface allows you to complete this final step through its friendly UI, as demonstrated below.
+The Azure Machine Learning service visual interface provides a powerful and intuitive visual drag-and-drop interface for preparing and visualizing your data, running experiments, building, and testing models. Previously, we covered how to deploy a trained model to Azure Kubernetes Service (AKS) from notebooks using the Azure ML SDK. Visual interface allows you to complete this final step through its friendly UI, as demonstrated below. Currently, AKS is the only web service deployment target from visual interface.
+
+### Visual interface pre-requisites
+
+When you create an experiment in visual interface, there are a few steps you take before you can deploy the model to a web service:
+
+1. Create the experiment steps, then run the training experiment.
+2. Run a predictive experiment. This creates inputs and outputs for the experiment, allowing you to send data to your model and output to a web service.
+3. Deploy the web service.
+
+The first two steps require a training compute target using Azure Machine Learning compute configured for either CPU or GPU. The third step requires a deployment compute target using Azure Kubernetes Service. You need to create the deployment compute target in advance, but you can create the training compute target in advance or when you run the experiment in visual interface.
+
+To create the compute targets in advance, open your Machine Learning service workspace then select _Compute_ in the left-hand menu. The screenshot below shows the Add Compute form with the _Kubernetes Service_ compute type selected for the web service deployment. To deploy to a secure web service, we recommend adding a Kubernetes Service compute target to your workspace and [following the instructions](https://docs.microsoft.com/azure/machine-learning/service/how-to-secure-web-service) to use SSL to secure the web service. You can either select an existing Kubernetes Service or create a new one.
+
+![The Add Compute form is displayed, showing the options to create a new AKS compute target.](../intro/media/visual-interface-create-kubernetes-compute-target.png)
+
+### Deployment steps
+
+The first step is to launch the service by opening your Machine Learning service workspace, then selecting _Visual interface_ from the left-hand menu. The Visual interface
 
 ![The launch visual interface dialog is displayed.](../intro/media/visual-interface-link.png)
 
+The next step is to use the interface to add steps to the experiment. In the screenshot below, we have an experiment that draws data from a CSV file, filters out unneeded columns, cleans missing data, and splits the data so 70% is used for training, and the remaining 30% is used for scoring. A Boosted Decision Tree Regression model is used to make predictions, and the model is evaluated for accuracy. With these experiment steps in place, select **Run** to run the experiment on either a pre-configured or new training compute target.
+
+![The new experiment is displayed in the visual interface.](media/visual-interface-run-training-experiment.png)
+
+After completing the training experiment run, you can manually save the trained model to your AML workspace's model registry. Doing so allows you to specify a name for the model and makes it available to other experiments in visual interface, or to import and use in notebooks. Save the model by right-clicking on the _Train Model_ step, selecting _Trained model_ from the context menu, then _Save as Trained Model_.
+
+![The Save as Trained Model context menu is displayed in visual interface.](media/visual-interface-save-trained-model-link.png)
+
+When prompted, enter a unique name for the newly trained model or specify that it is a new version of an existing trained model.
+
+![The Save trained model form is displayed.](media/visual-interface-save-trained-model.png)
+
+The next step is to create a _Predictive Experiment_. You must do this before you can deploy the web service. When you create a predictive experiment, the following things happen:
+
+1. Visual interface saves the trained model, creating a new version as needed.
+2. This saved trained model is added back into the experiment.
+3. Training-related modules, or steps, are removed: _Train Model_, _Split Data_, and _Evaluate Model_.
+4. The _Web service input_ and _Web service output_ modules are added to the experiment. These modules specify the user data input and model output parameters.
+
+Select **Create Predictive Experiment**.
+
+![The Create Predictive Experiment button is highlighted.](media/visual-interface-create-predictive-experiment.png)
+
+After the predictive experiment creation completes, **Run** the experiment and choose the training compute target, which can be the same target you used for the training experiment run.
+
+![The Run button is highlighted within the predictive experiment pane.](media/visual-interface-run-predictive-experiment.png)
+
+After the predictive experiment runs, select **Deploy Web Service**. This button is highlighted in the screenshot below. Also highlighted, is the _Predictive experiment_ tab.
+
+![The Predictive experiment tab is highlighted, as well as the Deploy Web Service button on the bottom.](media/visual-interface-deploy-web-service-button.png)
+
+In the _Setup Compute Target to Deploy Web Service_ dialog, select the existing deployment compute target. If one does not exist, create a new AKS compute target within your AML service workspace. After selecting the compute target, select **Deploy**.
+
+![The Setup Compute Target to Deploy Web Service dialog is displayed.](media/visual-interface-deploy-web-service-dialog.png)
+
+After the web service deployment completes, select _Web Services_ in the left-hand menu, then the web service to view it.
+
+![The Web Services blade is displayed, and the deployed web service is highlighted.](media/visual-interface-web-services.png)
+
+Select the **Test** tab to send test parameters to the deployed web service and observe the output. The deployment process generates the test data form based on the web service input parameters defined in the predictive experiment.
+
+![The Test tab is selected, and the form is displayed. The Test button is highlighted with an arrow pointing to the Test Result.](media/visual-interface-web-service-test.png)
+
+Select the **Consume** tab to view the request URL, access keys, and sample code for `C#`, `Python`, `Python 3+`, and `R` for calling the deployed web service.
+
+![The Consume tab and sample code language selection tabs are highlighted.](media/visual-interface-web-service-consume.png)
+
+Finally, select the **API Doc** tab to view the automatically generated web service API documentation. This shows the required request headers, REST methods, sample request body, and sample response body and data types.
+
+![The API Doc tab is highlighted and the documentation page is displayed.](media/visual-interface-web-service-api-doc.png)
+
 ## Next steps
 
-- [Reference link]()
-- [Reference link]()
+Learn more about deploying models for real-time inferencing with the links below:
 
-Read next: [Related article]()
+- [Deploy models with the Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-deploy-and-where)
+- [Deploy a model to Azure Container Instances](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-deploy-azure-container-instance)
+- [Deploy a model to an Azure Kubernetes Service cluster](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-deploy-azure-kubernetes-service)
+- [Deploy a deep learning model for inference with GPU](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-deploy-inferencing-gpus)
+- [What are field-programmable gate arrays (FPGA)](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-accelerate-with-fpgas)
+- [Deploy a model as a web service on an FPGA with Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-deploy-fpga-web-service)
+- [Use an existing model with Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-deploy-existing-model)
+- [What are compute targets in Azure Machine Learning service?](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-compute-target)
+- [Deploy a machine learning model with the visual interface](https://docs.microsoft.com/en-us/azure/machine-learning/service/ui-tutorial-automobile-price-deploy)
+
+Read next: [Deploying to AML Compute for batch inferencing](./batch-inferencing)
