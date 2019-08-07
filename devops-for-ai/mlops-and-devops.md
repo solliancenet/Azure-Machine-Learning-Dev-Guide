@@ -12,8 +12,8 @@ This section is dedicated to the topic of MLOps which is basically the disciplin
 
 When it comes to DevOps principles, any non-trivial project that includes a data science component will need to take advantage of a combination of features from the following two major platforms:
 
-- [Azure Machine Learning service](https://azure.microsoft.com/en-us/services/machine-learning-service/)
-- [Azure DevOps](https://azure.microsoft.com/en-us/services/devops)
+- [Azure Machine Learning service](https://azure.microsoft.com/services/machine-learning-service/)
+- [Azure DevOps](https://azure.microsoft.com/services/devops)
 
 The official definition of **Azure Machine Learning service** is:
 
