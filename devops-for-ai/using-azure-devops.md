@@ -35,7 +35,7 @@ From the Dashboards sub tab you will be able to generate screens that utilize wi
 
 ![](media/Dashboards.png)
 
-On the Wiki sub tab, you will be able to create a Wiki repository for your project to share information with the rest of your team reagrding the project, where markdown is supported.
+On the Wiki sub tab, you will be able to create a Wiki repository for your project to share information with the rest of your team regarding the project, where markdown is supported.
 
 ## Boards
 
@@ -93,7 +93,7 @@ On the **Releases** sub tab, you will be able to create a new pipelines where yo
 
 ![](media/ReleaseTemplates.png)
 
-You are able to deploy to any platform with Releases, on Mac, Linux and Windows using their prespective OS agents. With the integration with App Center, you can also deploy directly to mobile as well.
+You are able to deploy to any platform with Releases, on Mac, Linux and Windows using their respective OS agents. With the integration with App Center, you can also deploy directly to mobile as well.
 
 You can create a pipeline by adding Stages and Artifacts
 
@@ -103,7 +103,7 @@ You can pull the Artifacts from several sources, for example Jenkins...
 
 ![](media/Jenkins.png)
 
-For Stages, you have a wide varity of Tasks to choose from by a simple drag and drop to run on Agents
+For Stages, you have a wide variety of Tasks to choose from by a simple drag and drop to run on Agents
 
 ![](media/Tasks.png)
 
@@ -111,7 +111,7 @@ For Stages, you have a wide varity of Tasks to choose from by a simple drag and 
 
 Artifacts allow you to apply the same DevOps best practices to the packages you develop and maintain.
 
-The reality of the great features of Azure DevOps are that you can use them in conjuction with AI & machine Learning and use all the features whether Projects, Boards, repos, Pipelines, Test Plans or Artifcats to effectivly be on top of you ML project, your models, your notebooks, your deployments and web services.
+The reality of the great features of Azure DevOps are that you can use them in conjunction with AI & machine Learning and use all the features whether Projects, Boards, repos, Pipelines, Test Plans or Artifacts to effectively be on top of you ML project, your models, your notebooks, your deployments and web services.
 
 ## Next steps
 
