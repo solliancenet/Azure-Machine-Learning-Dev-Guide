@@ -19,21 +19,21 @@ This is where you will have access to all your Projects and also your associated
 
 Click on the **Create Project** button to start a new Project in Azure DevOps.
 
-![](media/CreateProject.png)
+![The create new project dialog is displayed.](media/CreateProject.png)
 
 Once the project is created, you will be able to manage Your project, Boards, Repositories, Pipeline, Test Plans, Artifacts and all your Project Settings from your DevOps Project screen.
 
-![](media/DevOpsDashBoard.png)
+![The DevOps dashboard is displayed with the previously listed areas highlighted.](media/DevOpsDashBoard.png)
 
 ## Overview
 
 In this tab you will be able to see a summary of your Project, project stats and participating members on the team.
 
-![](media/Overview.png)
+![The Overview left-hand menu structure is highlighted.](media/Overview.png)
 
 From the Dashboards sub tab you will be able to generate screens that utilize widgets to drag and drop into your dashboards to make it easy to oversee the health and progress of your project.
 
-![](media/Dashboards.png)
+![An arrow shows moving dashboard widgets onto the custom dashboard.](media/Dashboards.png)
 
 On the Wiki sub tab, you will be able to create a Wiki repository for your project to share information with the rest of your team regarding the project, where markdown is supported.
 
@@ -41,7 +41,7 @@ On the Wiki sub tab, you will be able to create a Wiki repository for your proje
 
 You can use Azure Boards to display Kanban boards to plan and check your entire release. You will be able to create sprints and move work items from different states until completion and release of your product.
 
-![](media/Boards.png)
+![The Boards left-hand menu and its options are highlighted.](media/Boards.png)
 
 In **Backlogs** you will be able to drag and drop your items to the desired sprint and monitor all your backlog items in the system that are yet to be completed.
 
@@ -49,21 +49,21 @@ In **Sprints** you will be able to track your progress on the **TaskBoard** and 
 
 In **Queries**, this is where you would create your favorite queries about a group of items in the project's work items to quickly execute them in the future
 
-![](media/Queries.png)
+![The Queries blade is displayed with a sample query.](media/Queries.png)
 
 ## Repos
 
-![](media/Repos.png)
+![The Repos left-hand menu item and its sub-components are highlighted.](media/Repos.png)
 
 Repos in Azure DevOps are extremely important to manage your project files and source control, whether you are using a centralized source control or Distributed source control (like Git)
 
 The Files sub tab will allow you to view the files and structure of your repository and make changes if desired.
 
-![](media/Files.png)
+![A sample Python file is displayed.](media/Files.png)
 
 **Commits**, allows you to see how all your branches come together.
 
-![](media/Commits.png)
+![The commit branch graph is highlighted.](media/Commits.png)
 
 **Pushes**, give you a historic view of all the changes made to the remote repository.
 
@@ -77,7 +77,7 @@ The Files sub tab will allow you to view the files and structure of your reposit
 
 This is a rich Cross Platform CI/CD system capable of building any language targeting any platform.
 
-![](media/pipelines.png)
+![The Pipelines left-hand menu and its sub-components are highlighted.](media/pipelines.png)
 
 From the summary page, you will be able to review commits, test results and perform many actions on your project. The Deployment section in the summary will be able to show you were in the release your project is currently.
 
@@ -85,27 +85,27 @@ The real power of Azure Pipelines starts manifesting itself when you get to the 
 
 Azure Pipelines can pull your code from the most popular source control systems.
 
-![](media/PipRepos.png)
+![The list of source pipeline repos is displayed.](media/PipRepos.png)
 
 Azure Pipelines also offer hosted Windows, Mac and Linux operating build agents.
 
 On the **Releases** sub tab, you will be able to create a new pipelines where you can start with an empty job or drag and drop a featured deployment pipeline from the many templates available in Azure Pipelines.
 
-![](media/ReleaseTemplates.png)
+![The releases blade is shown with optional templates.](media/ReleaseTemplates.png)
 
 You are able to deploy to any platform with Releases, on Mac, Linux and Windows using their respective OS agents. With the integration with App Center, you can also deploy directly to mobile as well.
 
 You can create a pipeline by adding Stages and Artifacts
 
-![](media/Stages.png)
+![The pipeline stages and artifacts are shown.](media/Stages.png)
 
 You can pull the Artifacts from several sources, for example Jenkins...
 
-![](media/Jenkins.png)
+![The Jenkins artifact source type is selected.](media/Jenkins.png)
 
 For Stages, you have a wide variety of Tasks to choose from by a simple drag and drop to run on Agents
 
-![](media/Tasks.png)
+![Stage agent tasks are displayed.](media/Tasks.png)
 
 ## Artifacts
 
