@@ -39,4 +39,4 @@ You can learn more about production model telemetry with Azure Application Insig
 
 -[Monitor your Azure Machine Learning models with Application Insights](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-enable-app-insights)
 
-Read next: [Model versioning with the AML model registry](./model-versioning.md)
+Read next: [Monitoring a deployed model's collected data and telemetry (Code Sample)](../monitoring-data-and-telemetry-code-sample.md)

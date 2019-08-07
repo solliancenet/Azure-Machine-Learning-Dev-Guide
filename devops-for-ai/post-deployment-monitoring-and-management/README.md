@@ -18,7 +18,6 @@ This section addresses the problem of data collection and model versioning in po
 
 - [Production monitoring of model input data and the deployed model predictions using the AML Model data collection](./monitoring-data-collection.md)
 - [Collecting model web service performance telemetry (e.g., request rates, response times, failure rates and exceptions) with Application Insights](./model-webservice-performance-telemetry.md)
-- [Model versioning with the AML model registry](./model-versioning.md)
 
 ## Next steps
 
