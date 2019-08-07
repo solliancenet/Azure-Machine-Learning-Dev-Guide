@@ -2,16 +2,16 @@
 
 Within the context provided by an Experiment, each Run is associated with the following information that can be used to track valuable information about the training process:
 
-Name | Description
---- | --
-Attributes (metadata) | Values like Status, Created Time, Duration, Run Id, Run Number, and others.
-Tags | String values associated with the Run like `azureml.nodeid`.
-Tracked Metrics | Performance metrics like `loss` and `acc`. The list depends on the algorithm used to train the model.
-Charts | You can log vectors and/or tables from code using `run.log_list(name, value, description)` and then view charts based on these values in the Azure Portal.
-Images | You can log image files or `matplotlib` plots from code using `run.log_image(name, path, plot)` and then view them in the Azure Portal.
-Outputs | Output files that are either collected automatically by the experiment or are explicitly uploaded by you.
-Logs | Various log files generated during the execution of the training script.
-Snapshot | When submitting a run, the directory that contains the script file is sent in a compressed form to the compute target being used and also stored as a snapshot. The actual content of the directory that ends up in the zip file can be controlled by placing in it an `.amlignore` or a `.gitignore` file.
+| Name                  | Description                                                                                                                                                                                                                                                                                                 |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Attributes (metadata) | Values like Status, Created Time, Duration, Run Id, Run Number, and others.                                                                                                                                                                                                                                 |
+| Tags                  | String values associated with the Run like `azureml.nodeid`.                                                                                                                                                                                                                                                |
+| Tracked Metrics       | Performance metrics like `loss` and `acc`. The list depends on the algorithm used to train the model.                                                                                                                                                                                                       |
+| Charts                | You can log vectors and/or tables from code using `run.log_list(name, value, description)` and then view charts based on these values in the Azure Portal.                                                                                                                                                  |
+| Images                | You can log image files or `matplotlib` plots from code using `run.log_image(name, path, plot)` and then view them in the Azure Portal.                                                                                                                                                                     |
+| Outputs               | Output files that are either collected automatically by the experiment or are explicitly uploaded by you.                                                                                                                                                                                                   |
+| Logs                  | Various log files generated during the execution of the training script.                                                                                                                                                                                                                                    |
+| Snapshot              | When submitting a run, the directory that contains the script file is sent in a compressed form to the compute target being used and also stored as a snapshot. The actual content of the directory that ends up in the zip file can be controlled by placing in it an `.amlignore` or a `.gitignore` file. |
 
 ## Using the SDK to capture data
 
@@ -46,7 +46,7 @@ run.log(name='Numeric 2', value=100)
 # Run the same numeric value repeatedly to generate a line chart
 for i in tqdm(range(-10, 10)):
     run.log(name='Sigmoid', value=1 / (1 + np.exp(-i)))
-    
+
 # Vector metrics
 fibonacci_values = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
 run.log_list(name='Fibonacci', value=fibonacci_values)
@@ -59,10 +59,10 @@ sines['sine'] = []
 
 for i in tqdm(range(-10, 10)):
     angle = i / 2.0
-    
+
     # log a 2 (or more) values as a metric repeatedly. This will generate a 2-variable line chart if you have 2 numerical columns.
     run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))
-        
+
     sines['angle'].append(angle)
     sines['sine'].append(np.sin(angle))
 
@@ -87,7 +87,7 @@ file_name = 'outputs/metrics.txt'
 with open(file_name, "w") as f:
     f.write('These are my training metrics.\n')
 
-# Upload the file explicitly into artifacts 
+# Upload the file explicitly into artifacts
 run.upload_file(name = file_name, path_or_stream = file_name)
 
 run.tag('Build Number', value='20190715.4')
@@ -133,7 +133,7 @@ All data captured during a run is available through the SDK as well. The SDK has
 
 Note the link to the Azure Portal provided by the widget.
 
-To get full access to the metrics, you can use the `get_metrics` method of the Run object. You will get a dictionary containing all the metrics logged  for the run:
+To get full access to the metrics, you can use the `get_metrics` method of the Run object. You will get a dictionary containing all the metrics logged for the run:
 
 ![Get Azure Machine Learning run metrics using the SDK](./media/model-logging-sdk-02.png)
 
@@ -171,7 +171,7 @@ Retrieving a run based on its properties is similar to retrieving it using tags:
 exp.get_runs(properties={'author': 'John Doe'})
 ```
 
-The main difference between properties and tags is that properties are immutable while tags are mutable. Consequently, properties are better suited for cases when you need to create permanent records for auditing purposes. 
+The main difference between properties and tags is that properties are immutable while tags are mutable. Consequently, properties are better suited for cases when you need to create permanent records for auditing purposes.
 
 ## Next steps
 
@@ -180,4 +180,4 @@ You can learn more about capturing and querying model performance data by review
 - [Start, monitor, and cancel training runs in Python](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-runs)
 - [Log metrics during training runs in Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments)
 
-Read next: [Training and Evaluating a simple model using Azure Machine Learning Studio (Code Sample)](../../training-evaluating-model-with-aml-studio/README.md)
+Read next: [Training and Evaluating a simple model using Azure Machine Learning Visual Interface](./training-evaluating-model-with-visual-interface.md)

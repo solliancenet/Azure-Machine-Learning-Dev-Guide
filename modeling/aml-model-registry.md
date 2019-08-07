@@ -39,5 +39,4 @@ You can learn more about the Model Registry by reviewing these links to addition
 
 - [How Azure Machine Learning service works: Architecture and concepts - Models](https://docs.microsoft.com/azure/machine-learning/service/concept-azure-machine-learning-architecture#models)
 
-
-[Model Evaluation introduced](../model-evaluation/README.md)
+Read next: [Model Evaluation introduced](./model-evaluation.md)

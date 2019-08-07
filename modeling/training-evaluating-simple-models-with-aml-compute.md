@@ -31,8 +31,8 @@ categorical = ['...', '...']
 numeric_transformations = [([f], Pipeline(steps=[
     ('imputer', SimpleImputer(strategy='median')),
     ('scaler', StandardScaler())])) for f in numerical]
-    
-categorical_transformations = [([f], OneHotEncoder(handle_unknown='ignore', 
+
+categorical_transformations = [([f], OneHotEncoder(handle_unknown='ignore',
                                sparse=False)) for f in categorical]
 
 transformations = numeric_transformations + categorical_transformations
@@ -47,7 +47,7 @@ clf.fit(X_train, y_train)
 
 ### Script run configuration
 
-The Script Run Configuration defines the training script and the environment needed to run the training job.  There are two main ways to define the required environment: 
+The Script Run Configuration defines the training script and the environment needed to run the training job. There are two main ways to define the required environment:
 
 - User Managed Environment - When using a user-managed environment, you are responsible for ensuring that all the necessary packages are available in the Python environment you choose to run the script in.
 
@@ -93,7 +93,7 @@ run = experiment.submit(src)
 
 The section [Introducing AML compute options](../../modeling/feature-engineering-training-evaluation-selection/model-training/aml-compute-options.md) provides details on the various AML compute options and how to create them. In this section we will look at how the submit the above training script to run on Azure Machine Learning Compute cluster.
 
-The key difference, in running the training job on local vs AML compute is to define the appropriate run configuration. As described in the section [Introducing AML Estimators]( ../../modeling/feature-engineering-training-evaluation-selection/model-training/aml-estimators.md), you can also use a specialized estimator that serves as an abstraction to construct run configurations for standard libraries such as Scikit-learn, Keras TensorFlow, PyTorch etc. Here we will look at an example of creating a run configuration using a Docker based environment.
+The key difference, in running the training job on local vs AML compute is to define the appropriate run configuration. As described in the section [Introducing AML Estimators](../../modeling/feature-engineering-training-evaluation-selection/model-training/aml-estimators.md), you can also use a specialized estimator that serves as an abstraction to construct run configurations for standard libraries such as Scikit-learn, Keras TensorFlow, PyTorch etc. Here we will look at an example of creating a run configuration using a Docker based environment.
 
 ```python
 # Create the Dockor environment and specify the conda dependencies
@@ -113,9 +113,9 @@ run = experiment.submit(src)
 
 ## Logging during the model training process
 
-The Azure Machine Learning service provides support for monitoring experiment run, logging metrics, saving artifacts, and viewing the results of a run. Also, if you are already using [MLflow]( https://www.mlflow.org/) for managing your machine learning lifecycle, Azure Machine Learning service provides integration with MLFlow for consolidating your logs, metrics, and training artifacts within Azure Machine Learning service. You can refer to the section [Tools to measure model performance](../../modeling/feature-engineering-training-evaluation-selection/model-evaluation/measure-model-performance.md) to learn more on the MLFlow integration with Azure Machine Learning service. In this section, we will look at how Azure Machine Learning SDK for Python allow you to log model metrics and upload artifacts to the run while training an experiment.
+The Azure Machine Learning service provides support for monitoring experiment run, logging metrics, saving artifacts, and viewing the results of a run. Also, if you are already using [MLflow](https://www.mlflow.org/) for managing your machine learning lifecycle, Azure Machine Learning service provides integration with MLFlow for consolidating your logs, metrics, and training artifacts within Azure Machine Learning service. You can refer to the section [Tools to measure model performance](../../modeling/feature-engineering-training-evaluation-selection/model-evaluation/measure-model-performance.md) to learn more on the MLFlow integration with Azure Machine Learning service. In this section, we will look at how Azure Machine Learning SDK for Python allow you to log model metrics and upload artifacts to the run while training an experiment.
 
-The Azure Machine Learning SDK for Python provides support to log a wide variety of data types to the experiment run. This includes, scalar values, lists, row, table, images, upload file or a directory, and also you can tag a run with custom properties. Depending how the metrics are logged, they can be viewed as charts in the run details page. For example, if you log an array of numeric values, or a single numeric value with the same metric name repeatedly, then you can view the metric as a single variable line chart. In another example, if you log a table with two numerical columns – two metrics, or log a row with two columns repeatedly, then you can view the metrics as two variable line chart. 
+The Azure Machine Learning SDK for Python provides support to log a wide variety of data types to the experiment run. This includes, scalar values, lists, row, table, images, upload file or a directory, and also you can tag a run with custom properties. Depending how the metrics are logged, they can be viewed as charts in the run details page. For example, if you log an array of numeric values, or a single numeric value with the same metric name repeatedly, then you can view the metric as a single variable line chart. In another example, if you log a table with two numerical columns – two metrics, or log a row with two columns repeatedly, then you can view the metrics as two variable line chart.
 
 The following example, shows you how you can log a single numeric value with the same metric name repeatedly and upload files to the experiment run from the model training script.
 
@@ -152,7 +152,7 @@ The following code examples show you the two main ways to monitor the model trai
 run.wait_for_completion(show_output = True)
 ```
 
-   ![Example output from wait_for_completion method on the Run object](media/model_monitoring_1.png 'Monitoring model training progress')
+![Example output from wait_for_completion method on the Run object](media/model_monitoring_1.png 'Monitoring model training progress')
 
 ### Option 2: Use Jupyter notebook widget
 
@@ -161,31 +161,31 @@ from azureml.widgets import RunDetails
 RunDetails(run).show()
 ```
 
-   ![Example output from RunDetails Notebook Widget](media/model_monitoring_2.png 'Monitoring model training progress')
+![Example output from RunDetails Notebook Widget](media/model_monitoring_2.png 'Monitoring model training progress')
 
 ## Visualizing model performance
 
-As discussed, the model performance metrics are available to be visualized in the RunDetails Jupyter notebook widget, and in the run details page within Azure portal. You can also visualize model performance metrics in TensorBoard using the [tensorboard package]( https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py). The details of leveraging TensorBoard with Azure Machine Learning experiments are outside the scope of this article and are made available in the links provided below.
+As discussed, the model performance metrics are available to be visualized in the RunDetails Jupyter notebook widget, and in the run details page within Azure portal. You can also visualize model performance metrics in TensorBoard using the [tensorboard package](https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py). The details of leveraging TensorBoard with Azure Machine Learning experiments are outside the scope of this article and are made available in the links provided below.
 
 ### Option 1: Jupyter notebook widget
 
 The following example shows the details from an Automated Machine Learning experiment run, where you can toggle between the various performance metrics to visualize and compare the performance of the various model pipelines. You can also select an individual model pipeline run to view metrics for that specific run. You will learn more on Automated Machine Learning experiments with Azure Machine Learning service in the next section.
 
-  ![Example output from RunDetails Notebook Widget showing model performance metrics](media/model_perf_1.png 'Visualizing model performance')
+![Example output from RunDetails Notebook Widget showing model performance metrics](media/model_perf_1.png 'Visualizing model performance')
 
 ### Option 2: Run details within Azure portal
 
 This example shows the details of a specific pipeline run for an Automated Machine Learning experiment within the Azure Portal. You can evaluate the various model performance metrics, and visualize the model’s predictions against true data.
 
-   ![Snapshot of model performance as seen in Azure portal](media/model_perf_3.png 'Visualizing model performance')
+![Snapshot of model performance as seen in Azure portal](media/model_perf_3.png 'Visualizing model performance')
 
 ## Next steps
 
-Please see the following additional references on training on local and AML compute custer in Azure Machine Learning service:
+Please see the following additional references on training on local and AML compute cluster in Azure Machine Learning service:
 
 - [Azure Machine Learning Notebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training)
 - [Start, monitor, and cancel training runs in Python](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-runs)
 - [Log metrics during training runs in Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments)
 - [Visualize experiment runs and metrics with TensorBoard and Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-monitor-tensorboard)
 
-Read next: [Simplify the process with Automated Machine Learning, a component of Azure Machine Learning service](../simplify-process-with-automated-ml/README.md)
+Read next: [Simplify the process with Automated Machine Learning, a component of Azure Machine Learning service](./simplify-process-with-automated-ml.md)
