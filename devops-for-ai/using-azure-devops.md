@@ -3,6 +3,7 @@
 Azure DevOps provides developer services to support teams to plan work, collaborate on code development, and build and deploy applications. Developers can work in the cloud using Azure DevOps Services or on-premises using Azure DevOps Server, formerly named Visual Studio Team Foundation Server (TFS).
 
 ## Why Use Azure DevOps?
+
 - It is perfect for turning your idea into a piece of Software.
 - Helps you plan your solution with Agile Tools
 - Enables source code management using Git and other first class source control systems
@@ -15,6 +16,7 @@ To get started, create an account on https://dev.azure.com
 This is where you will have access to all your Projects and also your associated Organization.
 
 ## Create a Project
+
 Click on the **Create Project** button to start a new Project in Azure DevOps.
 
 ![](media/CreateProject.png)
@@ -24,6 +26,7 @@ Once the project is created, you will be able to manage Your project, Boards, Re
 ![](media/DevOpsDashBoard.png)
 
 ## Overview
+
 In this tab you will be able to see a summary of your Project, project stats and participating members on the team.
 
 ![](media/Overview.png)
@@ -35,13 +38,14 @@ From the Dashboards sub tab you will be able to generate screens that utilize wi
 On the Wiki sub tab, you will be able to create a Wiki repository for your project to share information with the rest of your team reagrding the project, where markdown is supported.
 
 ## Boards
+
 You can use Azure Boards to display Kanban boards to plan and check your entire release. You will be able to create sprints and move work items from different states until completion and release of your product.
 
 ![](media/Boards.png)
 
 In **Backlogs** you will be able to drag and drop your items to the desired sprint and monitor all your backlog items in the system that are yet to be completed.
 
-In **Sprints** you will be able to track your progress on the **TaskBoard** and move items from one sprint to another easily.  You can even create **Branches** right from the board, if need be.
+In **Sprints** you will be able to track your progress on the **TaskBoard** and move items from one sprint to another easily. You can even create **Branches** right from the board, if need be.
 
 In **Queries**, this is where you would create your favorite queries about a group of items in the project's work items to quickly execute them in the future
 
@@ -67,7 +71,7 @@ The Files sub tab will allow you to view the files and structure of your reposit
 
 **Tags**, will allow you to view all the Tags created for the project and even create new ones.
 
-**Pull Requests**, will allow you review and participate in Pull Requests in the project.  You can also create policies to fire up a build automatically based on a pull request.
+**Pull Requests**, will allow you review and participate in Pull Requests in the project. You can also create policies to fire up a build automatically based on a pull request.
 
 ## Azure Pipelines
 

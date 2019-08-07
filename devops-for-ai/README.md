@@ -4,7 +4,7 @@ DevOps has become ubiquitous in the world of classical development. Almost all p
 
 When it comes to DevOps, Data Science projects pose a range of special challenges, whether it’s about the technical side of things, the philosophy of the people involved, or the actors involved. Think about one simple example: versioning. While in a “classical” development project versioning refers almost exclusively to source code, in the world of data science it gets another important aspect: data versioning. It’s not enough to know the version of the code for your model, it’s equally important to know the “version” of the data it was trained on. Another interesting question is, for examples, what does a “build” mean in the world of data science? Or a “release”?
 
-This section is dedicated to the topic of MLOps which is basically the discipline that deals with the application of "classical" DevOps principles to projects that have at least one data science component. As the title implies, MLOps is `DevOps for AI`. 
+This section is dedicated to the topic of MLOps which is basically the discipline that deals with the application of "classical" DevOps principles to projects that have at least one data science component. As the title implies, MLOps is `DevOps for AI`.
 
 The following topics will be covered:
 

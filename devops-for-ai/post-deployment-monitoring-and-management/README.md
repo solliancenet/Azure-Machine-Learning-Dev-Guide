@@ -21,7 +21,7 @@ This section addresses the problem of data collection and model versioning in po
 
 ## Next steps
 
-You can learn more about post depol by reviewing these links to additional resources:
+You can learn more about post deployment by reviewing these links to additional resources:
 
 - [Collect data for models in production](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-data-collection)
 - [Detect data drift (preview) on models deployed to Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/machine-learning/service/how-to-monitor-data-drift)
