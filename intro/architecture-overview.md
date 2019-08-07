@@ -4,7 +4,7 @@ Azure Machine Learning service provides a comprehensive environment you can use 
 
 ## Components and concepts
 
-The top-level component of the Azure Machine Learning (AML) service is the [workspace](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-workspace). Your first step to using AML is to create a workspace within an Azure region and resource group (a logical grouping of Azure services). When you do this, the script creates all services alongside your workspace. Once created, you reference the workspace any time you need to train, evaluate, monitor, or deploy a model.
+The top-level component of the Azure Machine Learning (AML) service is the [workspace](https://docs.microsoft.com/azure/machine-learning/service/concept-workspace). Your first step to using AML is to create a workspace within an Azure region and resource group (a logical grouping of Azure services). When you do this, the script creates all services alongside your workspace. Once created, you reference the workspace any time you need to train, evaluate, monitor, or deploy a model.
 
 Here is an example of creating a new workspace, using the Machine Learning CLI (command-line interface). See [Getting your environment set up](./environment-setup.md) for more information.
 
@@ -18,16 +18,16 @@ The following diagram shows the high-level taxonomy of the workspace:
 
 The diagram includes the following components:
 
-- A workspace may contain [Notebook VMs](https://docs.microsoft.com/en-us/azure/machine-learning/service/quickstart-run-cloud-notebook), which are cloud resources pre-configured with a Python environment necessary to run Azure Machine Learning.
-- [User roles](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-assign-roles) enable you to share your workspace with other users, teams, or projects.
-- [Compute targets](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-compute-target) are compute resources where you run your experiments or host your service deployment. The target may be your local machine or a cloud-based resource.
+- A workspace may contain [Notebook VMs](https://docs.microsoft.com/azure/machine-learning/service/quickstart-run-cloud-notebook), which are cloud resources pre-configured with a Python environment necessary to run Azure Machine Learning.
+- [User roles](https://docs.microsoft.com/azure/machine-learning/service/how-to-assign-roles) enable you to share your workspace with other users, teams, or projects.
+- [Compute targets](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target) are compute resources where you run your experiments or host your service deployment. The target may be your local machine or a cloud-based resource.
 - When you create the workspace, [associated resources](#associated-workspace-resources) are also created for you.
 - [Experiments](../modeling/feature-engineering-training-evaluation-selection/model-training/aml-experiment-runs.md) are training runs you use to build your models. You can create and run experiments with
   - The [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
   - The [automated machine learning experiments](../modeling/simplify-process-with-automated-ml/README.md) section in the Azure portal.
   - The [visual interface](./tools.md#visual-interface) for drag-and-drop model building and deployment.
 - [Pipelines](../creating-machine-learning-pipelines/machine-learning-pipelines.md) are reusable workflows for training and retraining your model.
-- [Datasets](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-explore-prepare-data) aid in the management of the data you use for model training and pipeline creation.
+- [Datasets](https://docs.microsoft.com/azure/machine-learning/service/how-to-explore-prepare-data) aid in the management of the data you use for model training and pipeline creation.
 - Once you have a model you want to deploy, you create a registered model.
 - Use the registered model and a scoring script to create a [deployment](../model-deployment/deployment-target-options.md).
 
@@ -68,13 +68,13 @@ When you want your model to be available for on-demand access over the web or on
 
 ### 5 - Monitor
 
-Monitor for changes in the distribution of data between the training dataset and inference data of your deployed model. These changes are sometimes called [data drift](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-data-drift) and indicate degraded prediction performance over time due to how the input data changes during this period. When you detect degraded model performance, the next step is to retrain your model with new data, thus creating a new version of the model. If your model is deployed to a web service or IoT devices, then you would use the new version of the model to redeploy it to those endpoints. The Azure Machine Learning SDK provides tools you can use to redeploy with minimal interruption of these services and endpoints.
+Monitor for changes in the distribution of data between the training dataset and inference data of your deployed model. These changes are sometimes called [data drift](https://docs.microsoft.com/azure/machine-learning/service/concept-data-drift) and indicate degraded prediction performance over time due to how the input data changes during this period. When you detect degraded model performance, the next step is to retrain your model with new data, thus creating a new version of the model. If your model is deployed to a web service or IoT devices, then you would use the new version of the model to redeploy it to those endpoints. The Azure Machine Learning SDK provides tools you can use to redeploy with minimal interruption of these services and endpoints.
 
 ## Next steps
 
-- [Quickstart guide for running a cloud notebook on a Notebook VM](https://docs.microsoft.com/en-us/azure/machine-learning/service/quickstart-run-cloud-notebook)
-- [How to assign user roles](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-assign-roles)
-- [Compute targets](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-compute-target)
+- [Quickstart guide for running a cloud notebook on a Notebook VM](https://docs.microsoft.com/azure/machine-learning/service/quickstart-run-cloud-notebook)
+- [How to assign user roles](https://docs.microsoft.com/azure/machine-learning/service/how-to-assign-roles)
+- [Compute targets](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target)
 - [Running model experiments](../modeling/feature-engineering-training-evaluation-selection/model-training/aml-experiment-runs.md)
 - [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 - [Automated machine learning experiments](../modeling/simplify-process-with-automated-ml/README.md)

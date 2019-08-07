@@ -8,7 +8,7 @@ The following diagram shows an example pipeline:
 
 ![azure machine learning piplines](./media/pipelines.png)
 
-The [Azure Machine Learning SDK for Python](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-core/?view=azure-ml-py) allows you to create ML pipelines, and also submit and track individual pipeline runs. You can build reusable pipelines that optimize your specific workflows and allows you to focus on your expertise, for example machine learning, instead of the infrastructure to build and manage the pipelines.
+The [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) allows you to create ML pipelines, and also submit and track individual pipeline runs. You can build reusable pipelines that optimize your specific workflows and allows you to focus on your expertise, for example machine learning, instead of the infrastructure to build and manage the pipelines.
 
 The purpose of this article to show how to build an example machine learning pipeline work flow, that includes repeatable data preparation, model training and batch predictions using the Azure Machine Learning SDK for Python within Azure notebooks.
 
@@ -382,7 +382,7 @@ data.download('.', show_progress=True)
 
 Please see the following additional references on ML pipelines in Azure Machine Learning service:
 
-- [Create and run a machine learning pipeline by using Azure Machine Learning SDK](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-create-your-first-pipeline)
+- [Create and run a machine learning pipeline by using Azure Machine Learning SDK](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-your-first-pipeline)
 - [Azure Machine Learning Notebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 
 Read next: [MLOps - DevOps for AI](../devops-for-ai/README.md)

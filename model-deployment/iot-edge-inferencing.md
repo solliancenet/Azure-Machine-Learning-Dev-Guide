@@ -8,7 +8,7 @@ In this article, we discuss the integration of Azure Machine Learning and Azure 
 
 ## Azure IoT Edge
 
-To provide a framework capable of supporting inference and data analysis at the IoT edge, Microsoft built [Azure IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/about-iot-edge). The service builds upon the capabilities provided by [IoT Hub](https://docs.microsoft.com/en-us/azure/iot-hub/about-iot-hub) and is designed to allow data to be analyzed directly on IoT devices or "at the edge," instead of in the cloud. To run your workloads at the edge using Azure IoT Edge, they are packaged into containers and those containers are then deployed to the edge. This allows you to move machine learning inference to the edge and respond to events more quickly.
+To provide a framework capable of supporting inference and data analysis at the IoT edge, Microsoft built [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/about-iot-edge). The service builds upon the capabilities provided by [IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) and is designed to allow data to be analyzed directly on IoT devices or "at the edge," instead of in the cloud. To run your workloads at the edge using Azure IoT Edge, they are packaged into containers and those containers are then deployed to the edge. This allows you to move machine learning inference to the edge and respond to events more quickly.
 
 Azure IoT Edge is made up of three components which work together to provide a complete solution for running, managing, and monitoring inference on the IoT edge.
 
@@ -97,7 +97,7 @@ az vm create --resource-group aml-iot-edge-demo --name EdgeVM --image microsoft_
 
 When the new virtual machine finishes provisioning, note the `publicIpAddress` in the output. This value will be required to connect to the VM below.
 
-> If you would like to use your own device for running the Azure IoT Edge runtime, follow the instructions to [Install the Azure IoT Edge runtime on Linux](https://docs.microsoft.com/en-us/azure/iot-edge/how-to-install-iot-edge-linux).
+> If you would like to use your own device for running the Azure IoT Edge runtime, follow the instructions to [Install the Azure IoT Edge runtime on Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux).
 
 ### Register the IoT Edge device
 
@@ -131,7 +131,7 @@ If you created a device VM above using the Azure IoT Edge on Ubuntu virtual mach
 az vm run-command invoke -g aml-iot-edge-demo -n EdgeVM --command-id RunShellScript --script "/etc/iotedge/configedge.sh '{device_connection_string}'"
 ```
 
-If you chose to use your own device, you must install the IoT Edge runtime and its prerequisites on your device. Follow the instructions in [Install the Azure IoT Edge runtime on Linux](https://docs.microsoft.com/en-us/azure/iot-edge/how-to-install-iot-edge-linux), then return to this article to continue.
+If you chose to use your own device, you must install the IoT Edge runtime and its prerequisites on your device. Follow the instructions in [Install the Azure IoT Edge runtime on Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux), then return to this article to continue.
 
 ### View the IoT Edge runtime status
 
