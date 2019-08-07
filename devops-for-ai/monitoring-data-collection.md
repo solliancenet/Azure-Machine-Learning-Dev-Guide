@@ -21,9 +21,9 @@ To enable data collection, you need to have the proper dependencies added to you
 
 ![Enable production model data collection in Azure portal](./media/azureml-data-collection-enable.png)
 
-Deploying a trained model to production is described in the [Overview of deployment target options](../../model-deployment/deployment-target-options.md) section.
+Deploying a trained model to production is described in the [Overview of deployment target options](../model-deployment/deployment-target-options.md) section.
 
-Enabling data collection using the SDK is described in the [Monitoring a deployed model's collected data and telemetry (Code Sample)](../monitoring-data-and-telemetry-code-sample.md) section.
+Enabling data collection using the SDK is described in the [Monitoring a deployed model's collected data and telemetry (Code Sample)](./monitoring-data-and-telemetry-code-sample.md) section.
 
 ## Querying and analyzing monitoring data
 
