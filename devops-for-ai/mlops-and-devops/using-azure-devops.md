@@ -1,14 +1,13 @@
 # Using Azure DevOps
 
-The great news about using Azure DevOps is that it was developed to support solutions of any language and on any platform.
+Azure DevOps provides developer services to support teams to plan work, collaborate on code development, and build and deploy applications. Developers can work in the cloud using Azure DevOps Services or on-premises using Azure DevOps Server, formerly named Visual Studio Team Foundation Server (TFS).
 
 ## Why Use Azure DevOps?
 - It is perfect for turning your idea into a piece of Software.
-- Plan your solution with Agile Tools
-- Manage Test Plans from a web Interface
-- Version your code Git and other first class source control systems
-- Deploy your solution to Cross Platform CI/CD systems
-- Full Tracability and Visability across your entire Development activities.
+- Helps you plan your solution with Agile Tools
+- Enables source code management using Git and other first class source control systems
+- Deploys your solution to Cross Platform CI/CD-enabled systems
+- Provides full traceability and visibility across your entire solution development lifecycle.
 
 ## How to Get started?
 
@@ -104,14 +103,6 @@ For Stages, you have a wide varity of Tasks to choose from by a simple drag and 
 
 ![](media/Tasks.png)
 
-## Test Plans
-
-![](media/TestPlansTab.png)
-
-Test Plans allow you to manage your entire Testing efforts across all your platforms and configurations. 
-
-![](media/TestPlans.png)
-
 ## Artifacts
 
 Artifacts allow you to apply the same DevOps best practices to the packages you develop and maintain.
@@ -120,8 +111,12 @@ The reality of the great features of Azure DevOps are that you can use them in c
 
 ## Next steps
 
-You can learn more about ... by reviewing these links to additional resources:
+You can learn more about Azure DevOps by reviewing these links to additional resources:
 
--[]()
+- [What is Azure DevOps](https://docs.microsoft.com/en-us/azure/devops/user-guide/what-is-azure-devops)
+- [Start using Azure DevOps](https://docs.microsoft.com/en-us/azure/devops/user-guide/index)
+- [Start using Azure Boards](https://docs.microsoft.com/en-us/azure/devops/boards/get-started/index)
+- [Start using Azure Repos](https://docs.microsoft.com/en-us/azure/devops/repos/get-started/index)
+- [Azure Pipelines](https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started/index)
 
 Read next: [Overview of post deployment monitoring and management tasks](../post-deployment-monitoring-and-management/README.md)
