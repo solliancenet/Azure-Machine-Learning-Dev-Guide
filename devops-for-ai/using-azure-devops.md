@@ -123,4 +123,4 @@ You can learn more about Azure DevOps by reviewing these links to additional res
 - [Start using Azure Repos](https://docs.microsoft.com/azure/devops/repos/get-started/index)
 - [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/index)
 
-Read next: [Overview of post deployment monitoring and management tasks](../post-deployment-monitoring-and-management/README.md)
+Read next: [Overview of post deployment monitoring and management tasks](./post-deployment-monitoring-and-management.md)
