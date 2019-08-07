@@ -7,4 +7,4 @@ You can learn more about ... by reviewing these links to additional resources:
 
 -[]()
 
-Read next: [Options for querying and analyzing model web service performance](./querying-and-analyzing-telemetry-data.md)
+Read next: [Model versioning with the AML model registry](./model-versioning.md)
