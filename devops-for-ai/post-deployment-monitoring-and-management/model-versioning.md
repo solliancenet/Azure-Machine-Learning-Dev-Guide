@@ -7,4 +7,4 @@ You can learn more about ... by reviewing these links to additional resources:
 
 -[]()
 
-Read next: [Monitoring a deployed model's telemetry (Code Sample)](../monitoring-telemetry-code-sample.md)
+Read next: [Monitoring a deployed model's collected data and telemetry (Code Sample)](../monitoring-data-and-telemetry-code-sample.md)

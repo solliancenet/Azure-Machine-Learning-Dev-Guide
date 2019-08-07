@@ -23,7 +23,7 @@ To enable data collection, you need to have the proper dependencies added to you
 
 Deploying a trained model to production is described in the [Overview of deployment target options](../../model-deployment/deployment-target-options.md) section.
 
-Enabling data collection using the SDK is described in the [Monitoring a deployed model's telemetry (Code Sample)](../monitoring-telemetry-code-sample.md) section.
+Enabling data collection using the SDK is described in the [Monitoring a deployed model's collected data and telemetry (Code Sample)](../monitoring-data-and-telemetry-code-sample.md) section.
 
 ## Querying and analyzing monitoring data
 

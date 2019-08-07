@@ -1,4 +1,4 @@
-# Monitoring a deployed model's telemetry (Code Sample)
+# Monitoring a deployed model's collected data and telemetry (Code Sample)
 
 
 ## Next steps
