@@ -66,9 +66,9 @@ The typical scenario is defined by the following:
 
 You can learn more about Azure Machine  by reviewing these links to additional resources:
 
-- [MLOps: Manage, deploy, and monitor models with Azure Machine Learning Service](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-model-management-and-deployment)
-- [Build reusable ML pipelines in Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-ml-pipelines)
-- [Create and run a machine learning pipeline by using Azure Machine Learning SDK](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-create-your-first-pipeline)
-- [Train and deploy machine learning models](https://docs.microsoft.com/en-us/azure/devops/pipelines/targets/azure-machine-learning)
+- [MLOps: Manage, deploy, and monitor models with Azure Machine Learning Service](https://docs.microsoft.com/azure/machine-learning/service/concept-model-management-and-deployment)
+- [Build reusable ML pipelines in Azure Machine Learning service](https://docs.microsoft.com/azure/machine-learning/service/concept-ml-pipelines)
+- [Create and run a machine learning pipeline by using Azure Machine Learning SDK](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-your-first-pipeline)
+- [Train and deploy machine learning models](https://docs.microsoft.com/azure/devops/pipelines/targets/azure-machine-learning)
 
 Read next: [Using Azure DevOps](./using-azure-devops.md)

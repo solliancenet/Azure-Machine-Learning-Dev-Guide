@@ -113,10 +113,10 @@ The reality of the great features of Azure DevOps are that you can use them in c
 
 You can learn more about Azure DevOps by reviewing these links to additional resources:
 
-- [What is Azure DevOps](https://docs.microsoft.com/en-us/azure/devops/user-guide/what-is-azure-devops)
-- [Start using Azure DevOps](https://docs.microsoft.com/en-us/azure/devops/user-guide/index)
-- [Start using Azure Boards](https://docs.microsoft.com/en-us/azure/devops/boards/get-started/index)
-- [Start using Azure Repos](https://docs.microsoft.com/en-us/azure/devops/repos/get-started/index)
-- [Azure Pipelines](https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started/index)
+- [What is Azure DevOps](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops)
+- [Start using Azure DevOps](https://docs.microsoft.com/azure/devops/user-guide/index)
+- [Start using Azure Boards](https://docs.microsoft.com/azure/devops/boards/get-started/index)
+- [Start using Azure Repos](https://docs.microsoft.com/azure/devops/repos/get-started/index)
+- [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/index)
 
 Read next: [Overview of post deployment monitoring and management tasks](../post-deployment-monitoring-and-management/README.md)

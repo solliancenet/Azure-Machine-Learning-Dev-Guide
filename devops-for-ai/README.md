@@ -18,9 +18,9 @@ The following topics will be covered:
 
 You can learn more about DevOps for AI by reviewing these links to additional resources:
 
-- [MLOps: Manage, deploy, and monitor models with Azure Machine Learning Service](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-model-management-and-deployment)
-- [Build reusable ML pipelines in Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-ml-pipelines)
-- [Create and run a machine learning pipeline by using Azure Machine Learning SDK](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-create-your-first-pipeline)
-- [Train and deploy machine learning models](https://docs.microsoft.com/en-us/azure/devops/pipelines/targets/azure-machine-learning)
+- [MLOps: Manage, deploy, and monitor models with Azure Machine Learning Service](https://docs.microsoft.com/azure/machine-learning/service/concept-model-management-and-deployment)
+- [Build reusable ML pipelines in Azure Machine Learning service](https://docs.microsoft.com/azure/machine-learning/service/concept-ml-pipelines)
+- [Create and run a machine learning pipeline by using Azure Machine Learning SDK](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-your-first-pipeline)
+- [Train and deploy machine learning models](https://docs.microsoft.com/azure/devops/pipelines/targets/azure-machine-learning)
 
 Read next: [Overview of the relationship between model training pipeline (MLOps) and traditional DevOps application CI/CD pipelines](./mlops-and-devops/README.md).

@@ -67,6 +67,6 @@ You can now use Azure Databricks to perform complex analysis and reporting on da
 
 You can learn more about production monitoring of model input data and model predictions by reviewing these links to additional resources:
 
-- [Collect data for models in production](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-enable-data-collection)
+- [Collect data for models in production](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-data-collection)
 
 Read next: [Collecting model web service performance telemetry (e.g., request rates, response times, failure rates and exceptions) with Application Insights](./model-webservice-performance-telemetry.md)

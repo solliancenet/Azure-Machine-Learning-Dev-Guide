@@ -601,14 +601,14 @@ Finally, select the **API Doc** tab to view the automatically generated web serv
 
 Learn more about deploying models for real-time inferencing with the links below:
 
-- [Deploy models with the Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-deploy-and-where)
-- [Deploy a model to Azure Container Instances](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-deploy-azure-container-instance)
-- [Deploy a model to an Azure Kubernetes Service cluster](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-deploy-azure-kubernetes-service)
-- [Deploy a deep learning model for inference with GPU](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-deploy-inferencing-gpus)
-- [What are field-programmable gate arrays (FPGA)](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-accelerate-with-fpgas)
-- [Deploy a model as a web service on an FPGA with Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-deploy-fpga-web-service)
-- [Use an existing model with Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-deploy-existing-model)
-- [What are compute targets in Azure Machine Learning service?](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-compute-target)
-- [Deploy a machine learning model with the visual interface](https://docs.microsoft.com/en-us/azure/machine-learning/service/ui-tutorial-automobile-price-deploy)
+- [Deploy models with the Azure Machine Learning service](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where)
+- [Deploy a model to Azure Container Instances](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-container-instance)
+- [Deploy a model to an Azure Kubernetes Service cluster](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-kubernetes-service)
+- [Deploy a deep learning model for inference with GPU](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-inferencing-gpus)
+- [What are field-programmable gate arrays (FPGA)](https://docs.microsoft.com/azure/machine-learning/service/concept-accelerate-with-fpgas)
+- [Deploy a model as a web service on an FPGA with Azure Machine Learning service](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service)
+- [Use an existing model with Azure Machine Learning service](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-existing-model)
+- [What are compute targets in Azure Machine Learning service?](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target)
+- [Deploy a machine learning model with the visual interface](https://docs.microsoft.com/azure/machine-learning/service/ui-tutorial-automobile-price-deploy)
 
 Read next: [Deploying to AML Compute for batch inferencing](./batch-inferencing)

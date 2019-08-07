@@ -1,6 +1,6 @@
 # Collecting model web service performance telemetry (e.g., request rates, response times, failure rates and exceptions) with Application Insights
 
-Azure Machine Learning is integrated with [Azure Application Insights](https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview).
+Azure Machine Learning is integrated with [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview).
 
 The official definition of Azure Application Insights is:
 
@@ -30,13 +30,13 @@ You can use the Azure Portal to view and analyze the telemetry data collected by
 
 If you prefer to use Power BI to analyze telemetry data, you can do this using one of the following approaches:
 
-- [Export Analytics queries](https://docs.microsoft.com/en-us/azure/azure-monitor/app/export-power-bi#export-analytics-queries)
-- [Continuous export and Azure Stream Analytics](https://docs.microsoft.com/en-us/azure/azure-monitor/app/export-stream-analytics)
+- [Export Analytics queries](https://docs.microsoft.com/azure/azure-monitor/app/export-power-bi#export-analytics-queries)
+- [Continuous export and Azure Stream Analytics](https://docs.microsoft.com/azure/azure-monitor/app/export-stream-analytics)
 
 ## Next steps
 
 You can learn more about production model telemetry with Azure Application Insights by reviewing these links to additional resources:
 
--[Monitor your Azure Machine Learning models with Application Insights](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-enable-app-insights)
+-[Monitor your Azure Machine Learning models with Application Insights](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights)
 
 Read next: [Monitoring a deployed model's collected data and telemetry (Code Sample)](../monitoring-data-and-telemetry-code-sample.md)

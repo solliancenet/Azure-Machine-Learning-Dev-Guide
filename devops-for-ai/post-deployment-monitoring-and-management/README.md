@@ -23,8 +23,8 @@ This section addresses the problem of data collection and model versioning in po
 
 You can learn more about post depol by reviewing these links to additional resources:
 
-- [Collect data for models in production](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-enable-data-collection)
-- [Detect data drift (preview) on models deployed to Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-monitor-data-drift)
-- [Monitor your Azure Machine Learning models with Application Insights](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-enable-app-insights)
+- [Collect data for models in production](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-data-collection)
+- [Detect data drift (preview) on models deployed to Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/machine-learning/service/how-to-monitor-data-drift)
+- [Monitor your Azure Machine Learning models with Application Insights](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights)
 
 Read next: [Production monitoring of model input data and the deployed model predictions using the AML Model data collection](./monitoring-data-collection.md)
