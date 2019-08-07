@@ -1,5 +1,15 @@
 # Overview of the relationship between model training pipeline (MLOps) and traditional DevOps application CI/CD pipelines
 
+## MLOps - DevOps for AI overview
+
+DevOps has become ubiquitous in the world of classical development. Almost all projects that exceed a certain level of complexity become inevitably DevOps projects. Yet there is one category of projects that are stepping out of the line. You’ve guessed it right, it’s the category of Data Science projects.
+
+When it comes to DevOps, Data Science projects pose a range of special challenges, whether it’s about the technical side of things, the philosophy of the people involved, or the actors involved. Think about one simple example: versioning. While in a “classical” development project versioning refers almost exclusively to source code, in the world of data science it gets another important aspect: data versioning. It’s not enough to know the version of the code for your model, it’s equally important to know the “version” of the data it was trained on. Another interesting question is, for examples, what does a “build” mean in the world of data science? Or a “release”?
+
+This section is dedicated to the topic of MLOps which is basically the discipline that deals with the application of "classical" DevOps principles to projects that have at least one data science component. As the title implies, MLOps is `DevOps for AI`.
+
+## The relationship between MLOps and traditional DevOps application CI/CD pipelines
+
 When it comes to DevOps principles, any non-trivial project that includes a data science component will need to take advantage of a combination of features from the following two major platforms:
 
 - [Azure Machine Learning service](https://azure.microsoft.com/en-us/services/machine-learning-service/)
@@ -7,11 +17,11 @@ When it comes to DevOps principles, any non-trivial project that includes a data
 
 The official definition of **Azure Machine Learning service** is:
 
->*Azure Machine Learning service provides a cloud-based environment you can use to prep data, train, test, deploy, manage, and track machine learning models. Start training on your local machine and then scale out to the cloud. The service fully supports open-source technologies such as PyTorch, TensorFlow, and scikit-learn and can be used for any kind of machine learning, from classical ml to deep learning, supervised and unsupervised learning.*
+> *Azure Machine Learning service provides a cloud-based environment you can use to prep data, train, test, deploy, manage, and track machine learning models. Start training on your local machine and then scale out to the cloud. The service fully supports open-source technologies such as PyTorch, TensorFlow, and scikit-learn and can be used for any kind of machine learning, from classical ml to deep learning, supervised and unsupervised learning.*
 
 The official definition of **Azure DevOps** is:
 
->*Azure DevOps provides developer services to support teams to plan work, collaborate on code development, and build and deploy applications. Developers can work in the cloud using Azure DevOps Services or on-premises using Azure DevOps Server, formerly named Visual Studio Team Foundation Server (TFS).*
+> *Azure DevOps provides developer services to support teams to plan work, collaborate on code development, and build and deploy applications. Developers can work in the cloud using Azure DevOps Services or on-premises using Azure DevOps Server, formerly named Visual Studio Team Foundation Server (TFS).*
 
 The DevOps mindset applied to data science solutions is commonly referred as Machine Learning Operations (MLOps). The most important aspects of MLOps are:
 
