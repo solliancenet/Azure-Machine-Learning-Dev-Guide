@@ -14,9 +14,10 @@ The official definition of **Azure DevOps** is:
 >*Azure DevOps provides developer services to support teams to plan work, collaborate on code development, and build and deploy applications. Developers can work in the cloud using Azure DevOps Services or on-premises using Azure DevOps Server, formerly named Visual Studio Team Foundation Server (TFS).*
 
 The DevOps mindset applied to data science solutions is commonly referred as Machine Learning Operations (MLOps). The most important aspects of MLOps are:
+
 - Deploying Machine Learning projects from anywhere
 - Monitoring ML solutions for both generic and ML-specific operational issues
-- Capturing all data that is necessary for full traceability in the ML lifecyle
+- Capturing all data that is necessary for full traceability in the ML lifecycle
 - Automating the end-to-end ML lifecycle using a combination of Azure Machine Learning service and Azure DevOps
 
 ## Two complementary platforms
@@ -33,7 +34,7 @@ Next, we will explore the relationships that exist between the various features 
 
 ## Feature comparison
 
-The following table provides details about how the most important MLOps concepts are interpreded by the Azure Machine Learning service and Azure DevOps.
+The following table provides details about how the most important MLOps concepts are interpreted by the Azure Machine Learning service and Azure DevOps.
 
 MLOps concept | Azure Machine Learning service | Azure DevOps | Primary Choice
 --- | --- | --- | ---
