@@ -27,7 +27,7 @@ Enabling data collection using the SDK is described in the [Monitoring a deploye
 
 ## Querying and analyzing monitoring data
 
-Since the collected data is made available in CSV format in blob storage, you can use any tool to query and analyze the data. Some of the most popular options are [Power BI](https://powerbi.microsoft.com/en-us/desktop/) and [Azure Databricks](https://azure.microsoft.com/services/databricks/).
+Since the collected data is made available in CSV format in blob storage, you can use any tool to query and analyze the data. Some of the most popular options are [Power BI](https://powerbi.microsoft.com/desktop/) and [Azure Databricks](https://azure.microsoft.com/services/databricks/).
 
 ### Power BI Desktop
 
