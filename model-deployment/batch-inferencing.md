@@ -28,11 +28,11 @@ Real-time inference is applied to data flowing into the hot path. Incoming data 
 
 Eventually, the hot and cold paths converge at the analytics client application. If the client needs to respond to predictions in real time, it will acquire its result from the hot path. Otherwise, it will pull prediction results from the cold path. In other words, the hot path has data for a relatively small window of time, after which the results can be updated with data from the cold path.
 
-For more details about the lambda architecture, refer to the [Azure Data Architecture Guide](https://docs.microsoft.com/en-us/azure/architecture/data-guide/big-data/#lambda-architecture)
+For more details about the lambda architecture, refer to the [Azure Data Architecture Guide](https://docs.microsoft.com/azure/architecture/data-guide/big-data/#lambda-architecture)
 
 ## Deploying to AML Compute for batch inferencing
 
-To demonstrate how to perform batch inferencing, let's create a machine learning pipeline using an [Azure Machine Learning Compute](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-set-up-training-targets#amlcompute). AML Compute is created within your AML workspace to provide a managed infrastructure for single or multi-node compute.
+To demonstrate how to perform batch inferencing, let's create a machine learning pipeline using an [Azure Machine Learning Compute](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets#amlcompute). AML Compute is created within your AML workspace to provide a managed infrastructure for single or multi-node compute.
 
 For this example, we use the pre-trained [Inception-V3](https://arxiv.org/abs/1512.00567) computer vision model. The model is used to do batch scoring on unlabeled images pulled from the [ImageNet](http://image-net.org/) dataset.
 
@@ -326,7 +326,7 @@ dflow.head(10)
 
 For an additional example of how to create a pipeline for repeatable data prep and batch scoring, see the [Machine learning pipelines article](../creating-machine-learning-pipelines/machine-learning-pipelines.md) in this guide.
 
-- [How to Run Batch Predictions](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-run-batch-predictions)
-- [Azure Data Architecture Guide: Lambda architecture](https://docs.microsoft.com/en-us/azure/architecture/data-guide/big-data/#lambda-architecture)
+- [How to Run Batch Predictions](https://docs.microsoft.com/azure/machine-learning/service/how-to-run-batch-predictions)
+- [Azure Data Architecture Guide: Lambda architecture](https://docs.microsoft.com/azure/architecture/data-guide/big-data/#lambda-architecture)
 
 Read next: [Overview of Inferencing at the IoT edge](./iot-edge-inferencing.md)
