@@ -21,13 +21,13 @@ To enable data collection, you need to have the proper dependencies added to you
 
 ![Enable production model data collection in Azure portal](./media/azureml-data-collection-enable.png)
 
-Deploying a trained model to production is described in the [Overview of deployment target options](../../model-deployment/deployment-target-options.md) section.
+Deploying a trained model to production is described in the [Overview of deployment target options](../model-deployment/deployment-target-options.md) section.
 
-Enabling data collection using the SDK is described in the [Monitoring a deployed model's collected data and telemetry (Code Sample)](../monitoring-data-and-telemetry-code-sample.md) section.
+Enabling data collection using the SDK is described in the [Monitoring a deployed model's collected data and telemetry (Code Sample)](./monitoring-data-and-telemetry-code-sample.md) section.
 
 ## Querying and analyzing monitoring data
 
-Since the collected data is made available in CSV format in blob storage, you can use any tool to query and analyze the data. Some of the most popular options are [Power BI](https://powerbi.microsoft.com/en-us/desktop/) and [Azure Databricks](https://azure.microsoft.com/en-us/services/databricks/).
+Since the collected data is made available in CSV format in blob storage, you can use any tool to query and analyze the data. Some of the most popular options are [Power BI](https://powerbi.microsoft.com/desktop/) and [Azure Databricks](https://azure.microsoft.com/services/databricks/).
 
 ### Power BI Desktop
 

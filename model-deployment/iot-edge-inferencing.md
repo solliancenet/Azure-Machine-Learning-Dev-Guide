@@ -1,6 +1,6 @@
 # Overview of Inferencing at the IoT edge
 
-In the previous article, we looked at [real-time inferencing](./read-time-inferencing.md) and how to quickly make decisions on incoming data using trained models deployed as web services. What happens, however, when making calls to cloud-hosted web services presents a challenge or is problematic? For example, consider cases where sending data to cloud-based web services violates data sovereignty or introduces an elevated security risk, or where bandwidth limitations, network latency and connectivity issues make transmitting data prohibitively expensive or too slow to allow time-critical decisions to be made reliably.
+In the previous articles, we looked at [real-time inferencing](./read-time-inferencing.md) and [batch inferencing](./batch-inferencing.md) and how to quickly make decisions on incoming data using trained models deployed as web services. What happens, however, when making calls to cloud-hosted web services presents a challenge or is problematic? For example, consider cases where sending data to cloud-based web services violates data sovereignty or introduces an elevated security risk, or where bandwidth limitations, network latency and connectivity issues make transmitting data prohibitively expensive or too slow to allow time-critical decisions to be made reliably.
 
 Internet of Things (IoT) solutions often include devices that are geographically distributed or running in remote locations with limited network connectivity, yet decisions based on the data those devices are collecting and transmitting need to be made as quickly as possible, sometimes within fractions of a second. In such cases, performing inference at or near the edge is the solution. This approach offers many advantages over making calls to cloud-hosted services, such as responding to changing conditions or using anomaly detection to quickly shut down a failing device, before it is damaged beyond repair. Running machine learning workloads at the edge can help reduce bandwidth costs and avoid transferring terabytes of raw data. You can clean, aggregate, and react to the data locally, and then only send the insights to the cloud for analysis.
 
@@ -227,4 +227,4 @@ You can also watch the messages arrive at your IoT hub by using the [Azure IoT H
 
 ## Next steps
 
-Read next: [Reducing model deployment dependencies and improving model inferencing performance with ONNX](./inferencing-improvements-with-onnx.md)
+Read next: [Reducing model deployment dependencies and improving model inferencing performance with ONNX](./deployment-with-onnx.md)

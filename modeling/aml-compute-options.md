@@ -20,10 +20,10 @@ Name | Description
 Local computer | Uses the resources provided by the local computer.
 Azure Machine Learning Compute | A compute resource fully managed by Azure Machine Learning service, with support for CPU/GPU, single or multi-node clusters, autoscale, automatic cluster management, and job scheduling. Currently, this is the only managed compute resource available in Azure Machine Learning.
 Virtual Machine | A remote Virtual Machine providing compute resources.
-[Azure Databricks](https://azure.microsoft.com/en-us/services/databricks/) | An Azure Databricks (Apache Spark) cluster running in Azure.
-[Azure Data Lake Analytics](https://azure.microsoft.com/en-us/services/data-lake-analytics/) | An Azure Data Lake Analytics big data analytics platform running in Azure.
-[Azure HDInsight](https://azure.microsoft.com/en-us/services/hdinsight/) | A Hadoop big data cluster running in Azure.
-[Azure Batch](https://azure.microsoft.com/en-us/services/batch/) | Environment for running large scale parallel HPC workloads in Azure.
+[Azure Databricks](https://azure.microsoft.com/services/databricks/) | An Azure Databricks (Apache Spark) cluster running in Azure.
+[Azure Data Lake Analytics](https://azure.microsoft.com/services/data-lake-analytics/) | An Azure Data Lake Analytics big data analytics platform running in Azure.
+[Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) | A Hadoop big data cluster running in Azure.
+[Azure Batch](https://azure.microsoft.com/services/batch/) | Environment for running large scale parallel HPC workloads in Azure.
 
 The following Compute Targets are supported for hosting service deployments:
 
@@ -31,9 +31,9 @@ Name | Description
 --- | ---
 Local web service | Used for debugging, testing, and troubleshooting.
 [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/intro-kubernetes) (AKS) | Used for production deployments, supports very fast response times and autoscaling. 
-[Azure Container Instances](https://azure.microsoft.com/en-us/services/container-instances/) (ACI) | Used for testing and development, suitable for low scale CPU-based workloads.
+[Azure Container Instances](https://azure.microsoft.com/services/container-instances/) (ACI) | Used for testing and development, suitable for low scale CPU-based workloads.
 Azure Machine Learning Compute | Used for batch inference.
-[Azure IoT Edge](https://azure.microsoft.com/en-us/services/iot-edge/) | Used for deployment on IoT devices.
+[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) | Used for deployment on IoT devices.
 [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview) | Used for deployment on IoT devices.
 
 For the reminder of this article we will focus on Compute Targets used to run model training scripts.

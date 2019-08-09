@@ -4,7 +4,7 @@ Azure Machine Learning is integrated with [Azure Application Insights](https://d
 
 The official definition of Azure Application Insights is:
 
->*Application Insights is an extensible Application Performance Management (APM) service for web developers on multiple platforms. Use it to monitor your live web application. It will automatically detect performance anomalies. It includes powerful analytics tools to help you diagnose issues and to understand what users actually do with your app. It's designed to help you continuously improve performance and usability. It works for apps on a wide variety of platforms including .NET, Node.js and Java EE, hosted on-premises, hybrid, or any public cloud. It integrates with your DevOps process, and has connection points to a variety of development tools. It can monitor and analyze telemetry from mobile apps by integrating with Visual Studio App Center.*
+> _Application Insights is an extensible Application Performance Management (APM) service for web developers on multiple platforms. Use it to monitor your live web application. It will automatically detect performance anomalies. It includes powerful analytics tools to help you diagnose issues and to understand what users actually do with your app. It's designed to help you continuously improve performance and usability. It works for apps on a wide variety of platforms including .NET, Node.js and Java EE, hosted on-premises, hybrid, or any public cloud. It integrates with your DevOps process, and has connection points to a variety of development tools. It can monitor and analyze telemetry from mobile apps by integrating with Visual Studio App Center._
 
 Enabling Application Insights telemetry on your production model provides the following benefits:
 
@@ -18,9 +18,9 @@ You can use the Azure portal to enable Application Insights integration for a mo
 
 ![Enable Application Insights integration in Azure Machine Learning](./media/azureml-telemetry-enable.png)
 
-Deploying a trained model to production is described in the [Overview of deployment target options](../../model-deployment/deployment-target-options.md) section.
+Deploying a trained model to production is described in the [Overview of deployment target options](../model-deployment/deployment-target-options.md) section.
 
-Enabling data collection using the SDK is described in the [Monitoring a deployed model's collected data and telemetry (Code Sample)](../monitoring-data-and-telemetry-code-sample.md) section.
+Enabling data collection using the SDK is described in the [Monitoring a deployed model's collected data and telemetry (Code Sample)](./monitoring-data-and-telemetry-code-sample.md) section.
 
 ## Querying and analyzing monitoring data
 
@@ -39,4 +39,4 @@ You can learn more about production model telemetry with Azure Application Insig
 
 -[Monitor your Azure Machine Learning models with Application Insights](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights)
 
-Read next: [Monitoring a deployed model's collected data and telemetry (Code Sample)](../monitoring-data-and-telemetry-code-sample.md)
+Read next: [Monitoring a deployed model's collected data and telemetry (Code Sample)](./monitoring-data-and-telemetry-code-sample.md)
