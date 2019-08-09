@@ -6,7 +6,23 @@ This guide provided documentation, code samples and best practices for harnessin
 
 This guide went through very important topics to understand the different offerings by Microsoft:
 - Introduction to Azure Machine Learning
+  - [Supervised Learning](https://github.com/solliancenet/Azure-Machine-Learning-Dev-Guide/blob/master/intro/what-is-azure-machine-learning.md)
+  - [Unsupervised Learning](https://github.com/solliancenet/Azure-Machine-Learning-Dev-Guide/blob/master/intro/what-is-azure-machine-learning.md)
+  - [Reinforcement Learning](https://github.com/solliancenet/Azure-Machine-Learning-Dev-Guide/blob/master/intro/what-is-azure-machine-learning.md)
+  - [Deep Learning](https://github.com/solliancenet/Azure-Machine-Learning-Dev-Guide/blob/master/intro/what-is-azure-machine-learning.md)
+  - [Transfer Learning](https://github.com/solliancenet/Azure-Machine-Learning-Dev-Guide/blob/master/intro/what-is-azure-machine-learning.md)
 - Data Acquisition and Understanding
+  - [Data Wrangling](https://github.com/solliancenet/Azure-Machine-Learning-Dev-Guide/blob/master/data-acquisition-understanding/data-wrangling.md)
+  - [Accessing data from various Azure services](https://github.com/solliancenet/Azure-Machine-Learning-Dev-Guide/blob/master/data-acquisition-understanding/accessing-data.md)
+  - [AML Data Prep SDK](https://github.com/solliancenet/Azure-Machine-Learning-Dev-Guide/blob/master/data-acquisition-understanding/loading-and-writing-data.md)
 - Model creation, training, evaluation, selection and deployment
+  - [Training & evaluating using the Visual Interface](https://github.com/solliancenet/Azure-Machine-Learning-Dev-Guide/blob/master/modeling/training-evaluating-model-with-visual-interface.md)
+  - [Training & evaluating in Azure Notebooks](https://github.com/solliancenet/Azure-Machine-Learning-Dev-Guide/blob/master/modeling/training-evaluating-simple-models-with-aml-compute.md)
+  - [Working with Automated ML](https://github.com/solliancenet/Azure-Machine-Learning-Dev-Guide/blob/master/modeling/simplify-process-with-automated-ml.md)
+  - [Real Time Inferencing](https://github.com/solliancenet/Azure-Machine-Learning-Dev-Guide/blob/master/model-deployment/real-time-inferencing.md)
+  - [Batch Inferencing](https://github.com/solliancenet/Azure-Machine-Learning-Dev-Guide/blob/master/model-deployment/batch-inferencing.md)
 - Working with Machine Learning pipelines
-- Using Azure DevOps to maintain and automate the AI & Machine Learning Cycles during a project.
+  - [Learning pipelines using the Azure ML SDK](https://github.com/solliancenet/Azure-Machine-Learning-Dev-Guide/blob/master/creating-machine-learning-pipelines/machine-learning-pipelines.md)
+- Using Azure DevOps to maintain and automate the AI & Machine Learning Cycles during a project
+  - [MLOps vs traditional DevOps](https://github.com/solliancenet/Azure-Machine-Learning-Dev-Guide/blob/master/devops-for-ai/mlops-and-devops.md)
+  - [Post Deployment monitoring and management tasks](https://github.com/solliancenet/Azure-Machine-Learning-Dev-Guide/blob/master/devops-for-ai/post-deployment-monitoring-and-management.md)
